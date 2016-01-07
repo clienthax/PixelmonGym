@@ -1,0 +1,96 @@
+name: PixelmonGym
+main: me.Ckay.gym.PixelGym
+depend: [Vault]
+version: 6.2
+author: ABkayCkay
+permissions:
+  pixelgym.leader:
+    description: Give access to Open/Close Gym.
+  pixelgym.gym1:
+    description: Leader is a Rock Gym Leader.
+  pixelgym.gym2:
+    description: Leader is a Electric Gym Leader.
+  pixelgym.gym3:
+    description: Leader is a Water Gym Leader.
+  pixelgym.gym4:
+    description: Leader is a Grass Gym Leader.
+  pixelgym.gym5:
+    description: Leader is a Poison Gym Leader.
+  pixelgym.gym6:
+    description: Leader is a Psychic Gym Leader. 
+  pixelgym.gym7:
+    description: Leader is a Fire Gym Leader. 
+  pixelgym.gym8:
+    description: Leader is a multi type Gym Leader.
+  pixelgym.gym9:
+    description: Leader is a Rock Gym Leader.
+  pixelgym.gym10:
+    description: Leader is a Electric Gym Leader.
+  pixelgym.gym11:
+    description: Leader is a Water Gym Leader.
+  pixelgym.gym12:
+    description: Leader is a Grass Gym Leader.
+  pixelgym.gym13:
+    description: Leader is a Poison Gym Leader.
+  pixelgym.gym14:
+    description: Leader is a Psychic Gym Leader. 
+  pixelgym.gym15:
+    description: Leader is a Fire Gym Leader. 
+  pixelgym.gym16:
+    description: Leader is a multi type Gym Leader.
+  pixelgym.gym17:
+    description: Leader is a Rock Gym Leader.
+  pixelgym.gym18:
+    description: Leader is a Electric Gym Leader.
+  pixelgym.gym19:
+    description: Leader is a Water Gym Leader.
+  pixelgym.gym20:
+    description: Leader is a Grass Gym Leader.
+  pixelgym.gym21:
+    description: Leader is a Poison Gym Leader.
+  pixelgym.gym22:
+    description: Leader is a Psychic Gym Leader. 
+  pixelgym.gym23:
+    description: Leader is a Fire Gym Leader. 
+  pixelgym.gym24:
+    description: Leader is a multi type Gym Leader.
+  pixelgym.gym25:
+    description: Leader is a Rock Gym Leader.
+  pixelgym.gym26:
+    description: Leader is a Electric Gym Leader.
+  pixelgym.gym27:
+    description: Leader is a Water Gym Leader.
+  pixelgym.gym28:
+    description: Leader is a Grass Gym Leader.
+  pixelgym.gym29:
+    description: Leader is a Poison Gym Leader.
+  pixelgym.gym30:
+    description: Leader is a Psychic Gym Leader. 
+  pixelgym.gym31:
+    description: Leader is a Fire Gym Leader. 
+  pixelgym.gym32:
+    description: Leader is a multi type Gym Leader.
+  pixelgym.reload:
+    description: Allows user to reload config.
+  pixelgym.admin:
+    description: Allows close all and future admin commands.
+  pixelgym.e4leader:
+    description: Leader of an e4.
+  pixelgym.e41:
+    description: Allows to open e4 level 1.
+  pixelgym.e42:
+    description: Allows to open e4 level 2.
+  pixelgym.e43:
+    description: Allows to open e4 level 3.
+  pixelgym.e44:
+    description: Allows to open e4 level 4.
+commands:
+   gym:
+      description: Main Gym command
+      usage: /gym
+   e4:
+      description: Main e4 Command
+      usage: /e4
+   pixelgym:
+      description: Main admin command
+      usage: /pixelgym
