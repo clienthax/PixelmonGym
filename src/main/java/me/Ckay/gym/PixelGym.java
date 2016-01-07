@@ -1,5 +1,7 @@
 package me.Ckay.gym;
 
+import org.spongepowered.api.plugin.Plugin;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -13,42 +15,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
-import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.economy.EconomyResponse;
-import net.milkbowl.vault.permission.Permission;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.World;
-import org.bukkit.block.Sign;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.RegisteredServiceProvider;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
 
-public class PixelGym extends JavaPlugin implements Listener {
+@Plugin(id = "pixelmongym", name = "PixelmonGym", version = "6.3")
+public class PixelGym {
 
     FileConfiguration config;
     File cfile;
@@ -57,7 +26,7 @@ public class PixelGym extends JavaPlugin implements Listener {
     private static PixelGym instance;
     public final Logger logger = Logger.getLogger("Minecraft");
     public static PixelGym plugin;
-    private Map queues;
+    private Map queues<Integer, ArrayList>;
     private Map cooldownGym;
     private Map cooldownTime;
     private Map cooldownTask;
@@ -171,26 +140,6 @@ public class PixelGym extends JavaPlugin implements Listener {
     String enable32 = this.getConfig().getString("config.gym32enabled");
     String enableGymHeal = this.getConfig().getString("config.gymhealing");
     String enablee4 = this.getConfig().getString("config.e4enabled");
-
-    private boolean setupPermissions() {
-        RegisteredServiceProvider permissionProvider = this.getServer().getServicesManager().getRegistration(Permission.class);
-
-        if (permissionProvider != null) {
-            PixelGym.permission = (Permission) permissionProvider.getProvider();
-        }
-
-        return PixelGym.permission != null;
-    }
-
-    private boolean setupEconomy() {
-        RegisteredServiceProvider economyProvider = this.getServer().getServicesManager().getRegistration(Economy.class);
-
-        if (economyProvider != null) {
-            PixelGym.economy = (Economy) economyProvider.getProvider();
-        }
-
-        return PixelGym.economy != null;
-    }
 
     public void onEnable() {
         if (!this.setupEconomy()) {
