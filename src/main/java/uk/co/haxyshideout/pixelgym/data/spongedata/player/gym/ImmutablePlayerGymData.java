@@ -1,5 +1,9 @@
 package uk.co.haxyshideout.pixelgym.data.spongedata.player.gym;
 
+import static uk.co.haxyshideout.pixelgym.data.spongedata.player.gym.PlayerGymKeys.GYMDATA;
+
+import org.spongepowered.api.data.DataContainer;
+import org.spongepowered.api.data.MemoryDataContainer;
 import org.spongepowered.api.data.key.Key;
 import org.spongepowered.api.data.manipulator.immutable.common.collection.AbstractImmutableSingleListData;
 import org.spongepowered.api.data.value.BaseValue;
@@ -10,7 +14,7 @@ import java.util.Optional;
 public class ImmutablePlayerGymData extends AbstractImmutableSingleListData<String, ImmutablePlayerGymData, PlayerGymData> {
 
     protected ImmutablePlayerGymData(List<String> value) {
-        super(value, PlayerGymKeys.GYMDATA);
+        super(value, GYMDATA);
     }
 
     @Override public <E> Optional<ImmutablePlayerGymData> with(Key<? extends BaseValue<E>> key, E value) {
@@ -24,6 +28,11 @@ public class ImmutablePlayerGymData extends AbstractImmutableSingleListData<Stri
     @Override
     public PlayerGymData asMutable() {
         return new PlayerGymData(this.getValue());
+    }
+
+    @Override
+    public DataContainer toContainer() {
+        return super.toContainer().set(GYMDATA.getQuery(), this.getValue());
     }
 
     @Override

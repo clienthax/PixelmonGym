@@ -31,7 +31,7 @@ public class PlayerGymData extends AbstractSingleListData<String, PlayerGymData,
     @Override
     public Optional<PlayerGymData> from(DataContainer container) {
         if(container.contains(GYMDATA.getQuery())) {
-            return Optional.of(set(GYMDATA, (List<String>)container.get(GYMDATA.getQuery()).orElse(null)));
+            return Optional.of(set(GYMDATA, container.getStringList(GYMDATA.getQuery()).orElse(null)));
         }
         return Optional.empty();
     }
@@ -49,6 +49,11 @@ public class PlayerGymData extends AbstractSingleListData<String, PlayerGymData,
     @Override
     public int getContentVersion() {
         return 0;
+    }
+
+    @Override
+    public DataContainer toContainer() {
+        return super.toContainer().set(GYMDATA.getQuery(), this.getValue());
     }
 
 }

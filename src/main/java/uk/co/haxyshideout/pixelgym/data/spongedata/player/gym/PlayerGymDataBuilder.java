@@ -26,7 +26,7 @@ public class PlayerGymDataBuilder implements DataManipulatorBuilder<PlayerGymDat
             return Optional.empty();
         }
         PlayerGymData gymData = create();
-        gymData.setValue((List<String>) container.get(PlayerGymKeys.GYMDATA.getQuery()).get());
+        gymData = gymData.setValue(container.getStringList(PlayerGymKeys.GYMDATA.getQuery()).get());
         return Optional.of(gymData);
     }
 }
