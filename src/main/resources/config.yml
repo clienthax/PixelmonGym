@@ -1,54 +1,54 @@
   # To see a commented version of this config, go to the bukkit configuration page!
 
 config:
-  
+
   # Plugin Configuration
-  
+
   # What prefix do you want on your broadcast messages?
-  # Set it below in the quotations. 
+  # Set it below in the quotations.
   title: 'PixelmonGym'
-  
+
   # This plugin enabled's a few messages to be sent to players joining to help them get started with this plugin.
   # Example: Type "/gym list" to see what gyms are open!
   # If you want to disable these, set the below to "False".
   joinmessage: 'True'
-  
+
   # If you have JoinMessage set to "True",
-  # What few join messages do you want? 
+  # What few join messages do you want?
   # Set them below!
   joinmessage1: 'Type "/gym list" to see what gyms are open!'
   joinmessage2: 'Type "/gym leaders" to see which gym leaders are online!'
   joinmessage3: 'Type "/gym" to see what other gym commands are available!'
-  
-  
+
+
   # Is gym healing allowed on the server? (/gym heal, heals the gym leaders pokemon at any time)
   # They can not heal other players pokemon. Only there own.
   gymhealing: 'True'
-  
+
   # Do you want the scoreboard feature at all?
   # Set to "False" if you do not want the scoreboard feature.
   scoreboard: 'True'
-  
+
   # Do you want the user to be added to a certain group? For example "Gym Leader".
   # If you do, when you do /pixelgym addleader (username) <gym#> it will add them to the GymLeader group
   # and will then give them the specific pixelgym.gym# or pixelgym.e4# that they require.
   # However, if you want the gym leaders to be given both pixelgym.leader and pixelgym.gym#, set this to "False".
   enablegroup: 'False'
-  
+
   # This is the group name you want to add them to, the group must already exist within your permissions plugin.
   globalgroupname: 'GymLeader'
-  
+
   # This is the same as gym leader group, however it is for the Elite 4 members.
   globale4groupname: 'Elite4'
-  
-  
+
+
   # If you want the plugin to give your gym leaders the pokemon that you configure below for each gym, set this to "True".
   # However, if you want to give your gym leaders there pokemon manually, set to "False".
   # These pokemon will be given during the same command as /pixelgym addleader (username) <gym#/e4#>.
   giveleaderpokemon: 'True'
-  
+
   # Gym Configuration
-  
+
   # In the gym configuration there are 32 Gym's to be configured.
   # These include;
   # The Specific Gym name
@@ -56,31 +56,31 @@ config:
   # If you want the gym to be enabled or disabled (9-32 are disabled by default)
   # What level cap each gym is (Show in /gym list)
   # And 5 Rules per gym. (Seen in /gym rules <gym#>)
-  
+
   # Do you want challengers to pay a fee when they join a gym?
   # They will only be charged if they get pulled into the gym (when the gym leader does /gym next gym#
   # If you want this, set to true. Otherwise set to False.
   gymfee: 'True'
-  
+
   # If you use the gym fee, how much do you want them to pay?
   # This is using your economy plugin. (/pay (player) (amount))
   gymfeeamount: 100
-  
+
   # Here you can customize the global cooldown time for gym's if players lose.
   # This is in minutes, so by default it is 60 minutes (1 hour).
   cooldowntime: 60
-  
+
   # Here is the first gym config, along with a guide on each part;
 
   # This is the name of the gym.
   # Put the desired name of the gym in the Quotations ('')
   gym1: 'Rock'
-  
+
   # This is what colour the gym will be shown as in chat and on the scoreboard.
   # This is controlled by colour codes, found at the minecraft wiki. They must include a "&" sign.
   # The default colour of gym1 is &7. Which is grey. This suits the default gym1 name "Rock".
   gym1colour: '&7'
-  
+
   # Do you want gym1 to be enabled at all? (By default gym1 - gym8 are enabled, the rest are disabled)
   # Set to 'False' if you don't want it to be enabled.
   gym1enabled: 'True'
@@ -92,14 +92,14 @@ config:
   # What level cap is the gym? This will show on /gym list
   # Type the gym's level cap in the quotations below ('')
   gym1lvlcap: '25'
-  
+
   # Using /pixelgym addleader now has a built in ability to add pokemon to the gym leader that you set here.
   # This must be enabled above in the global config section.
-  
+
   # First you have the Pokemon name, this must be spelled 100% correctly to work.
   # Then the pokemon level to give, which is choosable per pokemon you give to the leader.
   # If a gym only has a team of 3 pokemon like the first gym, just leave the extra pokemon quotes empty.
-  
+
   gym1poke1: 'Tirtouga'
   gym1poke1lvl: '25'
   gym1poke2: 'Cranidos'
@@ -112,7 +112,7 @@ config:
   gym1poke5lvl: '25'
   gym1poke6: ''
   gym1poke6lvl: '25'
-  
+
   # What rules do you want for this gym? (No specific Pokemon types? No Potions? Etc...)
   # Write your 5 desired rules in the quotations below ('')
   gym1rule1: 'Your First Rule for Gym1 Goes here'
@@ -120,7 +120,7 @@ config:
   gym1rule3: 'Your Third Rule for Gym1 Goes here'
   gym1rule4: 'Your Fourth Rule for Gym1 Goes here'
   gym1rule5: 'Your Fifth Rule for Gym1 Goes here'
-  
+
   # The below 32 gym's and elite 4 configs work the exact same as the above one.
 
   gym2: 'Grass'
@@ -835,25 +835,25 @@ config:
   gym32rule3: 'Your Third Rule for Gym32 Goes here'
   gym32rule4: 'Your Fourth Rule for Gym32 Goes here'
   gym32rule5: 'Your Fifth Rule for Gym32 Goes here'
-  
+
   # Elite 4 Section
-  
+
   # Want to call the elite 4 something else? You can below
   e4: 'Elite 4'
-  
+
   # Give your Elite 4 above and abbreviation (Slang) for the scoreboard.
   e4ab: 'E4'
-  
+
   # Overall colour of the elite 4 (if all elite 4's are open)
   # Default is yellow.
   e4colour: '&e'
-  
+
   # Do you want the e4 enabled at all?
   # Set to "Fale" if you do not want to enable the e4 on your sever.
   e4enabled: 'True'
-  
+
   # Seperate e4 groups below to customise what type each e4 level is, along with rules.
-  
+
   e41: 'Ice'
   e41colour: '&b'
   e41poke1: 'Raticate'
@@ -873,7 +873,7 @@ config:
   e41rule3: 'Your Third Rule for e4 1 Goes here'
   e41rule4: 'Your Fourth Rule for e4 1 Goes here'
   e41rule5: 'Your Fifth Rule for e4 1 Goes here'
-  
+
   e42: 'Fighting'
   e42colour: '&4'
   e42poke1: 'Raticate'
@@ -893,7 +893,7 @@ config:
   e42rule3: 'Your Third Rule for e4 2 Goes here'
   e42rule4: 'Your Fourth Rule for e4 2 Goes here'
   e42rule5: 'Your Fifth Rule for e4 2 Goes here'
-  
+
   e43: 'Ghost'
   e43colour: '&5'
   e43poke1: 'Raticate'
@@ -913,7 +913,7 @@ config:
   e43rule3: 'Your Third Rule for e4 3 Goes here'
   e43rule4: 'Your Fourth Rule for e4 3 Goes here'
   e43rule5: 'Your Fifth Rule for e4 3 Goes here'
-  
+
   e44: 'Dragon'
   e44colour: '&1'
   e44poke1: 'Raticate'
@@ -933,14 +933,14 @@ config:
   e44rule3: 'Your Third Rule for e4 4 Goes here'
   e44rule4: 'Your Fourth Rule for e4 4 Goes here'
   e44rule5: 'Your Fifth Rule for e4 4 Goes here'
-  
+
   # Leave these alone at the bottom. They are used for the back end of the plugin. DO NOT TOUCH!!!
 
   e41stat: 'Closed'
   e42stat: 'Closed'
   e43stat: 'Closed'
   e44stat: 'Closed'
-  
+
   gym1stat: 'Closed'
   gym2stat: 'Closed'
   gym3stat: 'Closed'

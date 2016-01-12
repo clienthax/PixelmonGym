@@ -1,0 +1,1663 @@
+General {
+    EnableJoinMessages=true
+    EnforceGymPokemon=false
+    JoinMessages=[
+        "Type \"/gym list\" to see what gyms are open!",
+        "Type \"/gym leaders\" to see which gym leaders are online!",
+        "Type \"/gym\" to see what other gym commands are available!"
+    ]
+    LeadersCanHealOwnPokemon=true
+    ScoreboardEnabled=true
+}
+Gyms=[
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="1"
+        # The colour you want the gym's name to appear as.
+        Colour="&7"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=25
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Rock
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=25
+                Name=Tirtouga
+            },
+            {
+                Level=25
+                Name=Cranidos
+            },
+            {
+                Level=25
+                Name=Golem
+            }
+        ]
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym1 Goes here",
+            "Your Second Rule for Gym1 Goes here",
+            "Your Third Rule for Gym1 Goes here",
+            "Your Fourth Rule for Gym1 Goes here",
+            "Your Fifth Rule for Gym1 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="2"
+        # The colour you want the gym's name to appear as.
+        Colour="&2"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=35
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Grass
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=35
+                Name=Tangela
+            },
+            {
+                Level=35
+                Name=Grovyle
+            },
+            {
+                Level=35
+                Name=Leafeon
+            },
+            {
+                Level=35
+                Name=Weepinbell
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Rock
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym2 Goes here",
+            "Your Second Rule for Gym2 Goes here",
+            "Your Third Rule for Gym2 Goes here",
+            "Your Fourth Rule for Gym2 Goes here",
+            "Your Fifth Rule for Gym2 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="3"
+        # The colour you want the gym's name to appear as.
+        Colour="&b"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=45
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Flying
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=45
+                Name=Spearow
+            },
+            {
+                Level=45
+                Name=Pidgeotto
+            },
+            {
+                Level=45
+                Name=Pidgeot
+            },
+            {
+                Level=45
+                Name=Fearow
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Grass
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym3 Goes here",
+            "Your Second Rule for Gym3 Goes here",
+            "Your Third Rule for Gym3 Goes here",
+            "Your Fourth Rule for Gym3 Goes here",
+            "Your Fifth Rule for Gym3 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="4"
+        # The colour you want the gym's name to appear as.
+        Colour="&5"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=55
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Poison
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=55
+                Name=Arbok
+            },
+            {
+                Level=55
+                Name=Muk
+            },
+            {
+                Level=55
+                Name=Nidorino
+            },
+            {
+                Level=55
+                Name=Nidoking
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Flying
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym4 Goes here",
+            "Your Second Rule for Gym4 Goes here",
+            "Your Third Rule for Gym4 Goes here",
+            "Your Fourth Rule for Gym4 Goes here",
+            "Your Fifth Rule for Gym4 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="5"
+        # The colour you want the gym's name to appear as.
+        Colour="&d"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=65
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Psychic
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=65
+                Name=Kadabra
+            },
+            {
+                Level=65
+                Name=Hypno
+            },
+            {
+                Level=65
+                Name=Slowbro
+            },
+            {
+                Level=65
+                Name=Claydol
+            },
+            {
+                Level=65
+                Name=Alakazam
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Poison
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym5 Goes here",
+            "Your Second Rule for Gym5 Goes here",
+            "Your Third Rule for Gym5 Goes here",
+            "Your Fourth Rule for Gym5 Goes here",
+            "Your Fifth Rule for Gym5 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="6"
+        # The colour you want the gym's name to appear as.
+        Colour="&c"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=75
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Fire
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=75
+                Name=Vulpix
+            },
+            {
+                Level=75
+                Name=Charmander
+            },
+            {
+                Level=75
+                Name=Arcanine
+            },
+            {
+                Level=75
+                Name=Ninetales
+            },
+            {
+                Level=75
+                Name=Charizard
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Psychic
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym6 Goes here",
+            "Your Second Rule for Gym6 Goes here",
+            "Your Third Rule for Gym6 Goes here",
+            "Your Fourth Rule for Gym6 Goes here",
+            "Your Fifth Rule for Gym6 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="7"
+        # The colour you want the gym's name to appear as.
+        Colour="&9"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=85
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Water
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Squirtle
+            },
+            {
+                Level=85
+                Name=Prinplup
+            },
+            {
+                Level=85
+                Name=Lapras
+            },
+            {
+                Level=85
+                Name=Gyarados
+            },
+            {
+                Level=85
+                Name=Wailord
+            },
+            {
+                Level=85
+                Name=Blastoise
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Fire
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym7 Goes here",
+            "Your Second Rule for Gym7 Goes here",
+            "Your Third Rule for Gym7 Goes here",
+            "Your Fourth Rule for Gym7 Goes here",
+            "Your Fifth Rule for Gym7 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="8"
+        # The colour you want the gym's name to appear as.
+        Colour="&7"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=95
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Normal
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Water
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for gym8 Goes here",
+            "Your Second Rule for gym8 Goes here",
+            "Your Third Rule for gym8 Goes here",
+            "Your Fourth Rule for gym8 Goes here",
+            "Your Fifth Rule for gym8 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="9"
+        # The colour you want the gym's name to appear as.
+        Colour="&1"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=10
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Various
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Normal
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym9 Goes here",
+            "Your Second Rule for Gym9 Goes here",
+            "Your Third Rule for Gym9 Goes here",
+            "Your Fourth Rule for Gym9 Goes here",
+            "Your Fifth Rule for Gym9 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="10"
+        # The colour you want the gym's name to appear as.
+        Colour="&2"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=20
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Flying
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Various
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym10 Goes here",
+            "Your Second Rule for Gym10 Goes here",
+            "Your Third Rule for Gym10 Goes here",
+            "Your Fourth Rule for Gym10 Goes here",
+            "Your Fifth Rule for Gym10 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="11"
+        # The colour you want the gym's name to appear as.
+        Colour="&3"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=40
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Bug
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Flying
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym11 Goes here",
+            "Your Second Rule for Gym11 Goes here",
+            "Your Third Rule for Gym11 Goes here",
+            "Your Fourth Rule for Gym11 Goes here",
+            "Your Fifth Rule for Gym11 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="12"
+        # The colour you want the gym's name to appear as.
+        Colour="&4"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=50
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Normal
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Bug
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym12 Goes here",
+            "Your Second Rule for Gym12 Goes here",
+            "Your Third Rule for Gym12 Goes here",
+            "Your Fourth Rule for Gym12 Goes here",
+            "Your Fifth Rule for Gym12 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="13"
+        # The colour you want the gym's name to appear as.
+        Colour="&5"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=60
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Ghost
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Normal
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym13 Goes here",
+            "Your Second Rule for Gym13 Goes here",
+            "Your Third Rule for Gym13 Goes here",
+            "Your Fourth Rule for Gym13 Goes here",
+            "Your Fifth Rule for Gym13 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="14"
+        # The colour you want the gym's name to appear as.
+        Colour="&6"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=70
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Fighting
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Ghost
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym14 Goes here",
+            "Your Second Rule for Gym14 Goes here",
+            "Your Third Rule for Gym14 Goes here",
+            "Your Fourth Rule for Gym14 Goes here",
+            "Your Fifth Rule for Gym14 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="15"
+        # The colour you want the gym's name to appear as.
+        Colour="&7"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=80
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Steel
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Fighting
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym15 Goes here",
+            "Your Second Rule for Gym15 Goes here",
+            "Your Third Rule for Gym15 Goes here",
+            "Your Fourth Rule for Gym15 Goes here",
+            "Your Fifth Rule for Gym15 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="16"
+        # The colour you want the gym's name to appear as.
+        Colour="&8"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=90
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Ice
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Steel
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym16 Goes here",
+            "Your Second Rule for Gym16 Goes here",
+            "Your Third Rule for Gym16 Goes here",
+            "Your Fourth Rule for Gym16 Goes here",
+            "Your Fifth Rule for Gym16 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="17"
+        # The colour you want the gym's name to appear as.
+        Colour="&9"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=20
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Dragon
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Ice
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym17 Goes here",
+            "Your Second Rule for Gym17 Goes here",
+            "Your Third Rule for Gym17 Goes here",
+            "Your Fourth Rule for Gym17 Goes here",
+            "Your Fifth Rule for Gym17 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="18"
+        # The colour you want the gym's name to appear as.
+        Colour="&d"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=30
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Fairy
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Dragon
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym18 Goes here",
+            "Your Second Rule for Gym18 Goes here",
+            "Your Third Rule for Gym18 Goes here",
+            "Your Fourth Rule for Gym18 Goes here",
+            "Your Fifth Rule for Gym18 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="19"
+        # The colour you want the gym's name to appear as.
+        Colour="&e"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=40
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Electric
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=0
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Fairy
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym19 Goes here",
+            "Your Second Rule for Gym19 Goes here",
+            "Your Third Rule for Gym19 Goes here",
+            "Your Fourth Rule for Gym19 Goes here",
+            "Your Fifth Rule for Gym19 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="20"
+        # The colour you want the gym's name to appear as.
+        Colour="&2"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=50
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Grass
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Electric
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym20 Goes here",
+            "Your Second Rule for Gym20 Goes here",
+            "Your Third Rule for Gym20 Goes here",
+            "Your Fourth Rule for Gym20 Goes here",
+            "Your Fifth Rule for Gym20 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="21"
+        # The colour you want the gym's name to appear as.
+        Colour="&d"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=60
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Poison
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Grass
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym21 Goes here",
+            "Your Second Rule for Gym21 Goes here",
+            "Your Third Rule for Gym21 Goes here",
+            "Your Fourth Rule for Gym21 Goes here",
+            "Your Fifth Rule for Gym21 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="22"
+        # The colour you want the gym's name to appear as.
+        Colour="&5"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=70
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Psychic
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Poison
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym22 Goes here",
+            "Your Second Rule for Gym22 Goes here",
+            "Your Third Rule for Gym22 Goes here",
+            "Your Fourth Rule for Gym22 Goes here",
+            "Your Fifth Rule for Gym22 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="23"
+        # The colour you want the gym's name to appear as.
+        Colour="&c"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=80
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Fire
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Psychic
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym23 Goes here",
+            "Your Second Rule for Gym23 Goes here",
+            "Your Third Rule for Gym23 Goes here",
+            "Your Fourth Rule for Gym23 Goes here",
+            "Your Fifth Rule for Gym23 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="24"
+        # The colour you want the gym's name to appear as.
+        Colour="&6"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=90
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Ground
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Fire
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym24 Goes here",
+            "Your Second Rule for Gym24 Goes here",
+            "Your Third Rule for Gym24 Goes here",
+            "Your Fourth Rule for Gym24 Goes here",
+            "Your Fifth Rule for Gym24 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="25"
+        # The colour you want the gym's name to appear as.
+        Colour="&1"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=10
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Various
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Ground
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym25 Goes here",
+            "Your Second Rule for Gym25 Goes here",
+            "Your Third Rule for Gym25 Goes here",
+            "Your Fourth Rule for Gym25 Goes here",
+            "Your Fifth Rule for Gym25 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="26"
+        # The colour you want the gym's name to appear as.
+        Colour="&2"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=20
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Flying
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Various
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym26 Goes here",
+            "Your Second Rule for Gym26 Goes here",
+            "Your Third Rule for Gym26 Goes here",
+            "Your Fourth Rule for Gym26 Goes here",
+            "Your Fifth Rule for Gym26 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="27"
+        # The colour you want the gym's name to appear as.
+        Colour="&3"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=40
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Bug
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Flying
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym27 Goes here",
+            "Your Second Rule for Gym27 Goes here",
+            "Your Third Rule for Gym27 Goes here",
+            "Your Fourth Rule for Gym27 Goes here",
+            "Your Fifth Rule for Gym27 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="28"
+        # The colour you want the gym's name to appear as.
+        Colour="&4"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=50
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Normal
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Bug
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym28 Goes here",
+            "Your Second Rule for Gym28 Goes here",
+            "Your Third Rule for Gym28 Goes here",
+            "Your Fourth Rule for Gym28 Goes here",
+            "Your Fifth Rule for Gym28 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="29"
+        # The colour you want the gym's name to appear as.
+        Colour="&5"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=60
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Ghost
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Normal
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym29 Goes here",
+            "Your Second Rule for Gym29 Goes here",
+            "Your Third Rule for Gym29 Goes here",
+            "Your Fourth Rule for Gym29 Goes here",
+            "Your Fifth Rule for Gym29 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="30"
+        # The colour you want the gym's name to appear as.
+        Colour="&6"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=70
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Fighting
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Ghost
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym30 Goes here",
+            "Your Second Rule for Gym30 Goes here",
+            "Your Third Rule for Gym30 Goes here",
+            "Your Fourth Rule for Gym30 Goes here",
+            "Your Fifth Rule for Gym30 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="31"
+        # The colour you want the gym's name to appear as.
+        Colour="&7"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=80
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Steel
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Fighting
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym31 Goes here",
+            "Your Second Rule for Gym31 Goes here",
+            "Your Third Rule for Gym31 Goes here",
+            "Your Fourth Rule for Gym31 Goes here",
+            "Your Fifth Rule for Gym31 Goes here"
+        ]
+    },
+    {
+        # The name of the item to reward winners, in the format "minecraft:chicken".
+        BadgeItem="32"
+        # The colour you want the gym's name to appear as.
+        Colour="&8"
+        # Enables the gym.
+        Enabled=false
+        # The list of Gym Leader player UUID's.
+        GymLeaders=[
+            "00000000-0000-0000-0000-000000000000"
+        ]
+        # The level cap for this gym.
+        LevelCap=90
+        # The name of the gym, do not add " Gym" onto the end as this is done automatically.
+        Name=Ice
+        # The list of pokemon for this gym.
+        Pokemon=[
+            {
+                Level=0
+                Name=Raticate
+            },
+            {
+                Level=95
+                Name=Lickitung
+            },
+            {
+                Level=95
+                Name=Persian
+            },
+            {
+                Level=95
+                Name=Eevee
+            },
+            {
+                Level=95
+                Name=Tauros
+            },
+            {
+                Level=95
+                Name=Kangaskhan
+            }
+        ]
+        # The name of the gym that the player must of beaten to challenge this gym.
+        PreviousGym=Steel
+        # The list of rules for this gym.
+        Rules=[
+            "Your First Rule for Gym32 Goes here",
+            "Your Second Rule for Gym32 Goes here",
+            "Your Third Rule for Gym32 Goes here",
+            "Your Fourth Rule for Gym32 Goes here",
+            "Your Fifth Rule for Gym32 Goes here"
+        ]
+    }
+]

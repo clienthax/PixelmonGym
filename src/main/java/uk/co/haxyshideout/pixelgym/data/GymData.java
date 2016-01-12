@@ -1,29 +1,39 @@
 package uk.co.haxyshideout.pixelgym.data;
 
-import org.spongepowered.api.scheduler.Task;
-import org.spongepowered.api.world.Location;
-import org.spongepowered.api.world.World;
+import com.google.common.collect.Lists;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class GymData {
 
-    String gymName;
-    Location<World> gymLocation;
-    ArrayList<UUID> playerQueue;
-    HashMap<UUID, Integer> playerCooldowns;
-    HashMap<UUID, Task> cooldownTask;//wtf is this even for
-    Optional<GymData> dependsOnCompleting;
-    ArrayList<GymPokemonEntry> gymPokemon;
-    ArrayList<String> rules;
-    Optional<Integer> entryFee;
-    Optional<Integer> cooldownTime;
-    String rewardItemName;
-    Integer levelCap;
-    //need something in here for player/npc gym
-    Optional<UUID> gymLeader;
+    private final static GymData INSTANCE = new GymData();
+    private List<GymDataEntry> gymDatas;
+
+    public void setGymData(List<GymDataEntry> gymDatas) {
+        this.gymDatas = gymDatas;
+    }
+
+    public List<GymDataEntry> getGymData() {
+        return this.gymDatas;
+    }
+
+    public Optional<GymDataEntry> getGymData(String gymName) {
+        for (GymDataEntry gymData : gymDatas) {
+            if(gymData.getName().equals(gymName))
+                return Optional.of(gymData);
+        }
+        return Optional.empty();
+    }
+
+    public static GymData getInstance() {
+        return INSTANCE;
+    }
+
+    public List<GymDataEntry> getGymsForLeader(UUID uniqueId) {
+        return gymDatas.stream().filter(gymData -> gymData.getGymLeaders().contains(uniqueId)).collect(Collectors.toList());
+    }
 
 }

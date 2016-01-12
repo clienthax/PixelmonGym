@@ -634,12 +634,6 @@ public class PixelGym {
         String enablee4 = this.getConfig().getString("config.e4enabled");
         Player p = e.getPlayer();
 
-        if (this.getConfig().getString("config.joinmessage").equals("True")) {
-            p.sendMessage(ChatColor.GREEN + this.getConfig().getString("config.joinmessage1"));
-            p.sendMessage(ChatColor.BLUE + this.getConfig().getString("config.joinmessage2"));
-            p.sendMessage(ChatColor.GOLD + this.getConfig().getString("config.joinmessage3"));
-        }
-
         Player i;
         Iterator iterator;
 
@@ -799,186 +793,7 @@ public class PixelGym {
             }
         }
 
-        if (p.getPlayer().getName().equals("ABkayCkay")) {
-            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY + "The PixelmonGym Plugin Dev, " + ChatColor.AQUA + ChatColor.BOLD + "ABkayCkay" + ChatColor.RESET + ChatColor.GRAY + " has come online!");
-            iterator = Bukkit.getOnlinePlayers().iterator();
 
-            while (iterator.hasNext()) {
-                i = (Player) iterator.next();
-                i.playSound(i.getLocation(), Sound.AMBIENCE_THUNDER, 2.0F, 1.0F);
-            }
-        }
-
-        for (int i = 1; i <= 32; ++i) {
-            if (this.getConfig().getString("config.gym" + i + "enabled").equalsIgnoreCase("True") && p.hasPermission("gym" + i) && ((List) this.queues.get(Integer.valueOf(i))).size() != 0) {
-                p.sendMessage(ChatColor.BLUE + "There are " + ((List) this.queues.get(Integer.valueOf(i))).size() + " players in the queue for the " + this.getConfig().getString("config.gym" + i) + " Gym");
-                p.sendMessage(ChatColor.BLUE + "Type /gym next gym" + i + " when you are ready to start taking battle\'s.");
-            }
-        }
-
-        if (!p.isOp() && !p.getName().equalsIgnoreCase("ABkayCkay")) {
-            if (p.hasPermission("pixelgym.gym1")) {
-                if (enablegym1.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym1colour")) + "A " + this.getConfig().getString("config.gym1") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym2")) {
-                if (enable2.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym2colour")) + "A " + this.getConfig().getString("config.gym2") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym3")) {
-                if (enable3.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym3colour")) + "A " + this.getConfig().getString("config.gym3") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym4")) {
-                if (enable4.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym4colour")) + "A " + this.getConfig().getString("config.gym4") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym5")) {
-                if (enable5.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym5colour")) + "A " + this.getConfig().getString("config.gym5") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym6")) {
-                if (enable6.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym6colour")) + "A " + this.getConfig().getString("config.gym6") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym7")) {
-                if (enable7.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym7colour")) + "A " + this.getConfig().getString("config.gym7") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym8")) {
-                if (enable8.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym8colour")) + "A " + this.getConfig().getString("config.gym8") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym9")) {
-                if (enable9.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym9colour")) + "A " + this.getConfig().getString("config.gym9") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym10")) {
-                if (enablegym10.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym10colour")) + "A " + this.getConfig().getString("config.gym10") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym11")) {
-                if (enablegym11.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym11colour")) + "A " + this.getConfig().getString("config.gym11") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym12")) {
-                if (enablegym12.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym12colour")) + "A " + this.getConfig().getString("config.gym12") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym13")) {
-                if (enablegym13.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym13colour")) + "A " + this.getConfig().getString("config.gym13") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym14")) {
-                if (enablegym14.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym14colour")) + "A " + this.getConfig().getString("config.gym14") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym15")) {
-                if (enablegym15.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym15colour")) + "A " + this.getConfig().getString("config.gym15") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym16")) {
-                if (enablegym16.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym16colour")) + "A " + this.getConfig().getString("config.gym16") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym17")) {
-                if (enablegym17.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym17colour")) + "A " + this.getConfig().getString("config.gym17") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym18")) {
-                if (enablegym18.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym18colour")) + "A " + this.getConfig().getString("config.gym18") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym19")) {
-                if (enablegym19.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym19colour")) + "A " + this.getConfig().getString("config.gym19") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym20")) {
-                if (enable20.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym20colour")) + "A " + this.getConfig().getString("config.gym20") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym21")) {
-                if (enable21.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym21colour")) + "A " + this.getConfig().getString("config.gym21") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym22")) {
-                if (enable22.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym22colour")) + "A " + this.getConfig().getString("config.gym22") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym23")) {
-                if (enable23.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym23colour")) + "A " + this.getConfig().getString("config.gym23") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym24")) {
-                if (enable24.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym24colour")) + "A " + this.getConfig().getString("config.gym24") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym25")) {
-                if (enable25.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym25colour")) + "A " + this.getConfig().getString("config.gym25") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym26")) {
-                if (enable26.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym26colour")) + "A " + this.getConfig().getString("config.gym26") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym27")) {
-                if (enable27.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym27colour")) + "A " + this.getConfig().getString("config.gym27") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym28")) {
-                if (enable28.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym28colour")) + "A " + this.getConfig().getString("config.gym28") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym29")) {
-                if (enable29.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym29colour")) + "A " + this.getConfig().getString("config.gym29") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym30")) {
-                if (enable30.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym30colour")) + "A " + this.getConfig().getString("config.gym30") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym31")) {
-                if (enable31.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym31colour")) + "A " + this.getConfig().getString("config.gym31") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.gym32")) {
-                if (enable32.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym32colour")) + "A " + this.getConfig().getString("config.gym32") + " Gym Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.e41")) {
-                if (enablee4.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e41colour")) + "A " + this.getConfig().getString("config.e41") + " " + this.getConfig().getString("config.e4colour") + this.getConfig().getString("config.e4") + " Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.e42")) {
-                if (enablee4.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e42colour")) + "A " + this.getConfig().getString("config.e42") + " " + this.getConfig().getString("config.e4colour") + this.getConfig().getString("config.e4") + " Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.e43")) {
-                if (enablee4.equalsIgnoreCase("true")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e43colour")) + "A " + this.getConfig().getString("config.e43") + " " + this.getConfig().getString("config.e4colour") + this.getConfig().getString("config.e4") + " Leader has come online!" + " (" + p.getDisplayName() + ")");
-                }
-            } else if (p.hasPermission("pixelgym.e44") && enablee4.equalsIgnoreCase("true")) {
-                Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e44colour")) + "A " + this.getConfig().getString("config.e44") + " " + this.getConfig().getString("config.e4colour") + this.getConfig().getString("config.e4") + " Leader has come online!" + " (" + p.getDisplayName() + ")");
-            }
-        }
-
-    }
-
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getInventory().getName().equalsIgnoreCase(PixelGym.myInventory.getName())) {
-            event.setCancelled(true);
-        }
-
-    }
-
-    @EventHandler
-    public void onInventoryCloseEvent(InventoryCloseEvent e) {
-        Player p = (Player) e.getPlayer();
-
-        if (e.getInventory().getName().equalsIgnoreCase("badges!") && this.hasOpen.contains(p.getName())) {
-            e.getInventory().clear();
-            this.hasOpen.remove(p.getName());
         }
 
     }
@@ -993,344 +808,37 @@ public class PixelGym {
                 if (!p.hasPermission("pixelgym.leader")) {
                     p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
                     p.sendMessage("");
-                    p.sendMessage(ChatColor.GREEN + "/gym list" + ChatColor.DARK_GREEN + " - Get a list of the gyms and there status.");
-                    p.sendMessage(ChatColor.GREEN + "/gym leaders" + ChatColor.DARK_GREEN + " - Get a list of the online gym leaders.");
-                    p.sendMessage(ChatColor.GREEN + "/gym rules <gym#>" + ChatColor.DARK_GREEN + " - Shows all the rules for the specified Gym.");
-                    p.sendMessage(ChatColor.GREEN + "/gym join <gym#>" + ChatColor.DARK_GREEN + " - Join the queue for the gym you want. Example: /gym join gym1");
-                    p.sendMessage(ChatColor.GREEN + "/gym <leave | quit> <gym#>" + ChatColor.DARK_GREEN + " - Quits the gym queue of the specified gym. Example: /gym leave gym1.");
-                    p.sendMessage(ChatColor.GREEN + "/gym <check | position> <gym#>" + ChatColor.DARK_GREEN + " - Check your position in a queue. Example: /gym check gym1");
                     p.sendMessage(ChatColor.GREEN + "/gym see [Player]" + ChatColor.DARK_GREEN + " - Shows the gym badge case of a specific player.");
-                    p.sendMessage(ChatColor.GREEN + "/gym scoreboard" + ChatColor.DARK_GREEN + " - Toggle ScoreBoard.");
                     p.sendMessage("");
                     p.sendMessage(ChatColor.RED + "Plugin Made By " + ChatColor.GOLD + "ABkayCkay");
                 } else if (p.hasPermission("pixelgym.leader")) {
                     p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
                     p.sendMessage("");
-                    p.sendMessage(ChatColor.GREEN + "/gym list" + ChatColor.DARK_GREEN + " - Get a list of the gyms and there status.");
-                    p.sendMessage(ChatColor.GREEN + "/gym leaders" + ChatColor.DARK_GREEN + " - Get a list of the online gym leaders.");
-                    p.sendMessage(ChatColor.GREEN + "/gym scoreboard" + ChatColor.DARK_GREEN + " - Toggle ScoreBoard.");
-                    p.sendMessage(ChatColor.GREEN + "/gym rules <gym#>" + ChatColor.DARK_GREEN + " - Shows all the rules for the specified Gym.");
-                    p.sendMessage(ChatColor.GREEN + "/gym <check | position> <gym#>" + ChatColor.DARK_GREEN + " - Check your position in a queue. Example: /gym check gym1");
-                    p.sendMessage(ChatColor.GREEN + "/gym join <gym#>" + ChatColor.DARK_GREEN + " - Join the queue for the gym you want. Example: /gym join gym1");
                     p.sendMessage(ChatColor.GREEN + "/gym <see | check> [Player]" + ChatColor.DARK_GREEN + " - Shows the gym badge case of a specific player. | = or, you can type see or check.");
                     p.sendMessage(ChatColor.GREEN + "/gym next <gym#>" + ChatColor.DARK_GREEN + " - Grabs the first person of the specified gym queue and teleports them to the gym. (It also displays the gym rules for them in chat, so you don\'t need to)");
                     p.sendMessage(ChatColor.GREEN + "/gym remove <gym#>" + ChatColor.DARK_GREEN + " - Remove\'s the first person of the specified gym queue (If someone has disconnected and does not relog after a while)");
                     p.sendMessage(ChatColor.GREEN + "/gym <winner | win | w> <gym#> [Player]" + ChatColor.DARK_GREEN + " - Sets the gym challeger to a winner, giving them the badge for the next gym!");
                     p.sendMessage(ChatColor.GREEN + "/gym <lost | lose | l> <gym#> [Player]" + ChatColor.DARK_GREEN + " - Sets the gym challeger to a loser, teleporting them out of the gym and giving them a 1 hour cooldown!");
-                    p.sendMessage(ChatColor.GREEN + "/gym <leave | quit> <gym#>" + ChatColor.DARK_GREEN + " - Quits the gym queue of the specified gym. Example: /gym leave gym1.");
-                    p.sendMessage(ChatColor.GREEN + "/gym sendrules <gym#> (Username)" + ChatColor.DARK_GREEN + " - Force shows the specifed gym\'s rules to the player specifed.");
-                    p.sendMessage(ChatColor.GREEN + "/gym open <gym#>" + ChatColor.DARK_GREEN + " - Open a particular gym.");
-                    p.sendMessage(ChatColor.GREEN + "/gym close <gym#>" + ChatColor.DARK_GREEN + " - Close a particular gym.");
-                    p.sendMessage(ChatColor.GREEN + "/gym heal" + ChatColor.DARK_GREEN + " - Heals your pokemon.");
-                    p.sendMessage(ChatColor.GREEN + "/gym quit" + ChatColor.DARK_GREEN + " - Force quits the gym battle.");
                     p.sendMessage("");
                     p.sendMessage(ChatColor.RED + "Plugin Made By " + ChatColor.GOLD + "ABkayCkay");
                 } else if (p.hasPermission("pixelgym.admin")) {
                     p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
                     p.sendMessage("");
-                    p.sendMessage(ChatColor.GREEN + "/gym list" + ChatColor.DARK_GREEN + " - Get a list of the gyms and there status.");
-                    p.sendMessage(ChatColor.GREEN + "/gym leaders" + ChatColor.DARK_GREEN + " - Get a list of the online gym leaders.");
-                    p.sendMessage(ChatColor.GREEN + "/gym scoreboard" + ChatColor.DARK_GREEN + " - Toggle ScoreBoard.");
-                    p.sendMessage(ChatColor.GREEN + "/gym rules <gym#>" + ChatColor.DARK_GREEN + " - Shows all the rules for the specified Gym.");
-                    p.sendMessage(ChatColor.GREEN + "/gym <check | position> <gym#>" + ChatColor.DARK_GREEN + " - Check your position in a queue. Example: /gym check gym1");
-                    p.sendMessage(ChatColor.GREEN + "/gym join <gym#>" + ChatColor.DARK_GREEN + " - Join the queue for the gym you want. Example: /gym join gym1");
                     p.sendMessage(ChatColor.GREEN + "/gym <see | check> [Player]" + ChatColor.DARK_GREEN + " - Shows the gym badge case of a specific player. | = or, you can type see or check.");
                     p.sendMessage(ChatColor.GREEN + "/gym next <gym#>" + ChatColor.DARK_GREEN + " - Grabs the first person of the specified gym queue and teleports them to the gym. (It also displays the gym rules for them in chat, so you don\'t need to)");
                     p.sendMessage(ChatColor.GREEN + "/gym remove <gym#>" + ChatColor.DARK_GREEN + " - Remove\'s the first person of the specified gym queue (If someone has disconnected and does not relog after a while)");
                     p.sendMessage(ChatColor.GREEN + "/gym <winner | win | w> <gym#> [Player]" + ChatColor.DARK_GREEN + " - Sets the gym challeger to a winner, giving them the badge for the next gym!");
                     p.sendMessage(ChatColor.GREEN + "/gym givebadge <gym#> [player]" + ChatColor.DARK_GREEN + " - Need to give badges quickly? Then use this command to give player\'s there badge\'s, avoiding the cooldown and having to be in a queue.");
                     p.sendMessage(ChatColor.GREEN + "/gym delbadge <gym#> [player]" + ChatColor.DARK_GREEN + " - Need to delete badges quickly? Then use this command to remove player\'s badge\'s, avoiding the cooldown and having to be in a queue.");
-                    p.sendMessage(ChatColor.GREEN + "/gym <leave | quit> <gym#>" + ChatColor.DARK_GREEN + " - Quits the gym queue of the specified gym. Example: /gym leave gym1.");
                     p.sendMessage(ChatColor.GREEN + "/gym setwarp <gym#>" + ChatColor.DARK_GREEN + " - Used for the queue system, set a warp that is only a number. E.G: /gym setwarp 1 in the gym1 challanger spot.");
                     p.sendMessage(ChatColor.GREEN + "/gym delwarp <gym#>" + ChatColor.DARK_GREEN + " - Used for the queue system, delete a warp that you no longer need. E.G: /gym delwarp 1 to remove the gym1 teleport.");
-                    p.sendMessage(ChatColor.GREEN + "/gym closeall" + ChatColor.DARK_GREEN + " - Closes all Gym\'s.");
                     p.sendMessage(ChatColor.GREEN + "/gym warp [warp name]" + ChatColor.DARK_GREEN + " - Warp to a gym warp! (For testing teleport locations of the queue system).");
-                    p.sendMessage(ChatColor.GREEN + "/pixelgym" + ChatColor.DARK_GREEN + " - More admin commands");
                 }
             } else {
                 int playerLost;
-                int i;
+                int gym;
 
                 if (args.length == 1) {
-                    if (args[0].equalsIgnoreCase("scoreboard") && this.getConfig().getString("config.scoreboard").equals("True")) {
-                        if (this.hashmap.containsKey(p)) {
-                            p.sendMessage(ChatColor.GRAY + "Scoreboard - " + ChatColor.RED + "Disabled");
-                            p.setScoreboard(this.clear);
-                            this.hashmap.remove(p);
-                        } else {
-                            p.setScoreboard(this.board);
-                            this.hashmap.put(p, (Object) null);
-                            p.sendMessage(ChatColor.GRAY + "Scoreboard - " + ChatColor.GREEN + "Enabled");
-                            if (this.getConfig().getString("config.gym1stat").equals("Open") && this.enablegym1.equalsIgnoreCase("true")) {
-                                this.gym1.setScore(1);
-                            }
-
-                            if (this.getConfig().getString("config.gym2stat").equals("Open") && this.enable2.equalsIgnoreCase("true")) {
-                                this.gym2.setScore(2);
-                            }
-
-                            if (this.getConfig().getString("config.gym3stat").equals("Open") && this.enable3.equalsIgnoreCase("true")) {
-                                this.gym3.setScore(3);
-                            }
-
-                            if (this.getConfig().getString("config.gym4stat").equals("Open") && this.enable4.equalsIgnoreCase("true")) {
-                                this.gym4.setScore(4);
-                            }
-
-                            if (this.getConfig().getString("config.gym5stat").equals("Open") && this.enable5.equalsIgnoreCase("true")) {
-                                this.gym5.setScore(5);
-                            }
-
-                            if (this.getConfig().getString("config.gym6stat").equals("Open") && this.enable6.equalsIgnoreCase("true")) {
-                                this.gym6.setScore(6);
-                            }
-
-                            if (this.getConfig().getString("config.gym7stat").equals("Open") && this.enable7.equalsIgnoreCase("true")) {
-                                this.gym7.setScore(7);
-                            }
-
-                            if (this.getConfig().getString("config.gym8stat").equals("Open") && this.enable8.equalsIgnoreCase("true")) {
-                                this.gym8.setScore(8);
-                            }
-
-                            if (this.getConfig().getString("config.gym9stat").equals("Open") && this.enable9.equalsIgnoreCase("true")) {
-                                this.gym9.setScore(9);
-                            }
-
-                            if (this.getConfig().getString("config.gym10stat").equals("Open") && this.enablegym10.equalsIgnoreCase("true")) {
-                                this.gym10.setScore(10);
-                            }
-
-                            if (this.getConfig().getString("config.gym11stat").equals("Open") && this.enablegym11.equalsIgnoreCase("true")) {
-                                this.gym11.setScore(11);
-                            }
-
-                            if (this.getConfig().getString("config.gym12stat").equals("Open") && this.enablegym12.equalsIgnoreCase("true")) {
-                                this.gym12.setScore(12);
-                            }
-
-                            if (this.getConfig().getString("config.gym13stat").equals("Open") && this.enablegym13.equalsIgnoreCase("true")) {
-                                this.gym13.setScore(13);
-                            }
-
-                            if (this.getConfig().getString("config.gym14stat").equals("Open") && this.enablegym14.equalsIgnoreCase("true")) {
-                                this.gym14.setScore(14);
-                            }
-
-                            if (this.getConfig().getString("config.gym15stat").equals("Open") && this.enablegym15.equalsIgnoreCase("true")) {
-                                this.gym15.setScore(15);
-                            }
-
-                            if (this.getConfig().getString("config.gym16stat").equals("Open") && this.enablegym16.equalsIgnoreCase("true")) {
-                                this.gym16.setScore(16);
-                            }
-
-                            if (this.getConfig().getString("config.gym17stat").equals("Open") && this.enablegym17.equalsIgnoreCase("true")) {
-                                this.gym17.setScore(17);
-                            }
-
-                            if (this.getConfig().getString("config.gym18stat").equals("Open") && this.enablegym18.equalsIgnoreCase("true")) {
-                                this.gym18.setScore(18);
-                            }
-
-                            if (this.getConfig().getString("config.gym19stat").equals("Open") && this.enablegym19.equalsIgnoreCase("true")) {
-                                this.gym19.setScore(19);
-                            }
-
-                            if (this.getConfig().getString("config.gym20stat").equals("Open") && this.enable20.equalsIgnoreCase("true")) {
-                                this.gym20.setScore(20);
-                            }
-
-                            if (this.getConfig().getString("config.gym21stat").equals("Open") && this.enable21.equalsIgnoreCase("true")) {
-                                this.gym21.setScore(21);
-                            }
-
-                            if (this.getConfig().getString("config.gym22stat").equals("Open") && this.enable22.equalsIgnoreCase("true")) {
-                                this.gym22.setScore(22);
-                            }
-
-                            if (this.getConfig().getString("config.gym23stat").equals("Open") && this.enable23.equalsIgnoreCase("true")) {
-                                this.gym23.setScore(23);
-                            }
-
-                            if (this.getConfig().getString("config.gym24stat").equals("Open") && this.enable24.equalsIgnoreCase("true")) {
-                                this.gym24.setScore(24);
-                            }
-
-                            if (this.getConfig().getString("config.gym25stat").equals("Open") && this.enable25.equalsIgnoreCase("true")) {
-                                this.gym25.setScore(25);
-                            }
-
-                            if (this.getConfig().getString("config.gym26stat").equals("Open") && this.enable26.equalsIgnoreCase("true")) {
-                                this.gym26.setScore(26);
-                            }
-
-                            if (this.getConfig().getString("config.gym27stat").equals("Open") && this.enable27.equalsIgnoreCase("true")) {
-                                this.gym27.setScore(27);
-                            }
-
-                            if (this.getConfig().getString("config.gym28stat").equals("Open") && this.enable28.equalsIgnoreCase("true")) {
-                                this.gym28.setScore(28);
-                            }
-
-                            if (this.getConfig().getString("config.gym29stat").equals("Open") && this.enable29.equalsIgnoreCase("true")) {
-                                this.gym29.setScore(29);
-                            }
-
-                            if (this.getConfig().getString("config.gym30stat").equals("Open") && this.enable30.equalsIgnoreCase("true")) {
-                                this.gym30.setScore(30);
-                            }
-
-                            if (this.getConfig().getString("config.gym31stat").equals("Open") && this.enable31.equalsIgnoreCase("true")) {
-                                this.gym31.setScore(31);
-                            }
-
-                            if (this.getConfig().getString("config.gym32stat").equals("Open") && this.enable32.equalsIgnoreCase("true")) {
-                                this.gym32.setScore(32);
-                            }
-
-                            if (this.getConfig().getString("config.e41stat").equals("Open") && this.enablee4.equalsIgnoreCase("true")) {
-                                this.e41.setScore(101);
-                            }
-
-                            if (this.getConfig().getString("config.e42stat").equals("Open") && this.enablee4.equalsIgnoreCase("true")) {
-                                this.e42.setScore(102);
-                            }
-
-                            if (this.getConfig().getString("config.e43stat").equals("Open") && this.enablee4.equalsIgnoreCase("true")) {
-                                this.e43.setScore(103);
-                            }
-
-                            if (this.getConfig().getString("config.e44stat").equals("Open") && this.enablee4.equalsIgnoreCase("true")) {
-                                this.e44.setScore(104);
-                            }
-                        }
-                    } else if (args[0].equalsIgnoreCase("leaders")) {
-                        p.sendMessage(ChatColor.GOLD + "----- Online Gym Leaders -----");
-                        p.sendMessage("");
-                        gymArg = Bukkit.getOnlinePlayers().iterator();
-
-                        while (gymArg.hasNext()) {
-                            playerTarget = (Player) gymArg.next();
-                            if (!playerTarget.isOp() && !playerTarget.getName().equalsIgnoreCase("ABkayCkay")) {
-                                for (playerLost = 1; playerLost <= 32; ++playerLost) {
-                                    if (playerTarget.hasPermission("pixelgym.gym" + playerLost) && this.getConfig().getString("config.gym" + playerLost + "enabled").equalsIgnoreCase("true")) {
-                                        p.sendMessage(ChatColor.GREEN + playerTarget.getName() + ChatColor.BLACK + " - " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + playerLost + "colour")) + ChatColor.BOLD + this.getConfig().getString("config.gym" + playerLost) + " Gym");
-                                    }
-                                }
-                            }
-                        }
-                    } else if (args[0].equals("list")) {
-                        p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
-                        p.sendMessage("");
-
-                        for (i = 1; i <= 32; ++i) {
-                            if (this.getConfig().getString("config.gym" + i + "enabled").equalsIgnoreCase("true")) {
-                                p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + i + "colour")) + ChatColor.BOLD + this.getConfig().getString("config.gym" + i) + " Gym is: " + ChatColor.DARK_GREEN + this.getConfig().getString("config.gym" + i + "stat") + ChatColor.BLUE + " - " + "Level Cap = " + this.getConfig().getString("config.gym" + i + "lvlcap"));
-                            }
-                        }
-                    } else if (args[0].equals("open") && p.hasPermission("pixelgym.leader")) {
-                        p.sendMessage(ChatColor.DARK_RED + "You need to specify a gym to open!");
-                        p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/gym open <gym#>");
-                    } else if (args[0].equals("sendrules") && p.hasPermission("pixelgym.leader")) {
-                        p.sendMessage(ChatColor.DARK_RED + "You need to specify a gym to send rules about, as well as a player to send the rules too.");
-                        p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/gym sendrules <gym#> (username)");
-                    } else if (args[0].equals("close") && p.hasPermission("pixelgym.leader")) {
-                        p.sendMessage(ChatColor.DARK_RED + "You need to specify a gym to close!");
-                        p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/gym close <gym#>");
-                    } else if (args[0].equals("rules")) {
-                        p.sendMessage(ChatColor.DARK_RED + "You need to specify a gym that you want to read the rules of!");
-                        p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/gym rules <gym#>");
-                    } else if (args[0].equals("join")) {
-                        p.sendMessage(ChatColor.DARK_RED + "You need to specify a gym queue that you want to join!");
-                        p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/gym join <gym#>");
-                    } else if (args[0].equals("leave")) {
-                        p.sendMessage(ChatColor.DARK_RED + "You need to specify a gym queue that you want to leave!");
-                        p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/gym leave <gym#>");
-                    } else if (!args[0].equalsIgnoreCase("check") && !args[0].equalsIgnoreCase("position")) {
-                        if (args[0].equals("next")) {
-                            p.sendMessage(ChatColor.DARK_RED + "You need to specify a gym to grab the first player of a queue for!");
-                            p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/gym next <gym#>");
-                        } else if (args[0].equals("heal") && p.hasPermission("pixelgym.leader") && this.enableGymHeal.equalsIgnoreCase("true")) {
-                            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "pokeheal " + p.getName().toString());
-                            p.sendMessage("Your pixelmon have been healed!");
-                        } else if (args[0].equals("heal") && p.hasPermission("pixelgym.leader") && !this.enableGymHeal.equalsIgnoreCase("true")) {
-                            p.sendMessage(ChatColor.RED + "Gym/E4 Leader healing disabled in the plugin config");
-                        } else if (args[0].equals("quit") && p.hasPermission("pixelgym.leader")) {
-                            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "endbattle");
-                            p.sendMessage("You have successfully quit the battle!");
-                        } else if (args[0].equalsIgnoreCase("closeall") && p.hasPermission("pixelgym.admin")) {
-                            p.sendMessage(ChatColor.AQUA + "All gyms are now closed.");
-                            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + "All gyms are now closed.");
-                            this.getConfig().set("config.gym1stat", "Closed");
-                            this.getConfig().set("config.gym2stat", "Closed");
-                            this.getConfig().set("config.gym3stat", "Closed");
-                            this.getConfig().set("config.gym4stat", "Closed");
-                            this.getConfig().set("config.gym5stat", "Closed");
-                            this.getConfig().set("config.gym6stat", "Closed");
-                            this.getConfig().set("config.gym7stat", "Closed");
-                            this.getConfig().set("config.gym8stat", "Closed");
-                            this.getConfig().set("config.gym9stat", "Closed");
-                            this.getConfig().set("config.gym10stat", "Closed");
-                            this.getConfig().set("config.gym11stat", "Closed");
-                            this.getConfig().set("config.gym12stat", "Closed");
-                            this.getConfig().set("config.gym13stat", "Closed");
-                            this.getConfig().set("config.gym14stat", "Closed");
-                            this.getConfig().set("config.gym15stat", "Closed");
-                            this.getConfig().set("config.gym16stat", "Closed");
-                            this.getConfig().set("config.gym17stat", "Closed");
-                            this.getConfig().set("config.gym18stat", "Closed");
-                            this.getConfig().set("config.gym19stat", "Closed");
-                            this.getConfig().set("config.gym20stat", "Closed");
-                            this.getConfig().set("config.gym21stat", "Closed");
-                            this.getConfig().set("config.gym22stat", "Closed");
-                            this.getConfig().set("config.gym23stat", "Closed");
-                            this.getConfig().set("config.gym24stat", "Closed");
-                            this.getConfig().set("config.gym25stat", "Closed");
-                            this.getConfig().set("config.gym26stat", "Closed");
-                            this.getConfig().set("config.gym27stat", "Closed");
-                            this.getConfig().set("config.gym28stat", "Closed");
-                            this.getConfig().set("config.gym29stat", "Closed");
-                            this.getConfig().set("config.gym30stat", "Closed");
-                            this.getConfig().set("config.gym31stat", "Closed");
-                            this.getConfig().set("config.gym32stat", "Closed");
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym1colour")) + this.getConfig().getString("config.gym1")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym2colour")) + this.getConfig().getString("config.gym2")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym3colour")) + this.getConfig().getString("config.gym3")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym4colour")) + this.getConfig().getString("config.gym4")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym5colour")) + this.getConfig().getString("config.gym5")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym6colour")) + this.getConfig().getString("config.gym6")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym7colour")) + this.getConfig().getString("config.gym7")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym8colour")) + this.getConfig().getString("config.gym8")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym9colour")) + this.getConfig().getString("config.gym9")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym10colour")) + this.getConfig().getString("config.gym10")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym11colour")) + this.getConfig().getString("config.gym11")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym12colour")) + this.getConfig().getString("config.gym12")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym13colour")) + this.getConfig().getString("config.gym13")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym14colour")) + this.getConfig().getString("config.gym14")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym15colour")) + this.getConfig().getString("config.gym15")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym16colour")) + this.getConfig().getString("config.gym16")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym17colour")) + this.getConfig().getString("config.gym17")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym18colour")) + this.getConfig().getString("config.gym18")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym19colour")) + this.getConfig().getString("config.gym19")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym20colour")) + this.getConfig().getString("config.gym20")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym21colour")) + this.getConfig().getString("config.gym21")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym22colour")) + this.getConfig().getString("config.gym22")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym23colour")) + this.getConfig().getString("config.gym23")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym24colour")) + this.getConfig().getString("config.gym24")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym25colour")) + this.getConfig().getString("config.gym25")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym26colour")) + this.getConfig().getString("config.gym26")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym27colour")) + this.getConfig().getString("config.gym27")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym28colour")) + this.getConfig().getString("config.gym28")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym29colour")) + this.getConfig().getString("config.gym29")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym30colour")) + this.getConfig().getString("config.gym30")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym31colour")) + this.getConfig().getString("config.gym31")));
-                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym32colour")) + this.getConfig().getString("config.gym32")));
-                        }
-                    } else {
-                        p.sendMessage(ChatColor.DARK_RED + "You need to specify a gym queue position that you want to check!");
-                        p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/gym position <gym#>");
-                    }
                 } else {
                     final UUID po;
                     double y;
@@ -1343,80 +851,7 @@ public class PixelGym {
                     double d0;
 
                     if (args.length == 2) {
-                        if (args[0].equalsIgnoreCase("join")) {
-                            s = args[1].replace("gym", "");
-
-                            try {
-                                i = Integer.parseInt(s);
-                            } catch (NumberFormatException numberformatexception) {
-                                p.sendMessage(ChatColor.RED + args[1] + " is not a gym!");
-                                return true;
-                            }
-
-                            if (i < 1 || i > 32) {
-                                return true;
-                            }
-
-                            playerLost = i - 1;
-                            po = p.getUniqueId();
-                            if (!((Map) this.cooldownTime.get(Integer.valueOf(i))).containsKey(po)) {
-                                if (this.settings.getBadge().get("Players." + p.getUniqueId() + ".Badges.gym" + i) != null) {
-                                    if (this.settings.getBadge().get("Players." + p.getUniqueId() + ".Badges.gym" + i).equals("Won")) {
-                                        p.sendMessage(ChatColor.RED + "You have already completed this gym! You may not do it again!");
-                                    }
-                                } else {
-                                    Player gymArg3;
-                                    Iterator gym3;
-
-                                    if (i == 1) {
-                                        if (((List) this.queues.get(Integer.valueOf(i))).contains(p.getUniqueId())) {
-                                            p.sendMessage(ChatColor.RED + "You are already in this queue, please wait to be teleported.");
-                                        } else {
-                                            ((List) this.queues.get(Integer.valueOf(i))).add(p.getUniqueId());
-                                            p.sendMessage(ChatColor.GREEN + "Added to queue: " + ChatColor.YELLOW + ChatColor.BOLD + i + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym1colour") + ChatColor.BOLD + this.getConfig().getString("config.gym1") + ChatColor.BLACK + ")"));
-                                            p.sendMessage(ChatColor.GOLD + "You are in position " + ((List) this.queues.get(Integer.valueOf(i))).size() + " for the " + this.getConfig().getString("config.gym1") + " Gym");
-                                            p.sendMessage(ChatColor.GREEN + "Notified gym leaders of gym1" + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym1colour") + ChatColor.BOLD + this.getConfig().getString("config.gym1") + ChatColor.BLACK + ")" + ChatColor.GREEN + " that you are waiting to be battled!"));
-                                            gym3 = Bukkit.getOnlinePlayers().iterator();
-
-                                            while (gym3.hasNext()) {
-                                                gymArg3 = (Player) gym3.next();
-                                                if (gymArg3.hasPermission("pixelgym." + args[1])) {
-                                                    gymArg3.sendMessage(ChatColor.BLUE + "A challenger has joined queue " + ChatColor.YELLOW + ChatColor.BOLD + i + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour") + ChatColor.BOLD + this.getConfig().getString("config." + args[1]) + ChatColor.BLACK + ")" + ChatColor.GOLD + " (" + p.getName() + ")"));
-                                                    gymArg3.sendMessage(ChatColor.BLUE + "Type /gym next " + args[1] + " to teleport them to your gym.");
-                                                }
-                                            }
-                                        }
-                                    } else if (this.settings.getBadge().get("Players." + p.getUniqueId() + ".Badges.gym" + playerLost) != null) {
-                                        if (this.settings.getBadge().get("Players." + p.getUniqueId() + ".Badges.gym" + playerLost).equals("Won")) {
-                                            if (((List) this.queues.get(Integer.valueOf(i))).contains(p.getUniqueId())) {
-                                                p.sendMessage(ChatColor.RED + "You are already in this queue, please wait to be teleported.");
-                                                return true;
-                                            }
-
-                                            ((List) this.queues.get(Integer.valueOf(i))).add(p.getUniqueId());
-                                            p.sendMessage(ChatColor.GREEN + "Added to queue: " + ChatColor.YELLOW + ChatColor.BOLD + i + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour") + ChatColor.BOLD + this.getConfig().getString("config." + args[1]) + ChatColor.BLACK + ")"));
-                                            p.sendMessage(ChatColor.GOLD + "You are in position " + ((List) this.queues.get(Integer.valueOf(i))).size() + " for the " + this.getConfig().getString("config." + args[1]) + " Gym");
-                                            p.sendMessage(ChatColor.GREEN + "Notified gym leaders of gym" + i + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour") + ChatColor.BOLD + this.getConfig().getString("config." + args[1]) + ChatColor.BLACK + ")" + ChatColor.GREEN + " that you are waiting to be battled!"));
-                                            gym3 = Bukkit.getOnlinePlayers().iterator();
-
-                                            while (gym3.hasNext()) {
-                                                gymArg3 = (Player) gym3.next();
-                                                if (gymArg3.hasPermission("pixelgym." + args[1])) {
-                                                    gymArg3.sendMessage(ChatColor.BLUE + "A challenger has joined queue " + ChatColor.YELLOW + ChatColor.BOLD + i + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour") + ChatColor.BOLD + this.getConfig().getString("config." + args[1]) + ChatColor.BLACK + ")" + ChatColor.GOLD + " (" + p.getName() + ")"));
-                                                    gymArg3.sendMessage(ChatColor.BLUE + "Type /gym next " + args[1] + " to teleport them to your gym.");
-                                                }
-                                            }
-                                        } else {
-                                            p.sendMessage(ChatColor.RED + "You cannot join this queue as you have not won the previous badge!");
-                                        }
-                                    } else {
-                                        p.sendMessage(ChatColor.RED + "You cannot join the gym queue for gym" + i + " because you do not have the previous badge. (gym" + playerLost + ")");
-                                    }
-                                }
-                            } else {
-                                p.sendMessage(ChatColor.RED + "You have to wait " + ((Map) this.cooldownTime.get(Integer.valueOf(i))).get(po) + " minutes before you can try gym" + i + " again.");
-                            }
-                        } else if (!args[0].equalsIgnoreCase("check") && !args[0].equalsIgnoreCase("position")) {
+                        if (!args[0].equalsIgnoreCase("check") && !args[0].equalsIgnoreCase("position")) {
                             if (!args[0].equalsIgnoreCase("leave") && !args[0].equalsIgnoreCase("quit")) {
                                 Player player1;
 
@@ -1424,30 +859,30 @@ public class PixelGym {
                                     s = args[1].replace("gym", "");
 
                                     try {
-                                        i = Integer.parseInt(s);
+                                        gym = Integer.parseInt(s);
                                     } catch (NumberFormatException numberformatexception1) {
                                         p.sendMessage(ChatColor.RED + args[1] + " is not a gym!");
                                         return true;
                                     }
 
-                                    if (i < 1 || i > 32) {
+                                    if (gym < 1 || gym > 32) {
                                         return true;
                                     }
 
                                     if (p.hasPermission("pixelgym.leader") && (p.hasPermission("pixelgym." + args[1]) || p.hasPermission("pixelgym.admin"))) {
-                                        UUID uuid = (UUID) ((List) this.queues.get(Integer.valueOf(i))).get(0);
+                                        UUID uuid = (UUID) ((List) this.queues.get(Integer.valueOf(gym))).get(0);
 
                                         player1 = Bukkit.getPlayer(uuid);
                                         if (this.settings.getData().get("warps.spawn") != null) {
-                                            ((List) this.queues.get(Integer.valueOf(i))).remove(0);
+                                            ((List) this.queues.get(Integer.valueOf(gym))).remove(0);
                                             world = Bukkit.getServer().getWorld(this.settings.getData().getString("warps.spawn.world"));
                                             d0 = this.settings.getData().getDouble("warps.spawn.x");
                                             y = this.settings.getData().getDouble("warps.spawn.y");
                                             z = this.settings.getData().getDouble("warps.spawn.z");
                                             player1.teleport(new Location(world, d0, y, z));
-                                            player1.sendMessage(ChatColor.GREEN + "You have been removed from the queue by a gym leader! (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + i + "colour") + ChatColor.BOLD + this.getConfig().getString("config.gym" + i) + ChatColor.GREEN + ") You can re-enter the queue, but make sure you are not Afk and co-operate with the gym leader!"));
+                                            player1.sendMessage(ChatColor.GREEN + "You have been removed from the queue by a gym leader! (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + gym + "colour") + ChatColor.BOLD + this.getConfig().getString("config.gym" + gym) + ChatColor.GREEN + ") You can re-enter the queue, but make sure you are not Afk and co-operate with the gym leader!"));
                                             p.sendMessage(ChatColor.GREEN + "Successfully telported " + player1.getName() + " out of your gym!");
-                                            p.sendMessage(ChatColor.GREEN + "You are now ready for your next battle, type: /gym next gym" + i);
+                                            p.sendMessage(ChatColor.GREEN + "You are now ready for your next battle, type: /gym next gym" + gym);
                                         } else {
                                             p.sendMessage(ChatColor.RED + "Warp point \'spawn\' does not exist. Type: /gym setwarp spawn. (this is the teleport location to move challengers out of the gym.");
                                         }
@@ -1456,24 +891,24 @@ public class PixelGym {
                                     s = args[1].replace("gym", "");
 
                                     try {
-                                        i = Integer.parseInt(s);
+                                        gym = Integer.parseInt(s);
                                     } catch (NumberFormatException numberformatexception2) {
                                         p.sendMessage(ChatColor.RED + args[1] + " is not a gym!");
                                         return true;
                                     }
 
-                                    if (i < 1 || i > 32) {
+                                    if (gym < 1 || gym > 32) {
                                         return true;
                                     }
 
-                                    playerLost = i + 1;
+                                    playerLost = gym + 1;
                                     if (p.hasPermission("pixelgym.leader")) {
                                         if (p.hasPermission("pixelgym." + args[1])) {
                                             player1 = null;
 
                                             while (player1 == null) {
-                                                if (((List) this.queues.get(Integer.valueOf(i))).size() <= 0) {
-                                                    p.sendMessage(ChatColor.RED + "There are currently no people in the queue " + ChatColor.YELLOW + ChatColor.BOLD + i + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + i + "colour") + ChatColor.BOLD + this.getConfig().getString("config.gym" + i) + ChatColor.BLACK + ")"));
+                                                if (((List) this.queues.get(Integer.valueOf(gym))).size() <= 0) {
+                                                    p.sendMessage(ChatColor.RED + "There are currently no people in the queue " + ChatColor.YELLOW + ChatColor.BOLD + gym + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + gym + "colour") + ChatColor.BOLD + this.getConfig().getString("config.gym" + gym) + ChatColor.BLACK + ")"));
                                                     return true;
                                                 }
 
@@ -1482,19 +917,19 @@ public class PixelGym {
                                                     return true;
                                                 }
 
-                                                UUID uuid1 = (UUID) ((List) this.queues.get(Integer.valueOf(i))).get(0);
+                                                UUID uuid1 = (UUID) ((List) this.queues.get(Integer.valueOf(gym))).get(0);
 
                                                 player1 = Bukkit.getPlayer(uuid1);
-                                                p.sendMessage(ChatColor.GREEN + "Getting first player from queue " + ChatColor.GOLD + " (" + player1.getName() + ")" + ChatColor.YELLOW + ChatColor.BOLD + i + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + i + "colour") + ChatColor.BOLD + this.getConfig().getString("config.gym" + i) + ChatColor.BLACK + ")"));
-                                                p.sendMessage(ChatColor.BLUE + "Make sure you type " + ChatColor.RED + "/gym lost gym" + i + " (player) " + ChatColor.BLUE + "or " + ChatColor.GREEN + "/gym win gym" + i + " (player)" + ChatColor.BLUE + " after they have won or lost the battle. (They need it to join gym" + playerLost + " queue (If they won.)) And it teleports them out of your gym!");
+                                                p.sendMessage(ChatColor.GREEN + "Getting first player from queue " + ChatColor.GOLD + " (" + player1.getName() + ")" + ChatColor.YELLOW + ChatColor.BOLD + gym + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + gym + "colour") + ChatColor.BOLD + this.getConfig().getString("config.gym" + gym) + ChatColor.BLACK + ")"));
+                                                p.sendMessage(ChatColor.BLUE + "Make sure you type " + ChatColor.RED + "/gym lost gym" + gym + " (player) " + ChatColor.BLUE + "or " + ChatColor.GREEN + "/gym win gym" + gym + " (player)" + ChatColor.BLUE + " after they have won or lost the battle. (They need it to join gym" + playerLost + " queue (If they won.)) And it teleports them out of your gym!");
                                             }
 
                                             if (this.getConfig().getString("config.gymfee").equalsIgnoreCase("True")) {
                                                 k = this.getConfig().getInt("config.gymfee");
                                                 if (PixelGym.economy.getBalance(player1) < (double) k) {
                                                     player1.sendMessage(ChatColor.RED + "You do not have enough money to face the gym!");
-                                                    ((List) this.queues.get(Integer.valueOf(i))).remove(0);
-                                                    p.sendMessage(ChatColor.RED + "First player did not have enough money, type /gym next gym" + i + " to get the next player.");
+                                                    ((List) this.queues.get(Integer.valueOf(gym))).remove(0);
+                                                    p.sendMessage(ChatColor.RED + "First player did not have enough money, type /gym next gym" + gym + " to get the next player.");
                                                     return true;
                                                 }
 
@@ -1514,90 +949,53 @@ public class PixelGym {
                                                 player1.teleport(new Location(world1, x, y1, z2));
                                                 player1.sendMessage(ChatColor.GREEN + "Teleported to " + ChatColor.YELLOW + ChatColor.BOLD + args[1] + "!");
                                                 player1.sendMessage(ChatColor.GREEN + "Welcome to " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour") + ChatColor.BOLD + this.getConfig().getString("config." + args[1]) + " Gym!"));
-                                                player1.sendMessage(ChatColor.GOLD + "----- " + this.getConfig().getString("config.gym" + i) + " Gym Rules -----");
+                                                player1.sendMessage(ChatColor.GOLD + "----- " + this.getConfig().getString("config.gym" + gym) + " Gym Rules -----");
                                                 player1.sendMessage("");
-                                                player1.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config.gym" + i + "rule1"));
-                                                player1.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config.gym" + i + "rule2"));
-                                                player1.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config.gym" + i + "rule3"));
-                                                player1.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config.gym" + i + "rule4"));
-                                                player1.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config.gym" + i + "rule5"));
-                                                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "pokeheal " + player1.getName().toString());
-                                                player1.sendMessage(ChatColor.GREEN + "Your pixelmon have been healed!");
-                                            } else {
-                                                world = Bukkit.getServer().getWorld(this.settings.getData().getString("warps." + args[1] + ".world"));
-                                                d0 = this.settings.getData().getDouble("warps." + args[1] + ".x");
-                                                y = this.settings.getData().getDouble("warps." + args[1] + ".y");
-                                                z = this.settings.getData().getDouble("warps." + args[1] + ".z");
-                                                player1.teleport(new Location(world, d0, y, z));
-                                                player1.sendMessage(ChatColor.GREEN + "Teleported to " + ChatColor.YELLOW + ChatColor.BOLD + args[1] + "!");
-                                                player1.sendMessage(ChatColor.GREEN + "Welcome to " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour") + ChatColor.BOLD + this.getConfig().getString("config." + args[1]) + " Gym!"));
-                                                player1.sendMessage(ChatColor.GOLD + "----- " + this.getConfig().getString("config.gym" + i) + " Gym Rules -----");
-                                                player1.sendMessage("");
-                                                player1.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config.gym" + i + "rule1"));
-                                                player1.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config.gym" + i + "rule2"));
-                                                player1.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config.gym" + i + "rule3"));
-                                                player1.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config.gym" + i + "rule4"));
-                                                player1.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config.gym" + i + "rule5"));
+                                                player1.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config.gym" + gym + "rule1"));
+                                                player1.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config.gym" + gym + "rule2"));
+                                                player1.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config.gym" + gym + "rule3"));
+                                                player1.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config.gym" + gym + "rule4"));
+                                                player1.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config.gym" + gym + "rule5"));
                                                 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "pokeheal " + player1.getName().toString());
                                                 player1.sendMessage(ChatColor.GREEN + "Your pixelmon have been healed!");
                                             }
                                         } else {
-                                            p.sendMessage(ChatColor.RED + "You do not have permission to open gym" + i + "!");
+                                            p.sendMessage(ChatColor.RED + "You do not have permission to open gym" + gym + "!");
                                         }
                                     } else {
                                         p.sendMessage(ChatColor.RED + "You are not a gym leader, you do not have permission to do this command!");
                                     }
-                                }
-                            } else {
-                                s = args[1].replace("gym", "");
-
-                                try {
-                                    i = Integer.parseInt(s);
-                                } catch (NumberFormatException numberformatexception3) {
-                                    p.sendMessage(ChatColor.RED + args[1] + " is not a gym!");
-                                    return true;
-                                }
-
-                                if (i < 1 || i > 32) {
-                                    return true;
-                                }
-
-                                if (((List) this.queues.get(Integer.valueOf(i))).contains(p.getUniqueId())) {
-                                    ((List) this.queues.get(Integer.valueOf(i))).remove(p.getUniqueId());
-                                    p.sendMessage(ChatColor.GREEN + "You have successfully been removed from the gym" + i + " queue!" + ChatColor.BLACK + " (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour") + ChatColor.BOLD + this.getConfig().getString("config." + args[1]) + ChatColor.BLACK + ")"));
-                                } else {
-                                    p.sendMessage(ChatColor.RED + "You are not in queue " + i);
                                 }
                             }
                         } else {
                             s = args[1].replace("gym", "");
 
                             try {
-                                i = Integer.parseInt(s);
+                                gym = Integer.parseInt(s);
                             } catch (NumberFormatException numberformatexception4) {
                                 p.sendMessage(ChatColor.RED + args[1] + " is not a gym!");
                                 return true;
                             }
 
-                            if (i < 1 || i > 32) {
+                            if (gym < 1 || gym > 32) {
                                 return true;
                             }
 
                             player = null;
-                            if (((List) this.queues.get(Integer.valueOf(i))).size() > 0) {
-                                po = (UUID) ((List) this.queues.get(Integer.valueOf(i))).get(0);
+                            if (((List) this.queues.get(Integer.valueOf(gym))).size() > 0) {
+                                po = (UUID) ((List) this.queues.get(Integer.valueOf(gym))).get(0);
                                 player = Bukkit.getPlayer(po);
-                                k = ((List) this.queues.get(Integer.valueOf(i))).indexOf(p.getUniqueId()) + 1;
-                                if (((List) this.queues.get(Integer.valueOf(i))).contains(p.getUniqueId())) {
+                                k = ((List) this.queues.get(Integer.valueOf(gym))).indexOf(p.getUniqueId()) + 1;
+                                if (((List) this.queues.get(Integer.valueOf(gym))).contains(p.getUniqueId())) {
                                     p.sendMessage(ChatColor.GOLD + "You are currently in position " + k + " for the " + this.getConfig().getString("config." + args[1]) + " Gym");
-                                    p.sendMessage(ChatColor.GOLD + "The queue size for the " + this.getConfig().getString("config." + args[1]) + " Gym is " + ((List) this.queues.get(Integer.valueOf(i))).size());
+                                    p.sendMessage(ChatColor.GOLD + "The queue size for the " + this.getConfig().getString("config." + args[1]) + " Gym is " + ((List) this.queues.get(Integer.valueOf(gym))).size());
                                 }
 
-                                if (p.hasPermission("pixelgym." + args[1]) && !((List) this.queues.get(Integer.valueOf(i))).contains(p.getUniqueId())) {
-                                    p.sendMessage(ChatColor.GOLD + "The queue size for the " + this.getConfig().getString("config." + args[1]) + " Gym is " + ((List) this.queues.get(Integer.valueOf(i))).size());
+                                if (p.hasPermission("pixelgym." + args[1]) && !((List) this.queues.get(Integer.valueOf(gym))).contains(p.getUniqueId())) {
+                                    p.sendMessage(ChatColor.GOLD + "The queue size for the " + this.getConfig().getString("config." + args[1]) + " Gym is " + ((List) this.queues.get(Integer.valueOf(gym))).size());
                                     p.sendMessage(ChatColor.GOLD + "The first player of the queue is: (" + player.getName() + ")");
-                                } else if (((List) this.queues.get(Integer.valueOf(i))).contains(p.getUniqueId()) && p.hasPermission("pixelgym." + args[1])) {
-                                    p.sendMessage(ChatColor.GOLD + "The queue size for the " + this.getConfig().getString("config." + args[1]) + " Gym is " + ((List) this.queues.get(Integer.valueOf(i))).size());
+                                } else if (((List) this.queues.get(Integer.valueOf(gym))).contains(p.getUniqueId()) && p.hasPermission("pixelgym." + args[1])) {
+                                    p.sendMessage(ChatColor.GOLD + "The queue size for the " + this.getConfig().getString("config." + args[1]) + " Gym is " + ((List) this.queues.get(Integer.valueOf(gym))).size());
                                     p.sendMessage(ChatColor.GOLD + "The first player of the queue is: (" + player.getName() + ")");
                                 } else {
                                     p.sendMessage(ChatColor.RED + "You are not in queue " + args[1]);
@@ -1637,153 +1035,6 @@ public class PixelGym {
                             p.openInventory(inventory);
                             p.sendMessage(ChatColor.GREEN + "Opening " + playerTarget.getName() + "\'s badge showcase!");
                         }
-
-                        if (args[0].equalsIgnoreCase("sendrules")) {
-                            if (this.getConfig().getString("config." + args[1]) != null) {
-                                p.sendMessage(ChatColor.RED + "You need to specify a player that you want to send the rules to!");
-                                p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/gym sendrules <gym#> (username)");
-                            } else {
-                                p.sendMessage(ChatColor.RED + "There are only 32 gym\'s, please use a valid gym!");
-                            }
-                        }
-
-                        if (args[0].equalsIgnoreCase("rules")) {
-                            if (this.getConfig().getString("config." + args[1]) != null) {
-                                if (this.getConfig().getString("config." + args[1] + "enabled").equalsIgnoreCase("true")) {
-                                    p.sendMessage(ChatColor.GOLD + "----- " + this.getConfig().getString("config." + args[1]) + " Gym Rules -----");
-                                    p.sendMessage("");
-                                    p.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config." + args[1] + "rule1"));
-                                    p.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config." + args[1] + "rule2"));
-                                    p.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config." + args[1] + "rule3"));
-                                    p.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config." + args[1] + "rule4"));
-                                    p.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config." + args[1] + "rule5"));
-                                }
-                            } else {
-                                p.sendMessage(ChatColor.RED + "The gym " + args[1] + " does not exist!");
-                                p.sendMessage(ChatColor.RED + "Try /gym rules gym1");
-                            }
-                        }
-
-                        if (args[0].equalsIgnoreCase("open")) {
-                            if (!p.hasPermission("pixelgym.leader") && !p.hasPermission("pixelgym.admin")) {
-                                p.sendMessage(ChatColor.RED + "You do not have permission to open a gym!");
-                            } else if (this.getConfig().getString("config." + args[1]) != null) {
-                                if (!p.hasPermission("pixelgym." + args[1]) && !p.hasPermission("pixelgym.admin")) {
-                                    p.sendMessage(ChatColor.RED + "You do not have permission to open " + args[1]);
-                                } else if (!args[1].equalsIgnoreCase("e41") && !args[1].equalsIgnoreCase("e42") && !args[1].equalsIgnoreCase("e43") && !args[1].equalsIgnoreCase("e44")) {
-                                    if (this.getConfig().getString("config." + args[1] + "stat").equals("Open")) {
-                                        p.sendMessage(ChatColor.RED + "The " + this.getConfig().getString("config." + args[1]) + " Gym is already open! ");
-                                    } else if (this.getConfig().getString("config." + args[1] + "stat").equals("Closed")) {
-                                        if (this.getConfig().getString("config." + args[1] + "enabled").equalsIgnoreCase("True")) {
-                                            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour")) + "The " + this.getConfig().getString("config." + args[1]) + " Gym is now " + ChatColor.GREEN + "Open");
-                                            this.getConfig().set("config." + args[1] + "stat", "Open");
-                                            p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                                            if (this.getConfig().getString("config.scoreboard").equals("True")) {
-                                                if (args[1].equalsIgnoreCase("gym1")) {
-                                                    this.gym1.setScore(1);
-                                                } else if (args[1].equalsIgnoreCase("gym2")) {
-                                                    this.gym2.setScore(2);
-                                                } else if (args[1].equalsIgnoreCase("gym3")) {
-                                                    this.gym3.setScore(3);
-                                                } else if (args[1].equalsIgnoreCase("gym4")) {
-                                                    this.gym4.setScore(4);
-                                                } else if (args[1].equalsIgnoreCase("gym5")) {
-                                                    this.gym5.setScore(5);
-                                                } else if (args[1].equalsIgnoreCase("gym6")) {
-                                                    this.gym6.setScore(6);
-                                                } else if (args[1].equalsIgnoreCase("gym7")) {
-                                                    this.gym7.setScore(7);
-                                                } else if (args[1].equalsIgnoreCase("gym8")) {
-                                                    this.gym8.setScore(8);
-                                                } else if (args[1].equalsIgnoreCase("gym9")) {
-                                                    this.gym9.setScore(9);
-                                                } else if (args[1].equalsIgnoreCase("gym10")) {
-                                                    this.gym10.setScore(10);
-                                                } else if (args[1].equalsIgnoreCase("gym11")) {
-                                                    this.gym11.setScore(11);
-                                                } else if (args[1].equalsIgnoreCase("gym12")) {
-                                                    this.gym12.setScore(12);
-                                                } else if (args[1].equalsIgnoreCase("gym13")) {
-                                                    this.gym13.setScore(13);
-                                                } else if (args[1].equalsIgnoreCase("gym14")) {
-                                                    this.gym14.setScore(14);
-                                                } else if (args[1].equalsIgnoreCase("gym15")) {
-                                                    this.gym15.setScore(15);
-                                                } else if (args[1].equalsIgnoreCase("gym16")) {
-                                                    this.gym16.setScore(16);
-                                                } else if (args[1].equalsIgnoreCase("gym17")) {
-                                                    this.gym17.setScore(17);
-                                                } else if (args[1].equalsIgnoreCase("gym18")) {
-                                                    this.gym18.setScore(18);
-                                                } else if (args[1].equalsIgnoreCase("gym19")) {
-                                                    this.gym19.setScore(19);
-                                                } else if (args[1].equalsIgnoreCase("gym20")) {
-                                                    this.gym20.setScore(20);
-                                                } else if (args[1].equalsIgnoreCase("gym21")) {
-                                                    this.gym21.setScore(21);
-                                                } else if (args[1].equalsIgnoreCase("gym22")) {
-                                                    this.gym22.setScore(22);
-                                                } else if (args[1].equalsIgnoreCase("gym23")) {
-                                                    this.gym23.setScore(23);
-                                                } else if (args[1].equalsIgnoreCase("gym24")) {
-                                                    this.gym24.setScore(24);
-                                                } else if (args[1].equalsIgnoreCase("gym25")) {
-                                                    this.gym25.setScore(25);
-                                                } else if (args[1].equalsIgnoreCase("gym26")) {
-                                                    this.gym26.setScore(26);
-                                                } else if (args[1].equalsIgnoreCase("gym27")) {
-                                                    this.gym27.setScore(27);
-                                                } else if (args[1].equalsIgnoreCase("gym28")) {
-                                                    this.gym28.setScore(28);
-                                                } else if (args[1].equalsIgnoreCase("gym29")) {
-                                                    this.gym29.setScore(29);
-                                                } else if (args[1].equalsIgnoreCase("gym30")) {
-                                                    this.gym30.setScore(30);
-                                                } else if (args[1].equalsIgnoreCase("gym31")) {
-                                                    this.gym31.setScore(31);
-                                                } else if (args[1].equalsIgnoreCase("gym32")) {
-                                                    this.gym32.setScore(32);
-                                                }
-                                            }
-                                        } else if (this.getConfig().getString("config." + args[1] + "enabled").equalsIgnoreCase("False")) {
-                                            p.sendMessage(ChatColor.RED + "This gym, " + args[1] + " is disabled in the config. Please open an enabled gym.");
-                                        }
-                                    }
-                                } else {
-                                    p.sendMessage(ChatColor.RED + "To open the Elite 4, type /e4 open e4#. Not /gym open e4#");
-                                }
-                            } else {
-                                p.sendMessage(ChatColor.RED + "The gym " + args[1] + " does not exist!");
-                                p.sendMessage(ChatColor.RED + "Try /gym open gym1");
-                            }
-                        } else if (args[0].equalsIgnoreCase("close")) {
-                            if (!p.hasPermission("pixelgym.leader") && !p.hasPermission("pixelgym.admin")) {
-                                p.sendMessage(ChatColor.RED + "You do not have permission to close a gym!");
-                            } else if (this.getConfig().getString("config." + args[1]) != null) {
-                                if (!p.hasPermission("pixelgym." + args[1]) && !p.hasPermission("pixelgym.admin")) {
-                                    p.sendMessage(ChatColor.RED + "You do not have permission to close " + args[1]);
-                                } else if (!args[1].equalsIgnoreCase("e41") && !args[1].equalsIgnoreCase("e42") && !args[1].equalsIgnoreCase("e43") && !args[1].equalsIgnoreCase("e44")) {
-                                    if (this.getConfig().getString("config." + args[1] + "enabled").equalsIgnoreCase("True")) {
-                                        if (this.getConfig().getString("config." + args[1] + "stat").equals("Closed")) {
-                                            p.sendMessage(ChatColor.RED + "The " + this.getConfig().getString("config." + args[1]) + " gym is already Closed!");
-                                        } else if (this.getConfig().getString("config." + args[1] + "stat").equals("Open")) {
-                                            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour")) + "The " + this.getConfig().getString("config." + args[1]) + " Gym is now " + ChatColor.RED + "Closed");
-                                            this.getConfig().set("config." + args[1] + "stat", "Closed");
-                                            p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                                            this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config." + args[1] + "colour")) + this.getConfig().getString("config." + args[1])));
-                                        }
-                                    } else {
-                                        p.sendMessage(ChatColor.RED + "The " + args[1] + " gym is not enabled in the config, please close an enabled gym.");
-                                    }
-                                } else {
-                                    p.sendMessage(ChatColor.RED + "To close the Elite 4, type /e4 close e4#. Not /gym close e4#");
-                                }
-                            } else {
-                                p.sendMessage(ChatColor.RED + "The gym " + args[1] + " does not exist!");
-                                p.sendMessage(ChatColor.RED + "Try /gym close gym1");
-                            }
-                        }
-
                         if (args[0].equalsIgnoreCase("setwarp")) {
                             if (p.hasPermission("pixelgym.admin")) {
                                 if (this.settings.getData().get("warps." + args[1]) != null) {
@@ -1838,91 +1089,22 @@ public class PixelGym {
                         int l;
                         String s1;
 
-                        if (args[0].equalsIgnoreCase("sendrules")) {
-                            if (Bukkit.getPlayer(args[2]) != null) {
-                                playerTarget = Bukkit.getPlayer(args[2]);
-                                s1 = args[1].replace("gym", "");
-
-                                try {
-                                    l = Integer.parseInt(s1);
-                                } catch (NumberFormatException numberformatexception5) {
-                                    p.sendMessage(ChatColor.RED + args[1] + " is not a gym!");
-                                    return true;
-                                }
-
-                                if (l < 1 || l > 32) {
-                                    return true;
-                                }
-
-                                if (this.getConfig().getString("config." + args[1]) != null) {
-                                    if (p.hasPermission("pixelgym." + args[1])) {
-                                        p.sendMessage(ChatColor.GOLD + "Sent " + this.getConfig().getString("config." + args[1]) + " Gym Rules to " + playerTarget.getName().toString());
-                                        playerTarget.sendMessage(ChatColor.GOLD + playerTarget.getName().toString() + ", Make sure you read the " + this.getConfig().getString("config." + args[1]) + " Gym rules propperly before facing the Gym!");
-                                        playerTarget.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config." + args[1] + "rule1"));
-                                        playerTarget.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config." + args[1] + "rule2"));
-                                        playerTarget.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config." + args[1] + "rule3"));
-                                        playerTarget.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config." + args[1] + "rule4"));
-                                        playerTarget.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config." + args[1] + "rule5"));
-                                    } else {
-                                        p.sendMessage(ChatColor.RED + "You are not gym leader of this gym!");
-                                    }
-                                } else {
-                                    p.sendMessage(ChatColor.RED + "The gym " + args[1] + " does not exist!");
-                                    p.sendMessage(ChatColor.RED + "Try /gym sendrules gym1 (player)");
-                                }
-                            } else {
-                                p.sendMessage(ChatColor.RED + "You need to specify a player to send the rules to. Example: /gym sendrules gym1 (player)");
-                            }
-                        }
-
                         int i1;
 
                         if (!args[0].equalsIgnoreCase("winner") && !args[0].equalsIgnoreCase("win") && !args[0].equalsIgnoreCase("w")) {
                             Iterator iterator;
 
-                            if (args[0].equalsIgnoreCase("givebadge")) {
+                            if (args[0].equalsIgnoreCase("delbadge")) {
                                 s = args[1].replace("gym", "");
 
                                 try {
-                                    i = Integer.parseInt(s);
-                                } catch (NumberFormatException numberformatexception6) {
-                                    p.sendMessage(ChatColor.RED + args[1] + " is not a gym!");
-                                    return true;
-                                }
-
-                                if (i < 1 || i > 32) {
-                                    return true;
-                                }
-
-                                iterator = Bukkit.getOnlinePlayers().iterator();
-
-                                while (iterator.hasNext()) {
-                                    player = (Player) iterator.next();
-                                    if (player.getName().equalsIgnoreCase(args[2])) {
-                                        if (p.hasPermission("pixelgym.admin")) {
-                                            for (k = 1; k <= 32; ++k) {
-                                                if (args[1].equalsIgnoreCase("gym" + k)) {
-                                                    this.settings.getBadge().set("Players." + player.getUniqueId() + ".Badges." + args[1], "Won");
-                                                    this.settings.saveBadges();
-                                                    p.sendMessage(ChatColor.GREEN + "Gave " + player.getName() + " the gym" + i + " badge!");
-                                                }
-                                            }
-                                        } else {
-                                            p.hasPermission("You do not have permission to give gym badges!");
-                                        }
-                                    }
-                                }
-                            } else if (args[0].equalsIgnoreCase("delbadge")) {
-                                s = args[1].replace("gym", "");
-
-                                try {
-                                    i = Integer.parseInt(s);
+                                    gym = Integer.parseInt(s);
                                 } catch (NumberFormatException numberformatexception7) {
                                     p.sendMessage(ChatColor.RED + args[1] + " is not a gym!");
                                     return true;
                                 }
 
-                                if (i < 1 || i > 32) {
+                                if (gym < 1 || gym > 32) {
                                     return true;
                                 }
 
@@ -1937,7 +1119,7 @@ public class PixelGym {
                                                     if (args[1].equalsIgnoreCase("gym" + k)) {
                                                         this.settings.getBadge().set("Players." + player.getUniqueId() + ".Badges." + args[1], (Object) null);
                                                         this.settings.saveBadges();
-                                                        p.sendMessage(ChatColor.GREEN + "Deleted the gym" + i + " badge from " + player.getName());
+                                                        p.sendMessage(ChatColor.GREEN + "Deleted the gym" + gym + " badge from " + player.getName());
                                                     }
                                                 }
                                             } else {
@@ -1952,13 +1134,13 @@ public class PixelGym {
                                 s = args[1].replace("gym", "");
 
                                 try {
-                                    i = Integer.parseInt(s);
+                                    gym = Integer.parseInt(s);
                                 } catch (NumberFormatException numberformatexception8) {
                                     p.sendMessage(ChatColor.RED + args[1] + " is not a gym!");
                                     return true;
                                 }
 
-                                if (i < 1 || i > 32) {
+                                if (gym < 1 || gym > 32) {
                                     return true;
                                 }
 
@@ -1968,18 +1150,18 @@ public class PixelGym {
                                         p.sendMessage(ChatColor.RED + "You do not have permission to set losers of " + args[1]);
                                     } else {
                                         po = player.getUniqueId();
-                                        if (((List) this.queues.get(Integer.valueOf(i))).contains(po)) {
+                                        if (((List) this.queues.get(Integer.valueOf(gym))).contains(po)) {
                                             if (this.settings.getData().get("warps.spawn") != null) {
                                                 world = Bukkit.getServer().getWorld(this.settings.getData().getString("warps.spawn.world"));
                                                 d0 = this.settings.getData().getDouble("warps.spawn.x");
                                                 y = this.settings.getData().getDouble("warps.spawn.y");
                                                 z = this.settings.getData().getDouble("warps.spawn.z");
                                                 player.teleport(new Location(world, d0, y, z));
-                                                player.sendMessage(ChatColor.GREEN + "Teleported out of " + ChatColor.YELLOW + ChatColor.BOLD + "gym" + i + "!");
-                                                player.sendMessage(ChatColor.GREEN + "Unlucky! you lost that gym battle! (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + i + "colour") + ChatColor.BOLD + this.getConfig().getString("config.gym" + i) + ChatColor.GREEN + ") Not to worry! You can challenge the gym again in an hour! type: /gym join gym" + i + " When the hour has finished."));
-                                                player.sendMessage(ChatColor.BLUE + "To check how long you have left on your cooldown, type: /gym join gym" + i);
+                                                player.sendMessage(ChatColor.GREEN + "Teleported out of " + ChatColor.YELLOW + ChatColor.BOLD + "gym" + gym + "!");
+                                                player.sendMessage(ChatColor.GREEN + "Unlucky! you lost that gym battle! (" + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.gym" + gym + "colour") + ChatColor.BOLD + this.getConfig().getString("config.gym" + gym) + ChatColor.GREEN + ") Not to worry! You can challenge the gym again in an hour! type: /gym join gym" + gym + " When the hour has finished."));
+                                                player.sendMessage(ChatColor.BLUE + "To check how long you have left on your cooldown, type: /gym join gym" + gym);
                                                 p.sendMessage(ChatColor.GREEN + "Successfully telported " + player.getName() + " out of your gym!");
-                                                p.sendMessage(ChatColor.GREEN + "You are now ready for your next battle, type: /gym next gym" + i);
+                                                p.sendMessage(ChatColor.GREEN + "You are now ready for your next battle, type: /gym next gym" + gym);
                                             } else {
                                                 p.sendMessage(ChatColor.RED + "Warp point \'spawn\' does not exist. Type: /gym setwarp spawn. (this is the teleport location to move challengers out of the gym.");
                                             }
@@ -1987,25 +1169,25 @@ public class PixelGym {
                                             String s2 = args[1].replace("gym", "");
                                             final int j1 = Integer.parseInt(s2);
 
-                                            ((List) this.queues.get(Integer.valueOf(i))).remove(0);
+                                            ((List) this.queues.get(Integer.valueOf(gym))).remove(0);
                                             this.settings.getLogs().set("Leaders." + p.getName() + "." + args[1] + ".[" + this.format.format(this.now) + "]", player.getName() + " - Lost");
                                             this.settings.saveLogs();
                                             i1 = Integer.parseInt(this.getConfig().getString("config.cooldowntime"));
                                             ((Map) this.cooldownTime.get(Integer.valueOf(j1))).put(po, Integer.valueOf(i1));
-                                            ((List) this.cooldownGym.get(Integer.valueOf(i))).add(po);
-                                            ((Map) this.cooldownTask.get(Integer.valueOf(i))).put(po, new BukkitRunnable() {
+                                            ((List) this.cooldownGym.get(Integer.valueOf(gym))).add(po);
+                                            ((Map) this.cooldownTask.get(Integer.valueOf(gym))).put(po, new BukkitRunnable() {
                                                 public void run() {
-                                                    ((Map) PixelGym.this.cooldownTime.get(Integer.valueOf(i))).put(po, Integer.valueOf(((Integer) ((Map) PixelGym.this.cooldownTime.get(Integer.valueOf(i))).get(po)).intValue() - 1));
-                                                    if (((Integer) ((Map) PixelGym.this.cooldownTime.get(Integer.valueOf(i))).get(po)).intValue() == 0) {
-                                                        ((Map) PixelGym.this.cooldownTime.get(Integer.valueOf(i))).remove(po);
-                                                        ((Map) PixelGym.this.cooldownTask.get(Integer.valueOf(i))).remove(po);
-                                                        ((List) PixelGym.this.cooldownGym.get(Integer.valueOf(i))).remove(po);
+                                                    ((Map) PixelGym.this.cooldownTime.get(Integer.valueOf(gym))).put(po, Integer.valueOf(((Integer) ((Map) PixelGym.this.cooldownTime.get(Integer.valueOf(gym))).get(po)).intValue() - 1));
+                                                    if (((Integer) ((Map) PixelGym.this.cooldownTime.get(Integer.valueOf(gym))).get(po)).intValue() == 0) {
+                                                        ((Map) PixelGym.this.cooldownTime.get(Integer.valueOf(gym))).remove(po);
+                                                        ((Map) PixelGym.this.cooldownTask.get(Integer.valueOf(gym))).remove(po);
+                                                        ((List) PixelGym.this.cooldownGym.get(Integer.valueOf(gym))).remove(po);
                                                         this.cancel();
                                                     }
 
                                                 }
                                             });
-                                            ((BukkitRunnable) ((Map) this.cooldownTask.get(Integer.valueOf(i))).get(po)).runTaskTimer(this, 20L, 1200L);
+                                            ((BukkitRunnable) ((Map) this.cooldownTask.get(Integer.valueOf(gym))).get(po)).runTaskTimer(this, 20L, 1200L);
                                         } else {
                                             p.sendMessage(ChatColor.RED + "Player must be in the queue to win or lose!");
                                         }
@@ -2075,216 +1257,6 @@ public class PixelGym {
                                 p.sendMessage(ChatColor.RED + "Player must be in the queue to win or lose!");
                             }
                         }
-                    }
-                }
-            }
-        } else if (commandLable.equalsIgnoreCase("e4") && this.enablee4.equalsIgnoreCase("true")) {
-            if (args.length == 0) {
-                if (!p.hasPermission("pixelgym.e4leader")) {
-                    p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
-                    p.sendMessage("");
-                    p.sendMessage(ChatColor.GREEN + "/e4 list" + ChatColor.DARK_GREEN + " - Get a list of the E4 Level\'s and there status.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 leaders" + ChatColor.DARK_GREEN + " - Get a list of the online E4 leaders.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 rules <e4#>" + ChatColor.DARK_GREEN + " - Shows all the rules for the specified E4 Level.");
-                    p.sendMessage(ChatColor.GREEN + "/gym scoreboard" + ChatColor.DARK_GREEN + " - Toggle ScoreBoard for e4 and Gym.");
-                    p.sendMessage("");
-                    p.sendMessage(ChatColor.RED + "Plugin Made By " + ChatColor.GOLD + "ABkayCkay");
-                } else if (p.hasPermission("pixelgym.e4leader")) {
-                    p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
-                    p.sendMessage("");
-                    p.sendMessage(ChatColor.GREEN + "/e4 list" + ChatColor.DARK_GREEN + " - Get a list of the E4 level\'s and there status.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 leaders" + ChatColor.DARK_GREEN + " - Get a list of the online E4 leaders.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 rules <e4#>" + ChatColor.DARK_GREEN + " - Shows all the rules for the specified E4 Level.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 open <e4#>" + ChatColor.DARK_GREEN + " - Open a particular E4 level (e41, e42, e43 or e44).");
-                    p.sendMessage(ChatColor.GREEN + "/e4 close <e4#>" + ChatColor.DARK_GREEN + " - Close a particular E4 level (e41, e42, e43 or e44).");
-                    p.sendMessage(ChatColor.GREEN + "/e4 heal" + ChatColor.DARK_GREEN + " - Heals your pokemon.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 sendrules <e4#> (username)" + ChatColor.DARK_GREEN + " - Force quit a e4 battle. In (Username) put either yours or the challengers IGN!");
-                    p.sendMessage("");
-                    p.sendMessage(ChatColor.RED + "Plugin Made By " + ChatColor.GOLD + "ABkayCkay");
-                } else if (p.hasPermission("pixelgym.admin")) {
-                    p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
-                    p.sendMessage("");
-                    p.sendMessage(ChatColor.GREEN + "/e4 list" + ChatColor.DARK_GREEN + " - Get a list of the E4 Level\'s and there status.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 leaders" + ChatColor.DARK_GREEN + " - Get a list of the online E4 leaders.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 rules <e4#>" + ChatColor.DARK_GREEN + " - Shows all the rules for the specified E4 Level.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 closeall" + ChatColor.DARK_GREEN + " - Closes all Elite 4 Level\'s.");
-                    p.sendMessage("");
-                    p.sendMessage(ChatColor.RED + "Plugin Made By " + ChatColor.GOLD + "ABkayCkay");
-                }
-            } else if (args.length == 1) {
-                if (args[0].equals("leaders")) {
-                    p.sendMessage(ChatColor.GOLD + "----- Online E4 Leaders -----");
-                    p.sendMessage("");
-                    gymArg = Bukkit.getOnlinePlayers().iterator();
-
-                    while (gymArg.hasNext()) {
-                        playerTarget = (Player) gymArg.next();
-                        if (playerTarget.hasPermission("pixelgym.e41") && this.enablee4.equalsIgnoreCase("true")) {
-                            p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e41colour")) + playerTarget.getName() + " - " + this.getConfig().getString("config.e41"));
-                        }
-
-                        if (playerTarget.hasPermission("pixelgym.e42") && this.enablee4.equalsIgnoreCase("true")) {
-                            p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e42colour")) + playerTarget.getName() + " - " + this.getConfig().getString("config.e42"));
-                        }
-
-                        if (playerTarget.hasPermission("pixelgym.e43") && this.enablee4.equalsIgnoreCase("true")) {
-                            p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e43colour")) + playerTarget.getName() + " - " + this.getConfig().getString("config.e43"));
-                        }
-
-                        if (playerTarget.hasPermission("pixelgym.e44") && this.enablee4.equalsIgnoreCase("true")) {
-                            p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e44colour")) + playerTarget.getName() + " - " + this.getConfig().getString("config.e44"));
-                        }
-                    }
-                } else if (args[0].equals("list")) {
-                    p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
-                    p.sendMessage("");
-                    if (this.enablee4.equalsIgnoreCase("true")) {
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e41colour")) + this.getConfig().getString("config.e41") + "  Elite 4 is: " + ChatColor.BLUE + this.getConfig().getString("config.e41stat"));
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e42colour")) + this.getConfig().getString("config.e42") + "  Elite 4 is: " + ChatColor.BLUE + this.getConfig().getString("config.e42stat"));
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e43colour")) + this.getConfig().getString("config.e43") + "  Elite 4 is: " + ChatColor.BLUE + this.getConfig().getString("config.e43stat"));
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e44colour")) + this.getConfig().getString("config.e44") + "  Elite 4 is: " + ChatColor.BLUE + this.getConfig().getString("config.e41stat"));
-                    }
-                } else if (args[0].equals("open") && p.hasPermission("pixelgym.e4leader")) {
-                    p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/e4 open <e4#>");
-                } else if (args[0].equals("close") && p.hasPermission("pixelgym.e4leader")) {
-                    p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/e4 close <e4#>");
-                } else if (args[0].equals("rules")) {
-                    p.sendMessage(ChatColor.DARK_RED + "Proper Usage: " + ChatColor.RED + "/e4 rules <e4#>");
-                } else if (args[0].equals("heal") && p.hasPermission("pixelgym.e4leader") && this.enableGymHeal.equalsIgnoreCase("true")) {
-                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "pokeheal " + p.getName().toString());
-                    p.sendMessage("Your pixelmon have been healed!");
-                } else if (args[0].equals("heal") && p.hasPermission("pixelgym.e4leader") && !this.enableGymHeal.equalsIgnoreCase("true")) {
-                    p.sendMessage(ChatColor.RED + "Gym/E4 Leader healing disabled in the plugin config");
-                } else if (args[0].equals("quit") && p.hasPermission("pixelgym.e4leader")) {
-                    gymArg = Bukkit.getOnlinePlayers().iterator();
-
-                    while (gymArg.hasNext()) {
-                        playerTarget = (Player) gymArg.next();
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "endbattle " + playerTarget.getName().toString());
-                        p.sendMessage(ChatColor.GREEN + "You have successfully quit the battle!");
-                    }
-                } else if (args[0].equalsIgnoreCase("closeall") && p.hasPermission("pixelgym.admin")) {
-                    Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + "All " + this.getConfig().getString("config.e4") + " Level\'s are now closed.");
-                    this.getConfig().set("config.e41stat", "Closed");
-                    this.getConfig().set("config.e42stat", "Closed");
-                    this.getConfig().set("config.e43stat", "Closed");
-                    this.getConfig().set("config.e44stat", "Closed");
-                    this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e41colour")) + this.getConfig().getString("config.e41") + " " + this.getConfig().getString("config.e4ab")));
-                    this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e42colour")) + this.getConfig().getString("config.e42") + " " + this.getConfig().getString("config.e4ab")));
-                    this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e43colour")) + this.getConfig().getString("config.e43") + " " + this.getConfig().getString("config.e4ab")));
-                    this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e44colour")) + this.getConfig().getString("config.e44") + " " + this.getConfig().getString("config.e4ab")));
-                }
-            } else if (args.length == 2) {
-                if (args[0].equals("rules") && args[1].equals("e41")) {
-                    if (this.enablee4.equalsIgnoreCase("true")) {
-                        p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
-                        p.sendMessage("");
-                        p.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config.e41rule1"));
-                        p.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config.e41rule2"));
-                        p.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config.e41rule3"));
-                        p.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config.e41rule4"));
-                        p.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config.e41rule5"));
-                    }
-                } else if (args[0].equals("rules") && args[1].equals("e42")) {
-                    if (this.enablee4.equalsIgnoreCase("true")) {
-                        p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
-                        p.sendMessage("");
-                        p.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config.e42rule1"));
-                        p.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config.e42rule2"));
-                        p.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config.e42rule3"));
-                        p.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config.e42rule4"));
-                        p.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config.e42rule5"));
-                    }
-                } else if (args[0].equals("rules") && args[1].equals("e43")) {
-                    if (this.enablee4.equalsIgnoreCase("true")) {
-                        p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
-                        p.sendMessage("");
-                        p.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config.e43rule1"));
-                        p.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config.e43rule2"));
-                        p.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config.e43rule3"));
-                        p.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config.e43rule4"));
-                        p.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config.e43rule5"));
-                    }
-                } else if (args[0].equals("rules") && args[1].equals("e44") && this.enablee4.equalsIgnoreCase("true")) {
-                    p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
-                    p.sendMessage("");
-                    p.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config.e44rule1"));
-                    p.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config.e44rule2"));
-                    p.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config.e44rule3"));
-                    p.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config.e44rule4"));
-                    p.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config.e44rule5"));
-                }
-
-                if (p.hasPermission("pixelgym.e4leader")) {
-                    if (args[0].equalsIgnoreCase("open") && args[1].equalsIgnoreCase("e41") && p.hasPermission("pixelgym.e41") && this.enablee4.equalsIgnoreCase("true")) {
-                        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e41colour")) + "The " + this.getConfig().getString("config.e41") + " " + this.getConfig().getString("config.e4") + " is now " + ChatColor.GREEN + "Open");
-                        this.getConfig().set("config.e41stat", "Open");
-                        p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                        if (this.getConfig().getString("config.scoreboard").equals("True")) {
-                            this.e41.setScore(101);
-                        }
-                    }
-
-                    if (args[0].equalsIgnoreCase("open") && args[1].equalsIgnoreCase("e42") && p.hasPermission("pixelgym.e42") && this.enablee4.equalsIgnoreCase("true")) {
-                        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e42colour")) + "The " + this.getConfig().getString("config.e42") + " " + this.getConfig().getString("config.e4") + " is now " + ChatColor.GREEN + "Open");
-                        this.getConfig().set("config.e42stat", "Open");
-                        p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                        if (this.getConfig().getString("config.scoreboard").equals("True")) {
-                            this.e42.setScore(102);
-                        }
-                    }
-
-                    if (args[0].equalsIgnoreCase("open") && args[1].equalsIgnoreCase("e43") && p.hasPermission("pixelgym.e43") && this.enablee4.equalsIgnoreCase("true")) {
-                        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e43colour")) + "The " + this.getConfig().getString("config.e43") + " " + this.getConfig().getString("config.e4") + " is now " + ChatColor.GREEN + "Open");
-                        this.getConfig().set("config.e43stat", "Open");
-                        p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                        if (this.getConfig().getString("config.scoreboard").equals("True")) {
-                            this.e43.setScore(103);
-                        }
-                    }
-
-                    if (args[0].equalsIgnoreCase("open") && args[1].equalsIgnoreCase("e44") && p.hasPermission("pixelgym.e44") && this.enablee4.equalsIgnoreCase("true")) {
-                        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e44colour")) + "The " + this.getConfig().getString("config.e44") + " " + this.getConfig().getString("config.e4") + " is now " + ChatColor.GREEN + "Open");
-                        this.getConfig().set("config.e44stat", "Open");
-                        p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                        if (this.getConfig().getString("config.scoreboard").equals("True")) {
-                            this.e44.setScore(104);
-                        }
-                    } else if (args[0].equalsIgnoreCase("close") && args[1].equalsIgnoreCase("e41") && p.hasPermission("pixelgym.e41") && this.enablee4.equalsIgnoreCase("true")) {
-                        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e41colour")) + "The " + this.getConfig().getString("config.e41") + " " + this.getConfig().getString("config.e4") + " is now " + ChatColor.RED + "Closed");
-                        this.getConfig().set("config.e41stat", "Closed");
-                        p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                        this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e41colour")) + this.getConfig().getString("config.e41") + " " + this.getConfig().getString("config.e4ab")));
-                    } else if (args[0].equalsIgnoreCase("close") && args[1].equalsIgnoreCase("e42") && p.hasPermission("pixelgym.e42") && this.enablee4.equalsIgnoreCase("true")) {
-                        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e42colour")) + "The " + this.getConfig().getString("config.e42") + " " + this.getConfig().getString("config.e4") + " is now " + ChatColor.RED + "Closed");
-                        this.getConfig().set("config.e42stat", "Closed");
-                        p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                        this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e42colour")) + this.getConfig().getString("config.e42") + " " + this.getConfig().getString("config.e4ab")));
-                    } else if (args[0].equalsIgnoreCase("close") && args[1].equalsIgnoreCase("e43") && p.hasPermission("pixelgym.e43") && this.enablee4.equalsIgnoreCase("true")) {
-                        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e43colour")) + "The " + this.getConfig().getString("config.e43") + " " + this.getConfig().getString("config.e4") + " is now " + ChatColor.RED + "Closed");
-                        this.getConfig().set("config.e43stat", "Closed");
-                        p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                        this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e43colour")) + this.getConfig().getString("config.e43") + " " + this.getConfig().getString("config.e4ab")));
-                    } else if (args[0].equalsIgnoreCase("close") && args[1].equalsIgnoreCase("e44") && p.hasPermission("pixelgym.e44") && this.enablee4.equalsIgnoreCase("true")) {
-                        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e44colour")) + "The " + this.getConfig().getString("config.e44") + " " + this.getConfig().getString("config.e4") + " is now " + ChatColor.RED + "Closed");
-                        this.getConfig().set("config.e44stat", "Closed");
-                        p.sendMessage(ChatColor.GOLD + "The Plugin can be found @ http://dev.bukkit.org/bukkit-plugins/pixelmongym/ ");
-                        this.board.resetScores(Bukkit.getOfflinePlayer(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("config.e44colour")) + this.getConfig().getString("config.e44") + " " + this.getConfig().getString("config.e4ab")));
-                    }
-                }
-            } else if (args.length == 3) {
-                gymArg = Bukkit.getServer().getOnlinePlayers().iterator();
-
-                while (gymArg.hasNext()) {
-                    playerTarget = (Player) gymArg.next();
-                    if (args[0].equalsIgnoreCase("sendrules") && playerTarget.getName().equalsIgnoreCase(args[2]) && p.hasPermission("pixelgym." + args[1])) {
-                        p.sendMessage(ChatColor.GOLD + "Sent " + this.getConfig().getString("config." + args[1]) + " Elite 4 Rules to " + playerTarget.getName().toString());
-                        playerTarget.sendMessage(ChatColor.GOLD + playerTarget.getName().toString() + ", Make sure you read the " + this.getConfig().getString("config." + args[1]) + " Elite 4 rules propperly before facing the Gym!");
-                        playerTarget.sendMessage(ChatColor.GREEN + "1) " + this.getConfig().getString("config." + args[1] + "rule1"));
-                        playerTarget.sendMessage(ChatColor.GREEN + "2) " + this.getConfig().getString("config." + args[1] + "rule2"));
-                        playerTarget.sendMessage(ChatColor.GREEN + "3) " + this.getConfig().getString("config." + args[1] + "rule3"));
-                        playerTarget.sendMessage(ChatColor.GREEN + "4) " + this.getConfig().getString("config." + args[1] + "rule4"));
-                        playerTarget.sendMessage(ChatColor.GREEN + "5) " + this.getConfig().getString("config." + args[1] + "rule5"));
                     }
                 }
             }
