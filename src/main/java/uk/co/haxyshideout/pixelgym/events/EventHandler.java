@@ -39,11 +39,9 @@ public class EventHandler {
     public void onLogin(ClientConnectionEvent.Join event) {
         Player player = event.getTargetEntity();
 
-        System.out.println("test on login "+player.get(PlayerGymInfoData.class));
         //Setup data on entity
         PlayerGymInfoData playerGymInfoData2 = player.getOrCreate(PlayerGymInfoData.class).orElse(new PlayerGymInfoData());
         DataTransactionResult offer = player.offer(playerGymInfoData2);
-        System.out.println("test after offering "+player.get(PlayerGymInfoData.class));
 
         if(PixelGymConfig.getInstance().showJoinMessages()) {
             for (String joinMessage : PixelGymConfig.getInstance().getJoinMessages()) {

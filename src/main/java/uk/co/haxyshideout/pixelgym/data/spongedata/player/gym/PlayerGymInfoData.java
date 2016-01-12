@@ -12,6 +12,8 @@ import com.google.common.collect.Maps;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.data.DataContainer;
 import org.spongepowered.api.data.DataHolder;
+import org.spongepowered.api.data.DataView;
+import org.spongepowered.api.data.MemoryDataContainer;
 import org.spongepowered.api.data.manipulator.mutable.common.AbstractData;
 import org.spongepowered.api.data.merge.MergeFunction;
 import org.spongepowered.api.data.value.ValueFactory;
@@ -19,6 +21,7 @@ import org.spongepowered.api.data.value.mutable.ListValue;
 import org.spongepowered.api.data.value.mutable.MapValue;
 import org.spongepowered.api.data.value.mutable.Value;
 import org.spongepowered.api.item.inventory.ItemStackSnapshot;
+import org.spongepowered.common.data.builder.item.SpongeItemStackSnapshotBuilder;
 import uk.co.haxyshideout.pixelgym.data.spongedata.player.gym.interfaces.IPlayerGymInfoData;
 
 import java.util.List;
@@ -117,26 +120,8 @@ public class PlayerGymInfoData extends AbstractData<PlayerGymInfoData, Immutable
     }
 
     @Override
-    public Optional<PlayerGymInfoData> from(DataContainer container) {//TODO this shit is broken because .contains returns false when it should return true -.-
-        PlayerGymInfoData playerGymInfoData = new PlayerGymInfoData();
-
-        if(container.contains(GYMS_DEFEATED.getQuery())) {
-            playerGymInfoData = playerGymInfoData.set(GYMS_DEFEATED, container.getStringList(GYMS_DEFEATED.getQuery()).get());
-        }
-        if(container.contains(LAST_TIME_CHALLANGED.getQuery())) {
-            playerGymInfoData = playerGymInfoData.set(LAST_TIME_CHALLANGED, (Map<String, String>)container.getMap(LAST_TIME_CHALLANGED.getQuery()).get());
-        }
-        if(container.contains(BADGE_ITEMS.getQuery())) {
-            playerGymInfoData = playerGymInfoData.set(BADGE_ITEMS, (List<ItemStackSnapshot>)container.getList(BADGE_ITEMS.getQuery()).get());
-        }
-        if(container.contains(SCOREBOARD_ENABLED.getQuery())) {
-            playerGymInfoData = playerGymInfoData.set(SCOREBOARD_ENABLED, container.getBoolean(SCOREBOARD_ENABLED.getQuery()).get());
-        }
-        if(!container.contains(GYMS_DEFEATED.getQuery()) && !container.contains(LAST_TIME_CHALLANGED.getQuery()) && !container.contains(BADGE_ITEMS.getQuery()) && !container.contains(SCOREBOARD_ENABLED.getQuery())) {
-            return Optional.empty();
-        }
-
-        return Optional.of(playerGymInfoData);
+    public Optional<PlayerGymInfoData> from(DataContainer container) {
+        return Optional.empty();
     }
 
     @Override
