@@ -32,7 +32,17 @@ public class PixelGymConfig {
         try {
             rootNode = configurationLoader.load();
             loadGyms();
+            saveGyms();
+            configurationLoader.save(rootNode);//Fixs formatting etc
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void saveGyms() {
+        try {
+            rootNode.getNode("Gyms").setValue(new TypeToken<List<GymDataEntry>>() {}, GymData.getInstance().getGymData());
+        } catch (ObjectMappingException e) {
             e.printStackTrace();
         }
     }

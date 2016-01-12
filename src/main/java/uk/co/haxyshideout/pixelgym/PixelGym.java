@@ -29,6 +29,7 @@ import uk.co.haxyshideout.pixelgym.commands.ListRulesCommand;
 import uk.co.haxyshideout.pixelgym.commands.OpenGymCommand;
 import uk.co.haxyshideout.pixelgym.commands.QueuePositionCommand;
 import uk.co.haxyshideout.pixelgym.commands.QuitCommand;
+import uk.co.haxyshideout.pixelgym.commands.ReloadCommand;
 import uk.co.haxyshideout.pixelgym.commands.ScoreboardCommand;
 import uk.co.haxyshideout.pixelgym.commands.SendRulesCommand;
 import uk.co.haxyshideout.pixelgym.commands.TestCommand;
@@ -79,6 +80,7 @@ public class PixelGym {
      * some way for the players to show off badges in world
      * Logging - save won/loss and times challenged to a external log
      * copy the bloody config file
+     * Ability to set pokemon for the gym + badge etc ingame via commands
      */
 
     private void registerCommands() {
@@ -127,6 +129,7 @@ public class PixelGym {
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
                         GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
                 ).build();
+        CommandSpec reloadCommand = CommandSpec.builder().executor(new ReloadCommand()).permission("pixelgym.admin").build();
 
 
         CommandSpec mainCommand = CommandSpec.builder()
@@ -144,6 +147,7 @@ public class PixelGym {
                 .child(healCommand, "heal")
                 .child(quitCommand, "quit")
                 .child(giveBadgeCommand, "givebadge")
+                .child(reloadCommand, "reload")
                 .build();
         Sponge.getCommandManager().register(this, mainCommand, "gym");
 

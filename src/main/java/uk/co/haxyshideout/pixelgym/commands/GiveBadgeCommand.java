@@ -42,7 +42,8 @@ public class GiveBadgeCommand implements CommandExecutor {
         playerGymInfoData.setBadgeItems(badges);
         targetPlayer.offer(playerGymInfoData);
 
-        src.sendMessage(Text.of(TextColors.GREEN, "Gave "+targetPlayer.getName()+" the "+gymDataEntry.getName()+" Badge"));
+        src.sendMessage(Text.of(TextColors.GREEN, "You gave "+targetPlayer.getName()+" the ", gymDataEntry.getColour(), gymDataEntry.getName()," Badge"));
+        targetPlayer.sendMessage(Text.of(TextColors.GREEN, "You was given the ", gymDataEntry.getColour(), gymDataEntry.getName(), " Badge"));
 
         return CommandResult.success();
     }

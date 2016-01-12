@@ -41,7 +41,7 @@ public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> 
         if(!entryFee.isVirtual()) {
             gymDataEntry.setEntryFee(entryFee.getInt());
         }
-        ConfigurationNode previousGym = value.getNode("PreviousGym");
+        ConfigurationNode previousGym = value.getNode("PreviousGyms");
         if(!previousGym.isVirtual()) {
             gymDataEntry.setPreviousGymNames(previousGym.getList(new TypeToken<String>() {}));
         }
@@ -68,7 +68,7 @@ public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> 
          */
         commentedValue.getNode("CoolDown").setComment("The time in minutes that a player must wait to challenge the gym after losing.").setValue(obj.getCoolDownTime().orElse(null));
         commentedValue.getNode("EntryFee").setComment("The entry fee for the gym that the player must pay.").setValue(obj.getEntryFee().orElse(null));
-        commentedValue.getNode("PreviousGym").setComment("The names of the gyms that the player must of beaten to challenge this gym.").setValue(obj.getDependsOnCompletingNames().orElse(null));
+        commentedValue.getNode("PreviousGyms").setComment("The names of the gyms that the player must of beaten to challenge this gym.").setValue(obj.getDependsOnCompletingNames().orElse(null));
     }
 
 }
