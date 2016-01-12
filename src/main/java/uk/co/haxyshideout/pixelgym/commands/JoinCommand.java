@@ -44,10 +44,12 @@ public class JoinCommand implements CommandExecutor {
 
         GymDataEntry gymDataEntry = gymDataEntryOptional.get();
 
-        Optional<String> dependsOnCompleting = gymDataEntry.getDependsOnCompletingName();
+        Optional<List<String>> dependsOnCompleting = gymDataEntry.getDependsOnCompletingNames();
         if(dependsOnCompleting.isPresent()) {
-            if(!completedGyms.contains(dependsOnCompleting.get())) {
-                player.sendMessage(Text.of(TextColors.RED, "You can not challenge this gym as you have not beat the "+dependsOnCompleting.get()+" Gym"));
+            if(!completedGyms.containsAll(dependsOnCompleting.get())) {
+                List<String> missingGyms = dependsOnCompleting.get();
+                missingGyms.removeAll(completedGyms);
+                player.sendMessage(Text.of(TextColors.RED, "You can not challenge this gym as you have not beat the "+missingGyms.toString()+" Gyms"));//TODO test with more than one gym
                 return CommandResult.empty();
             }
         }

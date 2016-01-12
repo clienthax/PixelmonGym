@@ -2,10 +2,8 @@ package uk.co.haxyshideout.pixelgym.data;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import org.spongepowered.api.data.DataContainer;
 import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.item.ItemType;
-import org.spongepowered.api.item.ItemTypes;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.item.inventory.ItemStackSnapshot;
 import org.spongepowered.api.text.Text;
@@ -42,7 +40,7 @@ public class GymDataEntry {
      */
     Optional<Integer> entryFee = Optional.empty();
     Optional<Integer> cooldownTime = Optional.empty();//in minutes
-    Optional<String> previousGymName = Optional.empty();
+    Optional<List<String>> previousGymNames = Optional.empty();
 
     /**
      * Non config related vars
@@ -125,18 +123,8 @@ public class GymDataEntry {
         return Optional.empty();
     }
 
-    public Optional<GymDataEntry> getDependsOnCompletingData() {
-        if(previousGymName.isPresent()) {
-            return GymData.getInstance().getGymData(previousGymName.get());
-        }
-        return Optional.empty();
-    }
-
-    public Optional<String> getDependsOnCompletingName() {
-        if(previousGymName.isPresent())
-            return Optional.of(previousGymName.get());
-        else
-            return Optional.empty();
+    public Optional<List<String>> getDependsOnCompletingNames() {
+        return previousGymNames;
     }
 
     public void setGymPokemon(List<GymPokemonEntry> gymPokemon) {
@@ -199,10 +187,6 @@ public class GymDataEntry {
         return entryFee;
     }
 
-    public void setPreviousGym(GymDataEntry previousGym) {
-        this.previousGymName = Optional.of(previousGym.getName());
-    }
-
     public void setCoolDown(int coolDown) {
         this.cooldownTime = Optional.of(coolDown);
     }
@@ -211,8 +195,8 @@ public class GymDataEntry {
         this.entryFee = Optional.of(entryFee);
     }
 
-    public void setPreviousGymName(String previousGymName) {
-        this.previousGymName = Optional.of(previousGymName);
+    public void setPreviousGymNames(List<String> previousGymNames) {
+        this.previousGymNames = Optional.of(previousGymNames);
     }
 
     public int getBadgeItemDamageValue() {

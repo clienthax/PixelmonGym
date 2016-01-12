@@ -5,17 +5,13 @@ import ninja.leaping.configurate.ConfigurationNode;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 import ninja.leaping.configurate.objectmapping.serialize.TypeSerializer;
-import org.spongepowered.api.data.value.mutable.Value;
 import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.text.format.TextColor;
-import org.spongepowered.api.text.format.TextColors;
 import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
 import uk.co.haxyshideout.pixelgym.data.GymPokemonEntry;
 
 import java.util.List;
 import java.util.UUID;
-
-import javax.annotation.Nullable;
 
 public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> {
 
@@ -47,7 +43,7 @@ public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> 
         }
         ConfigurationNode previousGym = value.getNode("PreviousGym");
         if(!previousGym.isVirtual()) {
-            gymDataEntry.setPreviousGymName(previousGym.getString());
+            gymDataEntry.setPreviousGymNames(previousGym.getList(new TypeToken<String>() {}));
         }
         return gymDataEntry;
     }
@@ -72,7 +68,7 @@ public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> 
          */
         commentedValue.getNode("CoolDown").setComment("The time in minutes that a player must wait to challenge the gym after losing.").setValue(obj.getCoolDownTime().orElse(null));
         commentedValue.getNode("EntryFee").setComment("The entry fee for the gym that the player must pay.").setValue(obj.getEntryFee().orElse(null));
-        commentedValue.getNode("PreviousGym").setComment("The name of the gym that the player must of beaten to challenge this gym.").setValue(obj.getDependsOnCompletingName().orElse(null));
+        commentedValue.getNode("PreviousGym").setComment("The names of the gyms that the player must of beaten to challenge this gym.").setValue(obj.getDependsOnCompletingNames().orElse(null));
     }
 
 }
