@@ -2,6 +2,7 @@ package uk.co.haxyshideout.pixelgym.data;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import org.spongepowered.api.data.DataContainer;
 import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.item.ItemTypes;
@@ -11,6 +12,7 @@ import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColor;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.text.format.TextStyles;
+import org.spongepowered.common.data.util.DataQueries;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,8 +32,9 @@ public class GymDataEntry {
     List<GymPokemonEntry> gymPokemon;
     List<UUID> gymLeaders = Collections.singletonList(UUID.fromString("00000000-0000-0000-0000-000000000000"));//Dummy value so the config looks sane
     TextColor gymColour;
-    ItemType badgeItemType;
+    ItemType badgeItemType;//Needs to have the varient somewhere too..
     int levelCap;
+    int badgeItemDamageValue;
     //TODO warp locations for battle start / exit - store as xyz/worlduuid, to avoid world refs use optional
 
     /**
@@ -44,7 +47,7 @@ public class GymDataEntry {
     /**
      * Non config related vars
      */
-    boolean currentlyOpen = true;//TODO set back to false after tests
+    boolean currentlyOpen = false;
     List<UUID> onlineLeaders = Lists.newArrayList();
     List<UUID> playerQueue = Lists.newArrayList();
 
@@ -54,13 +57,14 @@ public class GymDataEntry {
     }
 
     public ItemStackSnapshot makeBadge(Text leaderName) {
-        ItemStack itemStack = ItemStack.builder().itemType(ItemTypes.POTATO).quantity(1).build();
+        ItemStack itemStack = ItemStack.builder().fromContainer(ItemStack.builder().itemType(getBadgeItemType()).quantity(1).build().toContainer().set(DataQueries.ITEM_DAMAGE_VALUE, getBadgeItemDamageValue())).build();
         itemStack.offer(Keys.DISPLAY_NAME, Text.of(getColour(), TextStyles.BOLD, getName()+" Badge"));
         List<Text> lore = Lists.newArrayList();
         lore.add(Text.of(TextColors.GOLD, "Date/Time Won: ", TextColors.GREEN, ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME)));
         lore.add(Text.of(TextColors.GOLD, "Gym Leader: ",TextColors.GREEN, leaderName));
         itemStack.offer(Keys.ITEM_LORE, lore);
-        return itemStack.createSnapshot();
+        ItemStackSnapshot snapshot = itemStack.createSnapshot();
+        return snapshot;
     }
 
     public boolean isEnabled() {
@@ -151,6 +155,10 @@ public class GymDataEntry {
         this.enabled = enabled;
     }
 
+    public void setBadgeItemDamageValue(int badgeItemDamageValue) {
+        this.badgeItemDamageValue = badgeItemDamageValue;
+    }
+
     public void setBadgeItemType(ItemType badgeItemType) {
         this.badgeItemType = badgeItemType;
     }
@@ -207,4 +215,7 @@ public class GymDataEntry {
         this.previousGymName = Optional.of(previousGymName);
     }
 
+    public int getBadgeItemDamageValue() {
+        return badgeItemDamageValue;
+    }
 }

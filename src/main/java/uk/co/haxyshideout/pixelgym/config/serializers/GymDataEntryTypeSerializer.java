@@ -19,16 +19,24 @@ import javax.annotation.Nullable;
 
 public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> {
 
-    @Override public GymDataEntry deserialize(TypeToken<?> type, ConfigurationNode value) throws ObjectMappingException {
+    @Override
+    public GymDataEntry deserialize(TypeToken<?> type, ConfigurationNode value) throws ObjectMappingException {
         GymDataEntry gymDataEntry = new GymDataEntry();
+        /**
+         * Required config vars
+         */
         gymDataEntry.setName(value.getNode("Name").getString());
         gymDataEntry.setGymColour(value.getNode("Colour").getValue(new TypeToken<TextColor>() {}));
         gymDataEntry.setEnabled(value.getNode("Enabled").getBoolean());
         gymDataEntry.setBadgeItemType(value.getNode("BadgeItem").getValue(new TypeToken<ItemType>() {}));
+        gymDataEntry.setBadgeItemDamageValue(value.getNode("BadgeItemDamageValue").getInt());
         gymDataEntry.setLevelCap(value.getNode("LevelCap").getInt());
         gymDataEntry.setRules(value.getNode("Rules").getList(new TypeToken<String>() {}));
         gymDataEntry.setGymPokemon(value.getNode("Pokemon").getList(new TypeToken<GymPokemonEntry>() {}));
         gymDataEntry.setGymLeaders(value.getNode("GymLeaders").getList(new TypeToken<UUID>() {}));
+        /**
+         * Optional config vars
+         */
         ConfigurationNode coolDown = value.getNode("CoolDown");
         if(!coolDown.isVirtual()) {
             gymDataEntry.setCoolDown(coolDown.getInt());
@@ -44,7 +52,8 @@ public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> 
         return gymDataEntry;
     }
 
-    @Override public void serialize(TypeToken<?> type, GymDataEntry obj, ConfigurationNode value) throws ObjectMappingException {
+    @Override
+    public void serialize(TypeToken<?> type, GymDataEntry obj, ConfigurationNode value) throws ObjectMappingException {
         CommentedConfigurationNode commentedValue = (CommentedConfigurationNode) value;//Naughty but should be fine as we should be the only plugin using this..
         /**
          * Required config vars
@@ -53,6 +62,7 @@ public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> 
         commentedValue.getNode("Colour").setComment("The colour you want the gym's name to appear as.\n Possible values: NONE, BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE").setValue(new TypeToken<TextColor>() {}, obj.getColour());//TODO should we use TextColours for this instead, would prob be much easier
         commentedValue.getNode("Enabled").setComment("Enables the gym.").setValue(obj.isEnabled());
         commentedValue.getNode("BadgeItem").setComment("The name of the item to reward winners, in the format \"minecraft:chicken\".").setValue(new TypeToken<ItemType>() {}, obj.getBadgeItemType());
+        commentedValue.getNode("BadgeItemDamageValue").setComment("The damage value of the item to reward winners.").setValue(obj.getBadgeItemDamageValue());
         commentedValue.getNode("LevelCap").setComment("The level cap for this gym.").setValue(obj.getLevelCap());
         commentedValue.getNode("Rules").setComment("The list of rules for this gym.").setValue(obj.getRules());
         commentedValue.getNode("Pokemon").setComment("The list of pokemon for this gym.").setValue(new TypeToken<List<GymPokemonEntry>>() {}, obj.getGymPokemon());
