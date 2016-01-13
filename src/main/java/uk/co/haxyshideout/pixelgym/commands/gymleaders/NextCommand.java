@@ -11,10 +11,11 @@ import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 import uk.co.haxyshideout.pixelgym.data.GymData;
 import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
+import uk.co.haxyshideout.pixelgym.utils.GymUtils;
 
 import java.util.Optional;
 
-public class OpenGymCommand implements CommandExecutor {
+public class NextCommand implements CommandExecutor {
 
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
@@ -31,18 +32,33 @@ public class OpenGymCommand implements CommandExecutor {
 
         GymDataEntry gymDataEntry = gymDataEntryOptional.get();
         if(!gymDataEntry.isEnabled()) {
-            src.sendMessage(Text.of("This gym is disabled in the config, you can not open it"));
+            src.sendMessage(Text.of("This gym is disabled in the config"));
             return CommandResult.empty();
         }
 
         if(!gymDataEntry.getOnlineLeaders().contains(player.getUniqueId())) {
-            src.sendMessage(Text.of("You are not a leader of this gym, you can not open it"));
+            src.sendMessage(Text.of("You are not a leader of this gym, you can not use this command"));
             return CommandResult.empty();
         }
 
-        gymDataEntry.setCurrentlyOpen(true);
-        gymDataEntry.getInsideWarp().ifPresent(warpEntry -> warpEntry.attemptWarp(player));
-        Sponge.getServer().getBroadcastChannel().send(Text.of(TextColors.GREEN, "The ",gymDataEntry.getFormattedGymName()," is now open"));
+        if(!gymDataEntry.isCurrentlyOpen()) {
+            src.sendMessage(Text.of("This gym is not open."));
+            return CommandResult.empty();
+        }
+
+        if(!gymDataEntry.getPlayerQueue().isEmpty()) {
+            Optional<Player> challengerOptional = Sponge.getServer().getPlayer(gymDataEntry.getPlayerQueue().get(0));
+            if(challengerOptional.isPresent()) {
+                Player challenger = challengerOptional.get();
+                gymDataEntry.getInsideWarp().ifPresent(warpEntry -> warpEntry.attemptWarp(challenger));
+                GymUtils.updateChallengedTime(challenger, gymDataEntry.getName());
+                gymDataEntry.sendRules(challenger);
+                src.sendMessage(Text.of(TextColors.GREEN, "Challenger ", challenger.getName(), " was teleported to the gym"));
+            } else {
+                src.sendMessage(Text.of(TextColors.RED, "Unable to get player, removing from queue."));
+            }
+            gymDataEntry.getPlayerQueue().remove(0);
+        }
 
         return CommandResult.success();
     }

@@ -6,13 +6,16 @@ import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 import ninja.leaping.configurate.objectmapping.serialize.TypeSerializer;
 import uk.co.haxyshideout.pixelgym.data.GymPokemonEntry;
 
+import java.util.List;
+
 public class GymPokemonEntryTypeSerializer implements TypeSerializer<GymPokemonEntry> {
 
     @Override
-    public GymPokemonEntry deserialize(TypeToken<?> type, ConfigurationNode value) throws ObjectMappingException {//TODO add moves to this
+    public GymPokemonEntry deserialize(TypeToken<?> type, ConfigurationNode value) throws ObjectMappingException {
         GymPokemonEntry gymPokemonEntry = new GymPokemonEntry();
         gymPokemonEntry.setPokemonName(value.getNode("Name").getString());
         gymPokemonEntry.setPokemonLevel(Math.max(1, value.getNode("Level").getInt()));
+        gymPokemonEntry.setMoveList(value.getNode("Moves").getList(new TypeToken<String>() {}));
         return gymPokemonEntry;
     }
 
@@ -24,5 +27,6 @@ public class GymPokemonEntryTypeSerializer implements TypeSerializer<GymPokemonE
         }
         value.getNode("Name").setValue(obj.getPokemonName());
         value.getNode("Level").setValue(obj.getLevel());
+        value.getNode("Moves").setValue(new TypeToken<List<String>>() {}, obj.getMoveList());
     }
 }

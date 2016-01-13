@@ -17,9 +17,15 @@ import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.service.economy.EconomyService;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
+import uk.co.haxyshideout.pixelgym.commands.admin.AddLeaderCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.CloseAllCommand;
+import uk.co.haxyshideout.pixelgym.commands.admin.DelLeaderCommand;
+import uk.co.haxyshideout.pixelgym.commands.admin.DelWarpCommand;
+import uk.co.haxyshideout.pixelgym.commands.admin.SetLevelCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.SetWarpCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.TestWarpCommand;
+import uk.co.haxyshideout.pixelgym.commands.admin.WipePlayerDataCommand;
+import uk.co.haxyshideout.pixelgym.commands.all.HelpCommand;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.CloseGymCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.GiveBadgeCommand;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.HealCommand;
@@ -28,6 +34,8 @@ import uk.co.haxyshideout.pixelgym.commands.all.LeadersCommand;
 import uk.co.haxyshideout.pixelgym.commands.all.LeaveCommand;
 import uk.co.haxyshideout.pixelgym.commands.all.ListCommand;
 import uk.co.haxyshideout.pixelgym.commands.all.ListRulesCommand;
+import uk.co.haxyshideout.pixelgym.commands.gymleaders.LoseCommand;
+import uk.co.haxyshideout.pixelgym.commands.gymleaders.NextCommand;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.OpenGymCommand;
 import uk.co.haxyshideout.pixelgym.commands.all.QueuePositionCommand;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.QuitCommand;
@@ -35,6 +43,7 @@ import uk.co.haxyshideout.pixelgym.commands.admin.ReloadCommand;
 import uk.co.haxyshideout.pixelgym.commands.all.ScoreboardCommand;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.SendRulesCommand;
 import uk.co.haxyshideout.pixelgym.commands.TestCommand;
+import uk.co.haxyshideout.pixelgym.commands.gymleaders.WinCommand;
 import uk.co.haxyshideout.pixelgym.config.PixelGymConfig;
 import uk.co.haxyshideout.pixelgym.config.serializers.GymDataEntryTypeSerializer;
 import uk.co.haxyshideout.pixelgym.config.serializers.GymPokemonEntryTypeSerializer;
@@ -87,6 +96,7 @@ public class PixelGym {
      * copy the bloody config file
      * Ability to set pokemon for the gym + badge etc ingame via commands
      * Clean up command classes due to required gymnames etc causing a lot of duplicated code
+     * When awarding a badge from a leader, make sure the player challenged the gym in the last 20mins
      */
 
     private void registerCommands() {
@@ -133,6 +143,25 @@ public class PixelGym {
                 ).build();
         CommandSpec healCommand = CommandSpec.builder().executor(new HealCommand()).build();
         CommandSpec quitCommand = CommandSpec.builder().executor(new QuitCommand()).build();
+        CommandSpec removeCommand = CommandSpec.builder().executor(new GiveBadgeCommand())
+                .arguments(
+                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))
+                ).build();
+        CommandSpec nextCommand = CommandSpec.builder().executor(new NextCommand())
+                .arguments(
+                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                ).build();
+        CommandSpec winCommand = CommandSpec.builder().executor(new WinCommand())
+                .arguments(
+                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))
+                ).build();
+        CommandSpec loseCommand = CommandSpec.builder().executor(new LoseCommand())
+                .arguments(
+                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))
+                ).build();
 
         /**
          * Admin commands
@@ -154,11 +183,35 @@ public class PixelGym {
                         GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.string(Text.of("warpName")))
                 ).build();
+        CommandSpec delWarpCommand = CommandSpec.builder().executor(new DelWarpCommand()).permission("pixelgym.admin")
+                .arguments(
+                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(GenericArguments.string(Text.of("warpName")))
+                ).build();
+        CommandSpec wipePlayerDataCommand = CommandSpec.builder().executor(new WipePlayerDataCommand()).permission("pixelgym.admin")
+                .arguments(
+                        GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))
+                ).build();
+        CommandSpec addLeaderCommand = CommandSpec.builder().executor(new AddLeaderCommand()).permission("pixelgym.admin")
+                .arguments(
+                        GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
+                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                ).build();
+        CommandSpec delLeaderCommand = CommandSpec.builder().executor(new DelLeaderCommand()).permission("pixelgym.admin")
+                .arguments(
+                        GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
+                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                ).build();
+        CommandSpec setLevelCapCommand = CommandSpec.builder().executor(new SetLevelCommand()).permission("pixelgym.admin")
+                .arguments(
+                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(GenericArguments.integer(Text.of("levelCap")))
+                ).build();
 
         /**
          * Register all the sub commands onto the "gym" command
          */
-        CommandSpec mainCommand = CommandSpec.builder()
+        CommandSpec mainCommand = CommandSpec.builder().executor(new HelpCommand())
                 .child(leadersCommand, "leaders")
                 .child(listCommand, "list")
                 .child(sendRulesCommand, "sendrules")
@@ -175,8 +228,18 @@ public class PixelGym {
                 .child(giveBadgeCommand, "givebadge")
                 .child(reloadCommand, "reload")
                 .child(setWarpCommand, "setwarp")
+                .child(delWarpCommand, "delwarp")
                 .child(testWarpCommand, "testwarp")
-                .build();//TODO Needs a wipedata command to wipe someones data completly
+                .child(wipePlayerDataCommand, "wipeplayerdata")
+                .child(removeCommand, "remove")
+                .child(nextCommand, "next")
+                .child(winCommand, "setwinner")
+                .child(loseCommand, "setlosser")
+                .child(addLeaderCommand, "addleader")
+                .child(delLeaderCommand, "delleader")
+                .child(setLevelCapCommand, "setlevelcap")
+                //TODO see command when inv events work..
+                .build();
         Sponge.getCommandManager().register(this, mainCommand, "gym");
 
         CommandSpec testCommand = CommandSpec.builder().executor(new TestCommand()).build();
@@ -201,6 +264,7 @@ public class PixelGym {
         economyService = Sponge.getServiceManager().provide(EconomyService.class);
         if(!economyService.isPresent()) {
             logger.error("No economy service implementation found, please add a economy plugin to your server");
+            logger.error("Gym entry fee's will be ignored for this run");
         }
     }
 

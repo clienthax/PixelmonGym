@@ -815,22 +815,12 @@ public class PixelGym {
                     p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
                     p.sendMessage("");
                     p.sendMessage(ChatColor.GREEN + "/gym <see | check> [Player]" + ChatColor.DARK_GREEN + " - Shows the gym badge case of a specific player. | = or, you can type see or check.");
-                    p.sendMessage(ChatColor.GREEN + "/gym next <gym#>" + ChatColor.DARK_GREEN + " - Grabs the first person of the specified gym queue and teleports them to the gym. (It also displays the gym rules for them in chat, so you don\'t need to)");
-                    p.sendMessage(ChatColor.GREEN + "/gym remove <gym#>" + ChatColor.DARK_GREEN + " - Remove\'s the first person of the specified gym queue (If someone has disconnected and does not relog after a while)");
-                    p.sendMessage(ChatColor.GREEN + "/gym <winner | win | w> <gym#> [Player]" + ChatColor.DARK_GREEN + " - Sets the gym challeger to a winner, giving them the badge for the next gym!");
-                    p.sendMessage(ChatColor.GREEN + "/gym <lost | lose | l> <gym#> [Player]" + ChatColor.DARK_GREEN + " - Sets the gym challeger to a loser, teleporting them out of the gym and giving them a 1 hour cooldown!");
                     p.sendMessage("");
                     p.sendMessage(ChatColor.RED + "Plugin Made By " + ChatColor.GOLD + "ABkayCkay");
                 } else if (p.hasPermission("pixelgym.admin")) {
                     p.sendMessage(ChatColor.GOLD + "----- PixelmonGyms -----");
                     p.sendMessage("");
                     p.sendMessage(ChatColor.GREEN + "/gym <see | check> [Player]" + ChatColor.DARK_GREEN + " - Shows the gym badge case of a specific player. | = or, you can type see or check.");
-                    p.sendMessage(ChatColor.GREEN + "/gym next <gym#>" + ChatColor.DARK_GREEN + " - Grabs the first person of the specified gym queue and teleports them to the gym. (It also displays the gym rules for them in chat, so you don\'t need to)");
-                    p.sendMessage(ChatColor.GREEN + "/gym remove <gym#>" + ChatColor.DARK_GREEN + " - Remove\'s the first person of the specified gym queue (If someone has disconnected and does not relog after a while)");
-                    p.sendMessage(ChatColor.GREEN + "/gym <winner | win | w> <gym#> [Player]" + ChatColor.DARK_GREEN + " - Sets the gym challeger to a winner, giving them the badge for the next gym!");
-                    p.sendMessage(ChatColor.GREEN + "/gym setwarp <gym#>" + ChatColor.DARK_GREEN + " - Used for the queue system, set a warp that is only a number. E.G: /gym setwarp 1 in the gym1 challanger spot.");
-                    p.sendMessage(ChatColor.GREEN + "/gym delwarp <gym#>" + ChatColor.DARK_GREEN + " - Used for the queue system, delete a warp that you no longer need. E.G: /gym delwarp 1 to remove the gym1 teleport.");
-                    p.sendMessage(ChatColor.GREEN + "/gym warp [warp name]" + ChatColor.DARK_GREEN + " - Warp to a gym warp! (For testing teleport locations of the queue system).");
                 }
             } else {
                 int playerLost;

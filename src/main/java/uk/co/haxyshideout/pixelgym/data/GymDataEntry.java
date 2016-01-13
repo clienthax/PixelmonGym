@@ -66,6 +66,13 @@ public class GymDataEntry {
         return itemStack.createSnapshot();
     }
 
+    public void sendRules(Player challenger) {
+        challenger.sendMessage(Text.of(TextColors.GOLD, challenger.getName()+", Make sure you read the rules before facing the ", getFormattedGymName()));
+        for(String rule : getRules()) {
+            challenger.sendMessage(Text.of(TextColors.AQUA, rule));
+        }
+    }
+
     /**
      * Returns the coloured gym name in the format "Rock Gym"
      * @return the formatted gym name
@@ -91,7 +98,7 @@ public class GymDataEntry {
     }
 
     /**
-     * Utils method for setting the warp from a players current location and rotation
+     * GymUtils method for setting the warp from a players current location and rotation
      * @param player the player to set from
      */
     public void setInsideWarp(Player player) {
@@ -103,11 +110,11 @@ public class GymDataEntry {
     }
 
     public void setInsideWarp(WarpEntry warpEntry) {
-        insideWarp = Optional.of(warpEntry);
+        insideWarp = Optional.ofNullable(warpEntry);
     }
 
     public void setOutsideWarp(WarpEntry warpEntry) {
-        outsideWarp = Optional.of(warpEntry);
+        outsideWarp = Optional.ofNullable(warpEntry);
     }
 
     public boolean isEnabled() {
@@ -252,4 +259,11 @@ public class GymDataEntry {
         return playerQueue.remove(uniqueId);
     }
 
+    public void addLeader(UUID uniqueId) {
+        gymLeaders.add(uniqueId);
+    }
+
+    public void removeLeader(UUID uniqueId) {
+        gymLeaders.remove(uniqueId);
+    }
 }

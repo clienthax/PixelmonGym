@@ -49,7 +49,7 @@ public class ScoreboardData {
         List<Text> lines = Lists.newArrayListWithCapacity(15);
         int openGymAmount = 0;
         for (GymDataEntry gymDataEntry : GymData.getInstance().getGymData()) {
-            if(gymDataEntry.currentlyOpen && !defeatedGyms.contains(gymDataEntry.getName())) {
+            if(gymDataEntry.isCurrentlyOpen() && !defeatedGyms.contains(gymDataEntry.getName())) {
                 lines.add(Text.of(gymDataEntry.getColour(), gymDataEntry.getName()));
                 openGymAmount++;
             }

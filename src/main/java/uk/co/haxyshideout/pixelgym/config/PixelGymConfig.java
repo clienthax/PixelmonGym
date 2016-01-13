@@ -69,6 +69,10 @@ public class PixelGymConfig {
         return rootNode.getNode("General", "EnableJoinMessages").getBoolean();
     }
 
+    /**
+     * If this is enabled we need to move all the players party pokemon into their pc and then give them the gym pokemon
+     * @return
+     */
     public boolean enforceGymPokemon() {
         return rootNode.getNode("General", "EnforceGymPokemon").getBoolean();
     }

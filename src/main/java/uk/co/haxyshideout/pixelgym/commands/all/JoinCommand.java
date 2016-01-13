@@ -14,13 +14,12 @@ import org.spongepowered.api.service.economy.transaction.ResultType;
 import org.spongepowered.api.service.economy.transaction.TransactionResult;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
-import org.spongepowered.api.text.format.TextStyles;
 import uk.co.haxyshideout.pixelgym.PixelGym;
 import uk.co.haxyshideout.pixelgym.data.GymData;
 import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
 import uk.co.haxyshideout.pixelgym.data.spongedata.player.gym.PlayerGymInfoData;
 import uk.co.haxyshideout.pixelgym.data.spongedata.player.gym.PlayerGymInfoKeys;
-import uk.co.haxyshideout.pixelgym.utils.Utils;
+import uk.co.haxyshideout.pixelgym.utils.GymUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -56,7 +55,7 @@ public class JoinCommand implements CommandExecutor {
         /**
          * Check if the player has to wait before challenging this gym again
          */
-        Optional<Integer> remainingCooldownMinutes = Utils.getRemainingCooldownMinutes(playerGymData, gymName);
+        Optional<Integer> remainingCooldownMinutes = GymUtils.getRemainingCooldownMinutes(playerGymData, gymName);
         if(remainingCooldownMinutes.isPresent()) {
             player.sendMessage(Text.of("You must wait "+remainingCooldownMinutes.get()+" minutes before you can challenge the ", gymDataEntry.getColour(), gymName +" Gym", TextColors.RESET, " again."));
             return CommandResult.empty();
