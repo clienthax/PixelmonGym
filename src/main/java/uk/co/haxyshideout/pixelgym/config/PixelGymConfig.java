@@ -32,8 +32,18 @@ public class PixelGymConfig {
         try {
             rootNode = configurationLoader.load();
             loadGyms();
+            saveConfig();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveConfig() {
+        try {
             saveGyms();
-            configurationLoader.save(rootNode);//Fixs formatting etc
+            configurationLoader.save(rootNode);
+            rootNode = configurationLoader.load();
+            loadGyms();
         } catch (IOException e) {
             e.printStackTrace();
         }

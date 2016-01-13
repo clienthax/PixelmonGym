@@ -1,4 +1,4 @@
-package uk.co.haxyshideout.pixelgym.commands;
+package uk.co.haxyshideout.pixelgym.commands.gymleaders;
 
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandException;
@@ -14,7 +14,7 @@ import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
 
 import java.util.Optional;
 
-public class OpenGymCommand implements CommandExecutor {
+public class CloseGymCommand implements CommandExecutor {
 
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
@@ -30,18 +30,13 @@ public class OpenGymCommand implements CommandExecutor {
         }
 
         GymDataEntry gymDataEntry = gymDataEntryOptional.get();
-        if(!gymDataEntry.isEnabled()) {
-            src.sendMessage(Text.of("This gym is disabled in the config, you can not open it"));
-            return CommandResult.empty();
-        }
-
         if(!gymDataEntry.getOnlineLeaders().contains(player.getUniqueId())) {
             src.sendMessage(Text.of("You are not a leader of this gym, you can not open it"));
             return CommandResult.empty();
         }
 
-        gymDataEntry.setCurrentlyOpen(true);
-        Sponge.getServer().getBroadcastChannel().send(Text.of(TextColors.GREEN, "The "+gymDataEntry.getName()+" Gym is now open"));
+        gymDataEntry.setCurrentlyOpen(false);
+        Sponge.getServer().getBroadcastChannel().send(Text.of(TextColors.RED, "The ", gymDataEntry.getFormattedGymName(), " is now closed"));
 
 
         return CommandResult.success();

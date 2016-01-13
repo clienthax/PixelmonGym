@@ -9,7 +9,7 @@ import uk.co.haxyshideout.pixelgym.data.GymPokemonEntry;
 public class GymPokemonEntryTypeSerializer implements TypeSerializer<GymPokemonEntry> {
 
     @Override
-    public GymPokemonEntry deserialize(TypeToken<?> type, ConfigurationNode value) throws ObjectMappingException {
+    public GymPokemonEntry deserialize(TypeToken<?> type, ConfigurationNode value) throws ObjectMappingException {//TODO add moves to this
         GymPokemonEntry gymPokemonEntry = new GymPokemonEntry();
         gymPokemonEntry.setPokemonName(value.getNode("Name").getString());
         gymPokemonEntry.setPokemonLevel(Math.max(1, value.getNode("Level").getInt()));

@@ -1,4 +1,4 @@
-package uk.co.haxyshideout.pixelgym.commands;
+package uk.co.haxyshideout.pixelgym.commands.all;
 
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;

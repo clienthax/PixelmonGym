@@ -1,4 +1,4 @@
-package uk.co.haxyshideout.pixelgym.commands;
+package uk.co.haxyshideout.pixelgym.commands.all;
 
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
@@ -29,9 +29,9 @@ public class LeaveCommand implements CommandExecutor {
         GymDataEntry gymDataEntry = gymDataEntryOptional.get();
         if (gymDataEntry.getPlayerQueue().contains(player.getUniqueId())) {
             gymDataEntry.getPlayerQueue().remove(player.getUniqueId());
-            player.sendMessage(Text.of("Removed from the queue for "+gymDataEntry.getName()+" Gym"));
+            player.sendMessage(Text.of("Removed from the queue for ", gymDataEntry.getFormattedGymName()));
         } else {
-            player.sendMessage(Text.of("You are not in the queue for "+gymDataEntry.getName()+" Gym"));
+            player.sendMessage(Text.of("You are not in the queue for ", gymDataEntry.getFormattedGymName()));
         }
 
         return CommandResult.success();

@@ -1,4 +1,4 @@
-package uk.co.haxyshideout.pixelgym.commands;
+package uk.co.haxyshideout.pixelgym.commands.admin;
 
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
@@ -42,8 +42,8 @@ public class GiveBadgeCommand implements CommandExecutor {
         playerGymInfoData.setBadgeItems(badges);
         targetPlayer.offer(playerGymInfoData);
 
-        src.sendMessage(Text.of(TextColors.GREEN, "You gave "+targetPlayer.getName()+" the ", gymDataEntry.getColour(), gymDataEntry.getName()," Badge"));
-        targetPlayer.sendMessage(Text.of(TextColors.GREEN, "You was given the ", gymDataEntry.getColour(), gymDataEntry.getName(), " Badge"));
+        src.sendMessage(Text.of(TextColors.GREEN, "You gave "+targetPlayer.getName()+" the ", gymDataEntry.getFormattedBadgeName()));
+        targetPlayer.sendMessage(Text.of(TextColors.GREEN, "You was given the ", gymDataEntry.getFormattedBadgeName()));
 
         return CommandResult.success();
     }

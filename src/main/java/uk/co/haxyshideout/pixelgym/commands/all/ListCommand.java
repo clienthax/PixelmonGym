@@ -1,4 +1,4 @@
-package uk.co.haxyshideout.pixelgym.commands;
+package uk.co.haxyshideout.pixelgym.commands.all;
 
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
@@ -16,7 +16,7 @@ public class ListCommand implements CommandExecutor {
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
         GymData.getInstance().getGymData().stream().filter(GymDataEntry::isEnabled).forEach(
-                gymDataEntry -> src.sendMessage(Text.of(TextColors.GOLD, TextStyles.BOLD, gymDataEntry.getName() + " Gym is: ", TextColors.DARK_GREEN, gymDataEntry.isCurrentlyOpen() ? "Open" : "Closed", TextColors.BLUE, " - Level Cap = " + gymDataEntry.getLevelCap()))
+                gymDataEntry -> src.sendMessage(Text.of(gymDataEntry.getFormattedGymName()," is: ", gymDataEntry.isCurrentlyOpen() ? TextColors.DARK_GREEN : TextColors.RED, gymDataEntry.isCurrentlyOpen() ? "Open" : "Closed", TextColors.BLUE, " - Level Cap = " + gymDataEntry.getLevelCap()))
         );
         return CommandResult.success();
     }

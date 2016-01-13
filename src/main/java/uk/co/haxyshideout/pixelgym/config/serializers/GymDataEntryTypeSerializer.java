@@ -9,6 +9,7 @@ import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.text.format.TextColor;
 import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
 import uk.co.haxyshideout.pixelgym.data.GymPokemonEntry;
+import uk.co.haxyshideout.pixelgym.data.WarpEntry;
 
 import java.util.List;
 import java.util.UUID;
@@ -45,6 +46,14 @@ public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> 
         if(!previousGym.isVirtual()) {
             gymDataEntry.setPreviousGymNames(previousGym.getList(new TypeToken<String>() {}));
         }
+        ConfigurationNode insideWarp = value.getNode("Warps").getNode("inside");
+        if(!insideWarp.isVirtual()) {
+            gymDataEntry.setInsideWarp(insideWarp.getValue(new TypeToken<WarpEntry>() {}));
+        }
+        ConfigurationNode outsideWarp = value.getNode("Warps").getNode("outside");
+        if(!outsideWarp.isVirtual()) {
+            gymDataEntry.setOutsideWarp(outsideWarp.getValue(new TypeToken<WarpEntry>() {}));
+        }
         return gymDataEntry;
     }
 
@@ -55,7 +64,7 @@ public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> 
          * Required config vars
          */
         commentedValue.getNode("Name").setComment("The name of the gym, do not add \" Gym\" onto the end as this is done automatically.").setValue(obj.getName());
-        commentedValue.getNode("Colour").setComment("The colour you want the gym's name to appear as.\n Possible values: NONE, BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE").setValue(new TypeToken<TextColor>() {}, obj.getColour());//TODO should we use TextColours for this instead, would prob be much easier
+        commentedValue.getNode("Colour").setComment("The colour you want the gym's name to appear as.\n Possible values: NONE, BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE").setValue(new TypeToken<TextColor>() {}, obj.getColour());
         commentedValue.getNode("Enabled").setComment("Enables the gym.").setValue(obj.isEnabled());
         commentedValue.getNode("BadgeItem").setComment("The name of the item to reward winners, in the format \"minecraft:chicken\".").setValue(new TypeToken<ItemType>() {}, obj.getBadgeItemType());
         commentedValue.getNode("BadgeItemDamageValue").setComment("The damage value of the item to reward winners.").setValue(obj.getBadgeItemDamageValue());
@@ -69,6 +78,9 @@ public class GymDataEntryTypeSerializer implements TypeSerializer<GymDataEntry> 
         commentedValue.getNode("CoolDown").setComment("The time in minutes that a player must wait to challenge the gym after losing.").setValue(obj.getCoolDownTime().orElse(null));
         commentedValue.getNode("EntryFee").setComment("The entry fee for the gym that the player must pay.").setValue(obj.getEntryFee().orElse(null));
         commentedValue.getNode("PreviousGyms").setComment("The names of the gyms that the player must of beaten to challenge this gym.").setValue(obj.getDependsOnCompletingNames().orElse(null));
+        commentedValue.getNode("Warps").getNode("inside").setValue(new TypeToken<WarpEntry>() {}, obj.getInsideWarp().orElse(null));
+        commentedValue.getNode("Warps").getNode("outside").setValue(new TypeToken<WarpEntry>() {}, obj.getOutsideWarp().orElse(null));
+
     }
 
 }

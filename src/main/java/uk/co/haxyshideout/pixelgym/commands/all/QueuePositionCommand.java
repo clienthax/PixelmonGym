@@ -1,6 +1,5 @@
-package uk.co.haxyshideout.pixelgym.commands;
+package uk.co.haxyshideout.pixelgym.commands.all;
 
-import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
@@ -8,17 +7,16 @@ import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.format.TextColors;
 import uk.co.haxyshideout.pixelgym.data.GymData;
 import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
 
 import java.util.Optional;
 
-public class CloseGymCommand implements CommandExecutor {
+public class QueuePositionCommand implements CommandExecutor {
 
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
-        if(!(src instanceof Player)) {//TODO use console too
+        if (!(src instanceof Player)) {
             return CommandResult.empty();
         }
         Player player = (Player) src;
@@ -30,16 +28,13 @@ public class CloseGymCommand implements CommandExecutor {
         }
 
         GymDataEntry gymDataEntry = gymDataEntryOptional.get();
-        if(!gymDataEntry.getOnlineLeaders().contains(player.getUniqueId())) {
-            src.sendMessage(Text.of("You are not a leader of this gym, you can not open it"));
-            return CommandResult.empty();
+        Optional<Integer> positionInQueue = gymDataEntry.getPositionInQueue(player.getUniqueId());
+        if (positionInQueue.isPresent()) {
+            player.sendMessage(Text.of("You are position "+positionInQueue.get()+" in the queue for ", gymDataEntry.getFormattedGymName()));
+        } else {
+            player.sendMessage(Text.of("You are not in the queue for "+gymDataEntry.getFormattedGymName()));
         }
-
-        gymDataEntry.setCurrentlyOpen(false);
-        Sponge.getServer().getBroadcastChannel().send(Text.of(TextColors.RED, "The "+gymDataEntry.getName()+" Gym is now closed"));
-
 
         return CommandResult.success();
     }
-
 }

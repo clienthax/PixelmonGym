@@ -28,28 +28,13 @@ public class PixelGymAdmin implements CommandExecutor, Listener {
                     p.sendMessage("");
                     p.sendMessage(ChatColor.RED + "Plugin Made By " + ChatColor.GOLD + "ABkayCkay");
                 } else if (p.hasPermission("pixelgym.admin")) {
-                    p.sendMessage(ChatColor.GREEN + "/pixelgym reload" + ChatColor.DARK_GREEN + " - Reloads the plugin config.");
                     p.sendMessage(ChatColor.GREEN + "/pixelgym checkconfig" + ChatColor.DARK_GREEN + " - Checks the currently set config settings.");
                     p.sendMessage(ChatColor.GREEN + "/pixelgym addleader <Gym#/e4#> (Username)" + ChatColor.DARK_GREEN + " - Add a gym leader to a specific gym or elite 4 level. E.G: /pixelgym addleader Gym1 ABkayCkay");
                     p.sendMessage(ChatColor.GREEN + "/pixelgym delleader <Gym#/e4#> (Username)" + ChatColor.DARK_GREEN + " - Remove a gym leader from a specific gym or elite 4 level. E.G: /pixelgym delleader Gym1 ABkayCkay");
                     p.sendMessage(ChatColor.GREEN + "/pixelgym setlevel <gym#> (level)" + ChatColor.DARK_GREEN + " - Sets the level of the specified gym. (Modify\'s the config)");
                     p.sendMessage(ChatColor.GREEN + "/pixelgym setrule <gym#> <rule#> (rule)" + ChatColor.DARK_GREEN + " - Sets the rules of the specified gym. (Modify\'s the config) E.G: /pixelgym setrule gym1 1 No_Potions");
-                    p.sendMessage(ChatColor.GREEN + "/gym closeall" + ChatColor.DARK_GREEN + " - Closes all Gym\'s.");
-                    p.sendMessage(ChatColor.GREEN + "/e4 closeall" + ChatColor.DARK_GREEN + " - Closes all Elite 4 level\'s.");
                 }
             } else if (args.length == 1) {
-                if (args[0].equals("reload") && p.hasPermission("pixelgym.admin")) {
-                    this.plugin.reloadConfig();
-                    sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + this.plugin.getConfig().getString("config.title") + ChatColor.DARK_GRAY + "] " + ChatColor.GREEN + "Config Reloaded!");
-                } else if (args[0].equals("checkconfig") && p.hasPermission("pixelgym.admin")) {
-                    p.sendMessage(ChatColor.GOLD + "======= Current PixelGym Config settings =======");
-                    p.sendMessage(" ");
-                    p.sendMessage(ChatColor.GREEN + "Player Join Messages: " + ChatColor.GOLD + this.plugin.getConfig().getString("config.joinmessage"));
-                    p.sendMessage(ChatColor.GREEN + "Scoreboard Active: " + ChatColor.GOLD + this.plugin.getConfig().getString("config.scoreboard"));
-                    p.sendMessage(ChatColor.GREEN + "Gym/E4 Leader healing: " + ChatColor.GOLD + this.plugin.getConfig().getString("config.gymhealing"));
-                    p.sendMessage(ChatColor.GREEN + "Elite 4 Enabled: " + ChatColor.GOLD + this.plugin.getConfig().getString("config.e4enabled"));
-                    p.sendMessage(ChatColor.GREEN + "Give Leaders Pokemon: " + ChatColor.GOLD + this.plugin.getConfig().getString("config.giveleaderpokemon"));
-                }
             } else {
                 String ruleArg;
                 int gym1;

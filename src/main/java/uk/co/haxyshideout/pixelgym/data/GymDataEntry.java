@@ -3,6 +3,7 @@ package uk.co.haxyshideout.pixelgym.data;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import org.spongepowered.api.data.key.Keys;
+import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.item.inventory.ItemStackSnapshot;
@@ -24,30 +25,31 @@ public class GymDataEntry {
     /**
      * /Required things from config
      */
-    String gymName;
-    boolean enabled;
-    List<String> rules;
-    List<GymPokemonEntry> gymPokemon;
-    List<UUID> gymLeaders = Collections.singletonList(UUID.fromString("00000000-0000-0000-0000-000000000000"));//Dummy value so the config looks sane
-    TextColor gymColour;
-    ItemType badgeItemType;//Needs to have the varient somewhere too..
-    int levelCap;
-    int badgeItemDamageValue;
-    //TODO warp locations for battle start / exit - store as xyz/worlduuid, to avoid world refs use optional
+    private String gymName;
+    private boolean enabled;
+    private List<String> rules;
+    private List<GymPokemonEntry> gymPokemon;
+    private List<UUID> gymLeaders = Collections.singletonList(UUID.fromString("00000000-0000-0000-0000-000000000000"));//Dummy value so the config looks sane
+    private TextColor gymColour;
+    private ItemType badgeItemType;
+    private int badgeItemDamageValue;
+    private int levelCap;
 
     /**
      * Optional things from config
      */
-    Optional<Integer> entryFee = Optional.empty();
-    Optional<Integer> cooldownTime = Optional.empty();//in minutes
-    Optional<List<String>> previousGymNames = Optional.empty();
+    private Optional<Integer> entryFee = Optional.empty();
+    private Optional<Integer> cooldownTime = Optional.empty();//in minutes
+    private Optional<List<String>> previousGymNames = Optional.empty();
+    private Optional<WarpEntry> insideWarp = Optional.empty();
+    private Optional<WarpEntry> outsideWarp = Optional.empty();
 
     /**
      * Non config related vars
      */
-    boolean currentlyOpen = false;
-    List<UUID> onlineLeaders = Lists.newArrayList();
-    List<UUID> playerQueue = Lists.newArrayList();
+    private boolean currentlyOpen = false;
+    private List<UUID> onlineLeaders = Lists.newArrayList();
+    private List<UUID> playerQueue = Lists.newArrayList();
 
     //need something in here for player/npc gym
 
@@ -56,13 +58,56 @@ public class GymDataEntry {
 
     public ItemStackSnapshot makeBadge(Text leaderName) {
         ItemStack itemStack = ItemStack.builder().fromContainer(ItemStack.builder().itemType(getBadgeItemType()).quantity(1).build().toContainer().set(DataQueries.ITEM_DAMAGE_VALUE, getBadgeItemDamageValue())).build();
-        itemStack.offer(Keys.DISPLAY_NAME, Text.of(getColour(), TextStyles.BOLD, getName()+" Badge"));
+        itemStack.offer(Keys.DISPLAY_NAME, getFormattedBadgeName());
         List<Text> lore = Lists.newArrayList();
         lore.add(Text.of(TextColors.GOLD, "Date/Time Won: ", TextColors.GREEN, ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME)));
         lore.add(Text.of(TextColors.GOLD, "Gym Leader: ",TextColors.GREEN, leaderName));
         itemStack.offer(Keys.ITEM_LORE, lore);
-        ItemStackSnapshot snapshot = itemStack.createSnapshot();
-        return snapshot;
+        return itemStack.createSnapshot();
+    }
+
+    /**
+     * Returns the coloured gym name in the format "Rock Gym"
+     * @return the formatted gym name
+     */
+    public Text getFormattedGymName() {
+        return Text.of(getColour(), TextStyles.BOLD, getName(), " Gym", TextColors.RESET);
+    }
+
+    /**
+     * Returns the coloured badge name in the format "Rock Badge"
+     * @return the formatted badge name
+     */
+    public Text getFormattedBadgeName() {
+        return Text.of(getColour(), TextStyles.BOLD, getName(), " Badge", TextColors.RESET);
+    }
+
+    public Optional<WarpEntry> getInsideWarp() {
+        return insideWarp;
+    }
+
+    public Optional<WarpEntry> getOutsideWarp() {
+        return outsideWarp;
+    }
+
+    /**
+     * Utils method for setting the warp from a players current location and rotation
+     * @param player the player to set from
+     */
+    public void setInsideWarp(Player player) {
+        insideWarp = Optional.of(new WarpEntry(player));
+    }
+
+    public void setOutsideWarp(Player player) {
+        outsideWarp = Optional.of(new WarpEntry(player));
+    }
+
+    public void setInsideWarp(WarpEntry warpEntry) {
+        insideWarp = Optional.of(warpEntry);
+    }
+
+    public void setOutsideWarp(WarpEntry warpEntry) {
+        outsideWarp = Optional.of(warpEntry);
     }
 
     public boolean isEnabled() {
@@ -202,4 +247,9 @@ public class GymDataEntry {
     public int getBadgeItemDamageValue() {
         return badgeItemDamageValue;
     }
+
+    public boolean removePlayerFromQueue(UUID uniqueId) {
+        return playerQueue.remove(uniqueId);
+    }
+
 }

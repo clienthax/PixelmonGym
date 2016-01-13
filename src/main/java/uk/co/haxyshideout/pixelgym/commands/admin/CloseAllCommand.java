@@ -1,4 +1,4 @@
-package uk.co.haxyshideout.pixelgym.commands;
+package uk.co.haxyshideout.pixelgym.commands.admin;
 
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
@@ -6,14 +6,15 @@ import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.text.Text;
-import uk.co.haxyshideout.pixelgym.config.PixelGymConfig;
+import org.spongepowered.api.text.format.TextColors;
+import uk.co.haxyshideout.pixelgym.data.GymData;
 
-public class ReloadCommand implements CommandExecutor {
+public class CloseAllCommand implements CommandExecutor {
 
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
-        PixelGymConfig.getInstance().loadConfig();
-        src.sendMessage(Text.of("Reloaded config"));
+        GymData.getInstance().getGymData().forEach(GymDataEntry -> GymDataEntry.setCurrentlyOpen(false));
+        src.sendMessage(Text.of(TextColors.RED, "All Gyms closed"));
         return CommandResult.success();
     }
 

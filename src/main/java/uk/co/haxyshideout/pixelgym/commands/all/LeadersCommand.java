@@ -1,4 +1,4 @@
-package uk.co.haxyshideout.pixelgym.commands;
+package uk.co.haxyshideout.pixelgym.commands.all;
 
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandException;
@@ -26,7 +26,7 @@ public class LeadersCommand implements CommandExecutor {
             for (UUID uuid : gymDataEntry.getOnlineLeaders()) {
                 Optional<Player> playerOptional = Sponge.getServer().getPlayer(uuid);
                 if(playerOptional.isPresent()) {
-                    src.sendMessage(Text.of(TextColors.GREEN, playerOptional.get().getName(), TextColors.BLACK, " - ", TextStyles.BOLD, gymDataEntry.getName()+" Gym"));
+                    src.sendMessage(Text.of(TextColors.GREEN, playerOptional.get().getName(), TextColors.BLACK, " - ", gymDataEntry.getFormattedGymName()));
                 }
             }
         }
