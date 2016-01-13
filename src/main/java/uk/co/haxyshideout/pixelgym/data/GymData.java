@@ -36,4 +36,9 @@ public class GymData {
         return gymDatas.stream().filter(gymData -> gymData.getGymLeaders().contains(uniqueId)).collect(Collectors.toList());
     }
 
+    public List<String> getGymNames() {
+        List<String> gymNames = Lists.newArrayList();
+        gymNames.addAll(gymDatas.stream().map(GymDataEntry::getName).collect(Collectors.toList()));
+        return gymNames;
+    }
 }

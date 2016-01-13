@@ -21,11 +21,13 @@ import uk.co.haxyshideout.pixelgym.commands.admin.AddLeaderCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.CloseAllCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.DelLeaderCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.DelWarpCommand;
+import uk.co.haxyshideout.pixelgym.commands.admin.SetBadgeItemCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.SetLevelCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.SetWarpCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.TestWarpCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.WipePlayerDataCommand;
 import uk.co.haxyshideout.pixelgym.commands.all.HelpCommand;
+import uk.co.haxyshideout.pixelgym.commands.args.GymNameCommandElement;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.CloseGymCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.GiveBadgeCommand;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.HealCommand;
@@ -94,9 +96,7 @@ public class PixelGym {
      * some way for the players to show off badges in world
      * Logging - save won/loss and times challenged to a external log
      * copy the bloody config file
-     * Ability to set pokemon for the gym + badge etc ingame via commands
      * Clean up command classes due to required gymnames etc causing a lot of duplicated code
-     * When awarding a badge from a leader, make sure the player challenged the gym in the last 20mins
      */
 
     private void registerCommands() {
@@ -107,19 +107,19 @@ public class PixelGym {
         CommandSpec listCommand = CommandSpec.builder().executor(new ListCommand()).build();
         CommandSpec rulesCommand = CommandSpec.builder().executor(new ListRulesCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec joinCommand = CommandSpec.builder().executor(new JoinCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec leaveCommand = CommandSpec.builder().executor(new LeaveCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec queuePositionCommand = CommandSpec.builder().executor(new QueuePositionCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec scoreboardCommand = CommandSpec.builder().executor(new ScoreboardCommand()).build();
 
@@ -129,37 +129,37 @@ public class PixelGym {
         CommandSpec sendRulesCommand = CommandSpec.builder().executor(new SendRulesCommand())//Auto complete is kinda broken on child args for some reason - sendrules playername gymname
                 .arguments(
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 )
                 .description(Text.of(TextColors.GREEN, "/gym sendrules (Username) <gym name>", TextColors.DARK_GREEN, " - Force shows the specified gym\'s rules to the player specified."))//Never shown anywhere!?
                 .build();
         CommandSpec openGymCommand = CommandSpec.builder().executor(new OpenGymCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec closeGymCommand = CommandSpec.builder().executor(new CloseGymCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec healCommand = CommandSpec.builder().executor(new HealCommand()).build();
         CommandSpec quitCommand = CommandSpec.builder().executor(new QuitCommand()).build();
         CommandSpec removeCommand = CommandSpec.builder().executor(new GiveBadgeCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))
                 ).build();
         CommandSpec nextCommand = CommandSpec.builder().executor(new NextCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec winCommand = CommandSpec.builder().executor(new WinCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))
                 ).build();
         CommandSpec loseCommand = CommandSpec.builder().executor(new LoseCommand())
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))
                 ).build();
 
@@ -170,22 +170,22 @@ public class PixelGym {
         CommandSpec giveBadgeCommand = CommandSpec.builder().executor(new GiveBadgeCommand()).permission("pixelgym.admin")
                 .arguments(
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec reloadCommand = CommandSpec.builder().executor(new ReloadCommand()).permission("pixelgym.admin").build();
         CommandSpec setWarpCommand = CommandSpec.builder().executor(new SetWarpCommand()).permission("pixelgym.admin")
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.string(Text.of("warpName")))
                 ).build();
         CommandSpec testWarpCommand = CommandSpec.builder().executor(new TestWarpCommand()).permission("pixelgym.admin")
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.string(Text.of("warpName")))
                 ).build();
         CommandSpec delWarpCommand = CommandSpec.builder().executor(new DelWarpCommand()).permission("pixelgym.admin")
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.string(Text.of("warpName")))
                 ).build();
         CommandSpec wipePlayerDataCommand = CommandSpec.builder().executor(new WipePlayerDataCommand()).permission("pixelgym.admin")
@@ -195,17 +195,21 @@ public class PixelGym {
         CommandSpec addLeaderCommand = CommandSpec.builder().executor(new AddLeaderCommand()).permission("pixelgym.admin")
                 .arguments(
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec delLeaderCommand = CommandSpec.builder().executor(new DelLeaderCommand()).permission("pixelgym.admin")
                 .arguments(
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName")))
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
         CommandSpec setLevelCapCommand = CommandSpec.builder().executor(new SetLevelCommand()).permission("pixelgym.admin")
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.string(Text.of("gymName"))),
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.integer(Text.of("levelCap")))
+                ).build();
+        CommandSpec setBadgeItemCommand = CommandSpec.builder().executor(new SetBadgeItemCommand()).permission("pixelgym.admin")
+                .arguments(
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
 
         /**
@@ -238,6 +242,7 @@ public class PixelGym {
                 .child(addLeaderCommand, "addleader")
                 .child(delLeaderCommand, "delleader")
                 .child(setLevelCapCommand, "setlevelcap")
+                .child(setBadgeItemCommand, "setbadgeitem")
                 //TODO see command when inv events work..
                 .build();
         Sponge.getCommandManager().register(this, mainCommand, "gym");
