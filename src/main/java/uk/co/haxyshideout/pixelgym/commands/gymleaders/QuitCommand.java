@@ -9,27 +9,18 @@ import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
+import uk.co.haxyshideout.pixelgym.commands.GymLeaderCommand;
 import uk.co.haxyshideout.pixelgym.data.GymData;
 import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
 
 import java.util.List;
 
-public class QuitCommand implements CommandExecutor {
+public class QuitCommand extends GymLeaderCommand implements GymLeaderCommand.IGymLeaderCommand {
 
     @Override
-    public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
-        if(!(src instanceof Player))
-            return CommandResult.empty();
-
-        Player player = (Player) src;
-        List<GymDataEntry> gymsForLeader = GymData.getInstance().getGymsForLeader(player.getUniqueId());
-        if(gymsForLeader.isEmpty()) {
-            player.sendMessage(Text.of(TextColors.RED, "You are not a gym leader, you can not use this command"));
-        } else {
-            Sponge.getCommandManager().process(Sponge.getServer().getConsole(), "endbattle "+player.getName());
-            player.sendMessage(Text.of(TextColors.GREEN, "You have successfully quit the battle!"));
-        }
-
+    public CommandResult executeGymLeaderCommand(Player gymLeader, CommandContext args) {
+        Sponge.getCommandManager().process(Sponge.getServer().getConsole(), "endbattle " + gymLeader.getName());
+        gymLeader.sendMessage(Text.of(TextColors.GREEN, "You have successfully quit the battle!"));
         return CommandResult.success();
     }
 

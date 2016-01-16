@@ -7,14 +7,15 @@ import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
+import uk.co.haxyshideout.pixelgym.commands.AdminCommand;
 import uk.co.haxyshideout.pixelgym.data.spongedata.player.gym.PlayerGymInfoData;
 
 import java.util.Optional;
 
-public class WipePlayerDataCommand implements CommandExecutor {
+public class WipePlayerDataCommand extends AdminCommand implements AdminCommand.IAdminCommand {
 
     @Override
-    public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {//TODO when sorting out commands make this need a confirm~
+    public CommandResult executeAdminCommand(CommandSource src, CommandContext args) {//TODO make this need a confirm later.
         Optional<Player> targetPlayerOptional = args.getOne("player");
         if(!targetPlayerOptional.isPresent()) {
             src.sendMessage(Text.of("Player not found"));

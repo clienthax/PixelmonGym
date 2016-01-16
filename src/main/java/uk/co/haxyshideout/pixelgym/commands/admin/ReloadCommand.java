@@ -6,14 +6,16 @@ import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.format.TextColors;
+import uk.co.haxyshideout.pixelgym.commands.AdminCommand;
 import uk.co.haxyshideout.pixelgym.config.PixelGymConfig;
 
-public class ReloadCommand implements CommandExecutor {
+public class ReloadCommand extends AdminCommand implements AdminCommand.IAdminCommand {
 
     @Override
-    public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
+    public CommandResult executeAdminCommand(CommandSource src, CommandContext args) {
         PixelGymConfig.getInstance().loadConfig();
-        src.sendMessage(Text.of("Reloaded config"));
+        src.sendMessage(Text.of(TextColors.GREEN, "Reloaded config"));
         return CommandResult.success();
     }
 

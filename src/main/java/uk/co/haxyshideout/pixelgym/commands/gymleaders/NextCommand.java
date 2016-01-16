@@ -9,57 +9,34 @@ import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
+import uk.co.haxyshideout.pixelgym.commands.GymLeaderCommand;
 import uk.co.haxyshideout.pixelgym.data.GymData;
 import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
 import uk.co.haxyshideout.pixelgym.utils.GymUtils;
 
 import java.util.Optional;
 
-public class NextCommand implements CommandExecutor {
+public class NextCommand extends GymLeaderCommand implements GymLeaderCommand.IGymSpecificCommand {
 
     @Override
-    public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
-        if(!(src instanceof Player)) {//TODO use console too
+    public CommandResult executeGymSpecificCommand(Player gymLeader, GymDataEntry targetGym, CommandContext args) {
+        if(!targetGym.isCurrentlyOpen()) {
+            gymLeader.sendMessage(Text.of("This gym is not open."));
             return CommandResult.empty();
         }
-        Player player = (Player) src;
-        String gymName = (String) args.getOne("gymName").get();
-        Optional<GymDataEntry> gymDataEntryOptional = GymData.getInstance().getGymData(gymName);
-        if(!gymDataEntryOptional.isPresent()) {
-            src.sendMessage(Text.of(gymName+" Gym not found"));
-            return CommandResult.empty();
-        }
-
-        GymDataEntry gymDataEntry = gymDataEntryOptional.get();
-        if(!gymDataEntry.isEnabled()) {
-            src.sendMessage(Text.of("This gym is disabled in the config"));
-            return CommandResult.empty();
-        }
-
-        if(!gymDataEntry.getOnlineLeaders().contains(player.getUniqueId())) {
-            src.sendMessage(Text.of("You are not a leader of this gym, you can not use this command"));
-            return CommandResult.empty();
-        }
-
-        if(!gymDataEntry.isCurrentlyOpen()) {
-            src.sendMessage(Text.of("This gym is not open."));
-            return CommandResult.empty();
-        }
-
-        if(!gymDataEntry.getPlayerQueue().isEmpty()) {
-            Optional<Player> challengerOptional = Sponge.getServer().getPlayer(gymDataEntry.getPlayerQueue().get(0));
+        if(!targetGym.getPlayerQueue().isEmpty()) {
+            Optional<Player> challengerOptional = Sponge.getServer().getPlayer(targetGym.getPlayerQueue().get(0));
             if(challengerOptional.isPresent()) {
                 Player challenger = challengerOptional.get();
-                gymDataEntry.getInsideWarp().ifPresent(warpEntry -> warpEntry.attemptWarp(challenger));
-                GymUtils.updateChallengedTime(challenger, gymDataEntry.getName());
-                gymDataEntry.sendRules(challenger);
-                src.sendMessage(Text.of(TextColors.GREEN, "Challenger ", challenger.getName(), " was teleported to the gym"));
+                targetGym.getInsideWarp().ifPresent(warpEntry -> warpEntry.attemptWarp(challenger));
+                GymUtils.updateChallengedTime(challenger, targetGym.getName());
+                targetGym.sendRules(challenger);
+                gymLeader.sendMessage(Text.of(TextColors.GREEN, "Challenger ", challenger.getName(), " was teleported to the gym"));
             } else {
-                src.sendMessage(Text.of(TextColors.RED, "Unable to get player, removing from queue."));
+                gymLeader.sendMessage(Text.of(TextColors.RED, "Unable to get player, removing from queue."));
             }
-            gymDataEntry.getPlayerQueue().remove(0);
+            targetGym.getPlayerQueue().remove(0);
         }
-
         return CommandResult.success();
     }
 

@@ -43,6 +43,7 @@ import uk.co.haxyshideout.pixelgym.commands.all.QueuePositionCommand;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.QuitCommand;
 import uk.co.haxyshideout.pixelgym.commands.admin.ReloadCommand;
 import uk.co.haxyshideout.pixelgym.commands.all.ScoreboardCommand;
+import uk.co.haxyshideout.pixelgym.commands.gymleaders.RemoveCommand;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.SendRulesCommand;
 import uk.co.haxyshideout.pixelgym.commands.TestCommand;
 import uk.co.haxyshideout.pixelgym.commands.gymleaders.WinCommand;
@@ -96,7 +97,6 @@ public class PixelGym {
      * some way for the players to show off badges in world
      * Logging - save won/loss and times challenged to a external log
      * copy the bloody config file
-     * Clean up command classes due to required gymnames etc causing a lot of duplicated code
      */
 
     private void registerCommands() {
@@ -143,7 +143,7 @@ public class PixelGym {
                 ).build();
         CommandSpec healCommand = CommandSpec.builder().executor(new HealCommand()).build();
         CommandSpec quitCommand = CommandSpec.builder().executor(new QuitCommand()).build();
-        CommandSpec removeCommand = CommandSpec.builder().executor(new GiveBadgeCommand())
+        CommandSpec removeCommand = CommandSpec.builder().executor(new RemoveCommand())
                 .arguments(
                         GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))

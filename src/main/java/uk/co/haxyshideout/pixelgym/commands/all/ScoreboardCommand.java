@@ -24,6 +24,7 @@ public class ScoreboardCommand implements CommandExecutor {
         player.offer(playerGymInfoData);
         boolean enabled = playerGymInfoData.get(PlayerGymInfoKeys.SCOREBOARD_ENABLED).get();
         if(!enabled) {
+            //noinspection ConstantConditions
             player.setScoreboard(null);
         } else {
             ScoreboardData.refreshPlayerScoreboard(player);

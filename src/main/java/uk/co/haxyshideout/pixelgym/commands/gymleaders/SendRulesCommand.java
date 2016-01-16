@@ -8,41 +8,20 @@ import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
+import uk.co.haxyshideout.pixelgym.commands.GymLeaderCommand;
 import uk.co.haxyshideout.pixelgym.data.GymData;
 import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
 import uk.co.haxyshideout.pixelgym.data.GymPokemonEntry;
 
 import java.util.Optional;
 
-public class SendRulesCommand implements CommandExecutor {
+public class SendRulesCommand extends GymLeaderCommand implements GymLeaderCommand.IGymSpecificPlayerTargetCommand {
 
     @Override
-    public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
-        if(!(src instanceof Player))
-            return CommandResult.empty();
-
-        Optional<GymDataEntry> gymDataEntryOptional = GymData.getInstance().getGymData((String) args.getOne("gymName").get());
-        Optional<Player> targetPlayerOptional = args.getOne("player");
-        if(!gymDataEntryOptional.isPresent()) {
-            src.sendMessage(Text.of("Gym "+args.getOne("gymName")+" does not exist."));
-            return CommandResult.empty();
-        }
-        if(!targetPlayerOptional.isPresent()) {
-            src.sendMessage(Text.of("Player not found"));
-            return CommandResult.empty();
-        }
-        GymDataEntry gymDataEntry = gymDataEntryOptional.get();
-        Player targetPlayer = targetPlayerOptional.get();
-
-        if(!gymDataEntry.getOnlineLeaders().contains(((Player) src).getUniqueId())) {
-            src.sendMessage(Text.of("You are not a leader for this gym, you can not send the rules to a player"));
-            return CommandResult.empty();
-        }
-
-        gymDataEntry.sendRules(targetPlayer);
-
-        src.sendMessage(Text.of("Sent rules for ", gymDataEntry.getFormattedGymName(), " to "+targetPlayer.getName()));
-
+    public CommandResult executeGymSpecificPlayerTargetCommand(Player gymLeader, Player targetPlayer, GymDataEntry targetGym, CommandContext args) {
+        targetGym.sendRules(targetPlayer);
+        gymLeader.sendMessage(Text.of("Sent rules for ", targetGym.getFormattedGymName(), " to "+targetPlayer.getName()));
         return CommandResult.success();
     }
+
 }
