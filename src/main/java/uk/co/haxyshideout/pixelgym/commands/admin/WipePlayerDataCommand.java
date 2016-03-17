@@ -6,6 +6,7 @@ import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
+import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.text.Text;
 import uk.co.haxyshideout.pixelgym.commands.AdminCommand;
 import uk.co.haxyshideout.pixelgym.data.spongedata.player.gym.PlayerGymInfoData;

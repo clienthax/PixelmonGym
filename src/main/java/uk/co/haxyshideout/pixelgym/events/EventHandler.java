@@ -12,6 +12,7 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.cause.Cause;
 import org.spongepowered.api.event.item.inventory.ClickInventoryEvent;
 import org.spongepowered.api.event.network.ClientConnectionEvent;
+import org.spongepowered.api.item.inventory.transaction.SlotTransaction;
 import org.spongepowered.api.service.economy.EconomyService;
 import org.spongepowered.api.service.economy.account.UniqueAccount;
 import org.spongepowered.api.service.economy.transaction.ResultType;
@@ -41,7 +42,10 @@ public class EventHandler {
         if(container instanceof ContainerChest) {
             ContainerChest containerChest = (ContainerChest) container;
             if (containerChest.getLowerChestInventory().getDisplayName().getUnformattedText().equals("Badges")) {
-                event.setCancelled(true);
+//                event.setCancelled(true);
+                for (SlotTransaction slotTransaction : event.getTransactions()) {
+                    slotTransaction.setValid(false);
+                }
             }
         }
     }

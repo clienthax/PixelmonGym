@@ -34,6 +34,7 @@ public class PlayerGymInfoDataBuilder implements DataManipulatorBuilder<PlayerGy
             playerGymInfoData = playerGymInfoData.set(GYMS_DEFEATED, container.getStringList(GYMS_DEFEATED.getQuery()).get());
         }
         if(container.contains(LAST_TIME_CHALLANGED.getQuery())) {
+            //noinspection unchecked
             playerGymInfoData = playerGymInfoData.set(LAST_TIME_CHALLANGED, (Map<String, String>)container.getMap(LAST_TIME_CHALLANGED.getQuery()).get());
         }
         if(container.contains(BADGE_ITEMS.getQuery())) {

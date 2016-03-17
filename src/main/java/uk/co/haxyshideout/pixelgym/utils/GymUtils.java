@@ -1,7 +1,9 @@
 package uk.co.haxyshideout.pixelgym.utils;
 
+import org.spongepowered.api.Sponge;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.item.inventory.ItemStackSnapshot;
+import org.spongepowered.api.profile.GameProfile;
 import org.spongepowered.api.text.Text;
 import uk.co.haxyshideout.pixelgym.data.GymData;
 import uk.co.haxyshideout.pixelgym.data.GymDataEntry;
@@ -13,6 +15,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 public class GymUtils {
 
@@ -73,4 +77,14 @@ public class GymUtils {
         playerGymInfoData.setBadgeItems(badgeItemStackSnapshots);
         player.offer(playerGymInfoData);
     }
+
+    public static Optional<UUID> getUUIDForUsername(String username) {
+        try {
+            return Optional.of(Sponge.getServer().getGameProfileManager().get(username).get().getUniqueId());
+        } catch (Exception e) {
+            //Someone prob mistyped the username..
+        }
+        return Optional.empty();
+    }
+
 }

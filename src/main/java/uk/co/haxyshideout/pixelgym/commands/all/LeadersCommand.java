@@ -21,7 +21,6 @@ public class LeadersCommand implements CommandExecutor {
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
         src.sendMessage(Text.of(TextColors.GOLD, "----- Online Gym Leaders -----"));
-        src.sendMessage(Text.NEW_LINE);
         for (GymDataEntry gymDataEntry : GymData.getInstance().getGymData()) {
             for (UUID uuid : gymDataEntry.getOnlineLeaders()) {
                 Optional<Player> playerOptional = Sponge.getServer().getPlayer(uuid);

@@ -27,7 +27,6 @@ public class ScoreboardData {
 
     /**
      * Called when a player toggles their scoreboard with /gym scoreboard and when the player logs into the server
-     * @param player
      */
     public static void refreshPlayerScoreboard(Player player) {
         if(!PixelGymConfig.getInstance().scoreboardEnabled()) {
@@ -50,7 +49,7 @@ public class ScoreboardData {
         int openGymAmount = 0;
         for (GymDataEntry gymDataEntry : GymData.getInstance().getGymData()) {
             if(gymDataEntry.isCurrentlyOpen() && !defeatedGyms.contains(gymDataEntry.getName())) {
-                lines.add(Text.of(gymDataEntry.getColour(), gymDataEntry.getName()));
+                lines.add(gymDataEntry.getFormattedGymName());
                 openGymAmount++;
             }
             if(openGymAmount == 15) {

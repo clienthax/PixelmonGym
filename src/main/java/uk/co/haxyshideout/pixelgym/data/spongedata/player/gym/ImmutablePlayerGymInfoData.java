@@ -31,10 +31,10 @@ public class ImmutablePlayerGymInfoData extends AbstractImmutableData<ImmutableP
     private final List<ItemStackSnapshot> badgeItems;
     private final boolean scoreboardEnabled;
 
-    ImmutableListValue<String> gymsDefeatedValue;
-    ImmutableMapValue<String, String> lastTimeGymChallengedValue;
-    ImmutableListValue<ItemStackSnapshot> badgeItemsValue;
-    ImmutableValue<Boolean> scoreboardEnabledValue;
+    final ImmutableListValue<String> gymsDefeatedValue;
+    final ImmutableMapValue<String, String> lastTimeGymChallengedValue;
+    final ImmutableListValue<ItemStackSnapshot> badgeItemsValue;
+    final ImmutableValue<Boolean> scoreboardEnabledValue;
 
     public ImmutablePlayerGymInfoData(List<String> gymsDefeated, Map<String, String> lastTimeGymChallenged, List<ItemStackSnapshot> badgeItems, boolean scoreboardEnabled) {
         this.gymsDefeated = gymsDefeated;

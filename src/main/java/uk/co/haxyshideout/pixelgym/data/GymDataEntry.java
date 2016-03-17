@@ -2,16 +2,20 @@ package uk.co.haxyshideout.pixelgym.data;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import org.spongepowered.api.Sponge;
 import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.item.inventory.ItemStackSnapshot;
+import org.spongepowered.api.scoreboard.Scoreboard;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColor;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.text.format.TextStyles;
+import org.spongepowered.api.text.title.Title;
 import org.spongepowered.common.data.util.DataQueries;
+import uk.co.haxyshideout.pixelgym.config.PixelGymConfig;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -48,8 +52,8 @@ public class GymDataEntry {
      * Non config related vars
      */
     private boolean currentlyOpen = false;
-    private List<UUID> onlineLeaders = Lists.newArrayList();
-    private List<UUID> playerQueue = Lists.newArrayList();
+    private final List<UUID> onlineLeaders = Lists.newArrayList();
+    private final List<UUID> playerQueue = Lists.newArrayList();
 
     //need something in here for player/npc gym
 
@@ -150,7 +154,17 @@ public class GymDataEntry {
     }
 
     public void setCurrentlyOpen(boolean open) {
-        currentlyOpen = open;
+        TextColor openClosedColor = (open ? TextColors.GREEN : TextColors.RED);
+        String openClosedString = "Is now "+ (open ? "Open" : "Closed");
+        if(open != currentlyOpen) {
+            currentlyOpen = open;
+            ScoreboardData.refreshAllScoreboards();
+            if(PixelGymConfig.getInstance().showTitleMessages()) {
+                Title build = Title.builder().title(getFormattedGymName()).subtitle(Text.of(openClosedColor, openClosedString)).build();
+                Sponge.getServer().getOnlinePlayers().forEach(player -> player.sendTitle(build));
+            }
+            Sponge.getServer().getBroadcastChannel().send(Text.of(openClosedColor, "The ", getFormattedGymName(), openClosedColor, " ", openClosedString));
+        }
     }//TODO show title showing gym is open if player hasnt challenged it
 
     public int getLevelCap() {

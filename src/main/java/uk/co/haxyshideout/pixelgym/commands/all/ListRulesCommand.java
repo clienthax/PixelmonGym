@@ -24,7 +24,7 @@ public class ListRulesCommand implements CommandExecutor {
         }
         GymDataEntry gymDataEntry = gymDataEntryOptional.get();
 
-        src.sendMessage(Text.of(TextColors.GOLD, src.getName()+", Make sure you read the rules before facing the "+gymDataEntry.getFormattedGymName()));
+        src.sendMessage(Text.of(TextColors.GOLD, src.getName()+", Make sure you read the rules before facing the ", gymDataEntry.getFormattedGymName()));
         for(String rule : gymDataEntry.getRules()) {
             src.sendMessage(Text.of(TextColors.AQUA, rule));
         }

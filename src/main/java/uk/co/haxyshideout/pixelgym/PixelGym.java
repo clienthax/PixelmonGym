@@ -74,6 +74,7 @@ public class PixelGym {
     private static PixelGym INSTANCE;
 
     Optional<EconomyService> economyService;
+    private static final Text prefix = Text.of(TextColors.GRAY, "[", TextColors.GREEN, "PixelGym", TextColors.GRAY, "]", TextColors.RESET, " ");
 
     @Listener
     public void init(GameInitializationEvent event) {
@@ -128,9 +129,9 @@ public class PixelGym {
          */
         CommandSpec sendRulesCommand = CommandSpec.builder().executor(new SendRulesCommand())//Auto complete is kinda broken on child args for some reason - sendrules playername gymname
                 .arguments(
-                        GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
-                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
-                )
+                        GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
+                        GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))
+                        )
                 .description(Text.of(TextColors.GREEN, "/gym sendrules (Username) <gym name>", TextColors.DARK_GREEN, " - Force shows the specified gym\'s rules to the player specified."))//Never shown anywhere!?
                 .build();
         CommandSpec openGymCommand = CommandSpec.builder().executor(new OpenGymCommand())
@@ -166,48 +167,48 @@ public class PixelGym {
         /**
          * Admin commands
          */
-        CommandSpec closeAllCommand = CommandSpec.builder().executor(new CloseAllCommand()).permission("pixelgym.admin").build();
-        CommandSpec giveBadgeCommand = CommandSpec.builder().executor(new GiveBadgeCommand()).permission("pixelgym.admin")
+        CommandSpec closeAllCommand = CommandSpec.builder().executor(new CloseAllCommand()).permission(getAdminPermString()).build();
+        CommandSpec giveBadgeCommand = CommandSpec.builder().executor(new GiveBadgeCommand()).permission(getAdminPermString())
                 .arguments(
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
                         GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
-        CommandSpec reloadCommand = CommandSpec.builder().executor(new ReloadCommand()).permission("pixelgym.admin").build();
-        CommandSpec setWarpCommand = CommandSpec.builder().executor(new SetWarpCommand()).permission("pixelgym.admin")
+        CommandSpec reloadCommand = CommandSpec.builder().executor(new ReloadCommand()).permission(getAdminPermString()).build();
+        CommandSpec setWarpCommand = CommandSpec.builder().executor(new SetWarpCommand()).permission(getAdminPermString())
                 .arguments(
                         GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.string(Text.of("warpName")))
                 ).build();
-        CommandSpec testWarpCommand = CommandSpec.builder().executor(new TestWarpCommand()).permission("pixelgym.admin")
+        CommandSpec testWarpCommand = CommandSpec.builder().executor(new TestWarpCommand()).permission(getAdminPermString())
                 .arguments(
                         GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.string(Text.of("warpName")))
                 ).build();
-        CommandSpec delWarpCommand = CommandSpec.builder().executor(new DelWarpCommand()).permission("pixelgym.admin")
+        CommandSpec delWarpCommand = CommandSpec.builder().executor(new DelWarpCommand()).permission(getAdminPermString())
                 .arguments(
                         GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.string(Text.of("warpName")))
                 ).build();
-        CommandSpec wipePlayerDataCommand = CommandSpec.builder().executor(new WipePlayerDataCommand()).permission("pixelgym.admin")
+        CommandSpec wipePlayerDataCommand = CommandSpec.builder().executor(new WipePlayerDataCommand()).permission(getAdminPermString())
                 .arguments(
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player")))
                 ).build();
-        CommandSpec addLeaderCommand = CommandSpec.builder().executor(new AddLeaderCommand()).permission("pixelgym.admin")
+        CommandSpec addLeaderCommand = CommandSpec.builder().executor(new AddLeaderCommand()).permission(getAdminPermString())
                 .arguments(
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
                         GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
-        CommandSpec delLeaderCommand = CommandSpec.builder().executor(new DelLeaderCommand()).permission("pixelgym.admin")
+        CommandSpec delLeaderCommand = CommandSpec.builder().executor(new DelLeaderCommand()).permission(getAdminPermString())
                 .arguments(
                         GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
                         GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
-        CommandSpec setLevelCapCommand = CommandSpec.builder().executor(new SetLevelCommand()).permission("pixelgym.admin")
+        CommandSpec setLevelCapCommand = CommandSpec.builder().executor(new SetLevelCommand()).permission(getAdminPermString())
                 .arguments(
                         GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName"))),
                         GenericArguments.onlyOne(GenericArguments.integer(Text.of("levelCap")))
                 ).build();
-        CommandSpec setBadgeItemCommand = CommandSpec.builder().executor(new SetBadgeItemCommand()).permission("pixelgym.admin")
+        CommandSpec setBadgeItemCommand = CommandSpec.builder().executor(new SetBadgeItemCommand()).permission(getAdminPermString())
                 .arguments(
                         GenericArguments.onlyOne(new GymNameCommandElement(Text.of("gymName")))
                 ).build();
@@ -216,34 +217,43 @@ public class PixelGym {
          * Register all the sub commands onto the "gym" command
          */
         CommandSpec mainCommand = CommandSpec.builder().executor(new HelpCommand())
-                .child(leadersCommand, "leaders")
-                .child(listCommand, "list")
-                .child(sendRulesCommand, "sendrules")
-                .child(openGymCommand, "opengym")
-                .child(closeGymCommand, "closegym")
-                .child(rulesCommand, "rules")
+                /**
+                 * Register subcommands anyone can use
+                 */
                 .child(joinCommand, "join")
+                .child(leadersCommand, "leaders")
+                .child(listCommand, "listgyms")
                 .child(leaveCommand, "leave")
+                .child(rulesCommand, "rules")
                 .child(queuePositionCommand, "check", "position")
                 .child(scoreboardCommand, "scoreboard")
-                .child(closeAllCommand, "closeall")
+                /**
+                 * Register subcommands only gym leaders can use
+                 */
+                .child(sendRulesCommand, "sendrules")
+                .child(openGymCommand, "opengym", "open")
+                .child(closeGymCommand, "closegym", "close")
                 .child(healCommand, "heal")
                 .child(quitCommand, "quit")
-                .child(giveBadgeCommand, "givebadge")
+                .child(winCommand, "setwinner")
+                .child(loseCommand, "setloser")
+                .child(removeCommand, "remove")
+                .child(nextCommand, "next")
+                /**
+                 * Register subcommands only admins can use
+                 */
+                .child(closeAllCommand, "closeall")
                 .child(reloadCommand, "reload")
+                .child(giveBadgeCommand, "givebadge")
                 .child(setWarpCommand, "setwarp")
                 .child(delWarpCommand, "delwarp")
                 .child(testWarpCommand, "testwarp")
                 .child(wipePlayerDataCommand, "wipeplayerdata")
-                .child(removeCommand, "remove")
-                .child(nextCommand, "next")
-                .child(winCommand, "setwinner")
-                .child(loseCommand, "setlosser")
                 .child(addLeaderCommand, "addleader")
                 .child(delLeaderCommand, "delleader")
                 .child(setLevelCapCommand, "setlevelcap")
                 .child(setBadgeItemCommand, "setbadgeitem")
-                //TODO see command when inv events work..
+                //TODO "see" command when inv events work..
                 .build();
         Sponge.getCommandManager().register(this, mainCommand, "gym");
 
@@ -282,7 +292,12 @@ public class PixelGym {
     }
 
     public static Text getPluginPrefix() {
-        return Text.of(TextColors.GRAY, "[", TextColors.GREEN, "PixelGym", TextColors.GRAY, "]", TextColors.RESET, " ");
+        return prefix;
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    public static String getAdminPermString() {
+        return "pixelgym.admin";
     }
 
 }

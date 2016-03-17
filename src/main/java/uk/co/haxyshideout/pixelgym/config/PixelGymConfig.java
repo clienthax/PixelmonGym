@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PixelGymConfig {
 
-    private ConfigurationLoader<CommentedConfigurationNode> configurationLoader;
+    private final ConfigurationLoader<CommentedConfigurationNode> configurationLoader;
     private CommentedConfigurationNode rootNode;
     private static PixelGymConfig INSTANCE;
 
@@ -65,15 +65,18 @@ public class PixelGymConfig {
         }
     }
 
+    public boolean showTitleMessages() {
+        return rootNode.getNode("General", "EnableTitleMessages").setComment("Enables full screen messages when a Gym is opened / closed.").getBoolean();
+    }
+
     public boolean showJoinMessages() {
         return rootNode.getNode("General", "EnableJoinMessages").getBoolean();
     }
 
     /**
      * If this is enabled we need to move all the players party pokemon into their pc and then give them the gym pokemon
-     * @return
      */
-    public boolean enforceGymPokemon() {
+    public boolean enforceGymPokemon() {//TODO
         return rootNode.getNode("General", "EnforceGymPokemon").getBoolean();
     }
 
